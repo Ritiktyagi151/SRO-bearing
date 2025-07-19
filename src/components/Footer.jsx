@@ -127,10 +127,10 @@ export default function Footer() {
             © {new Date().getFullYear()} SRO Bearing. All rights reserved.
             Powered by:{" "}
             <Link
-              href="/"
+              href="https://jaikvik.com/"
               className="hover:text-green-400 transition-transform duration-300 hover:scale-105"
             >
-              sourabh
+              Jaikvik Technology India Pvt Ltd
             </Link>
           </p>
         </div>
