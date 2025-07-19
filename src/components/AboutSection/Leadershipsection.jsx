@@ -20,7 +20,7 @@ const TeamSection = () => {
   const teamMembers = [
     {
       id: 1,
-      name: " Mr. Jagat Singh",
+      name: "sro bearings",
       position: "MD",
       image:
         "https://images.unsplash.com/photo-1700831359498-7e367ee09472?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JlZW4lMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D",
@@ -28,7 +28,7 @@ const TeamSection = () => {
     },
     {
       id: 2,
-      name: "Mr. Shiv Kumar",
+      name: "sro bearings",
       position: "MD",
       image:
         "https://plus.unsplash.com/premium_photo-1676236297596-59f23505b6bf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JlZW4lMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D",
