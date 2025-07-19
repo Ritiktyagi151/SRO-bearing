@@ -1,0 +1,56 @@
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+export default function GreenOverview() {
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-green-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-green-800 sm:text-4xl">
+              Sustainable Solutions
+            </h2>
+            <p className="mt-4 text-lg text-green-700">
+              We're committed to eco-friendly practices that benefit both your
+              business and the planet. Our green initiatives reduce carbon
+              footprint while maintaining top performance.
+            </p>
+            <motion.div
+              className="mt-8"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <button className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition shadow-md hover:shadow-lg">
+                Explore Our Green Approach
+              </button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative h-64 lg:h-96 rounded-xl overflow-hidden shadow-xl mt-8 lg:mt-0"
+          >
+            <img
+              src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnhncTdxMnV1c2prZnl6bXpud2dtYW5vMWs5OHV5azBxaWV1NXo2MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Kd61lL6mzxZyIy1smx/giphy.gif"
+              alt="Green solutions"
+              className="object-cover w-full h-auto"
+            />
+
+            <motion.div
+              className="absolute inset-0 bg-green-800 bg-opacity-20 hover:bg-opacity-0 transition"
+              whileHover={{ opacity: 0 }}
+            />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
