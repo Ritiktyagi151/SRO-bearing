@@ -113,7 +113,7 @@ const ValuedClients = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center min-h-[500px]">
           {/* Left Side - Our Clients Text */}
           <div className="space-y-8 animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium animate-bounce">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
               <Users className="w-4 h-4" />
               <span>Trusted Partnership</span>
             </div>
@@ -126,7 +126,7 @@ const ValuedClients = () => {
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 We're proud to work with industry-leading companies who trust us
                 to deliver exceptional results and drive their success forward.
               </p>

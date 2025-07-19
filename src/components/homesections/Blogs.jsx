@@ -174,7 +174,7 @@ const Blogs = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Latest Insights & Articles
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Stay updated with the latest trends, tips, and insights from our
             expert team
           </p>
@@ -242,7 +242,7 @@ const Blogs = () => {
                           {/* Blog Content */}
                           <div className="p-6">
                             {/* Meta Info */}
-                            <div className="flex items-center text-sm text-gray-500 mb-3">
+                            <div className="flex items-center text-lg text-gray-500 mb-3">
                               <User className="w-4 h-4 mr-1" />
                               <span className="mr-4">{blog.author}</span>
                               <Calendar className="w-4 h-4 mr-1" />
@@ -254,7 +254,7 @@ const Blogs = () => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
+                            <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
                               {blog.title}
                             </h3>
 

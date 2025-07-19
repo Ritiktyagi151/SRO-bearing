@@ -12,10 +12,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* About Us Section */}
           <div className="space-y-4 animate-slideUp">
-            <h3 className="text-xl font-semibold text-green-400 border-l-4 border-green-400 pl-4">
+            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
               About SRO Bearings
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               At SRO, we understand the critical role bearings play in ensuring
               seamless operations across various industries. With an unwavering
               focus on quality.
@@ -32,10 +32,10 @@ export default function Footer() {
 
           {/* Links Section */}
           <div className="space-y-4 animate-slideUp delay-100">
-            <h3 className="text-xl font-semibold text-green-400 border-l-4 border-green-400 pl-4">
+            <h3 className="text-2xl font-bold text-green-400 border-l-4 border-green-400 pl-4">
               Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 ">
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
@@ -47,7 +47,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-sm"
+                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-lg"
                   >
                     <i className="far fa-hand-point-right mr-3"></i>
                     {link.name}
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Our Products Section */}
           <div className="space-y-4 animate-slideUp delay-200">
-            <h3 className="text-xl font-semibold text-green-400 border-l-4 border-green-400 pl-4">
+            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
               Our Products
             </h3>
             <ul className="space-y-3">
@@ -78,7 +78,7 @@ export default function Footer() {
                       .toLowerCase()
                       .replace(/\s+/g, "-")
                       .replace(/[^a-z-]/g, "")}`}
-                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-sm"
+                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-lg"
                   >
                     <i className="far fa-hand-point-right mr-3"></i>
                     {product}
@@ -90,19 +90,19 @@ export default function Footer() {
 
           {/* Contact Us Section */}
           <div className="space-y-4 animate-slideUp delay-300">
-            <h3 className="text-xl font-semibold text-green-400 border-l-4 border-green-400 pl-4">
+            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
               Contact Us
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               <i className="fas fa-map-marker-alt mr-3"></i>
               1st Floor, 3856/5, Shradhanand Marg, <br />
               Shah Ganj, Chandni Chowk, Delhi, 110006
             </p>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-300 text-lg">
               <i className="fa fa-phone mr-3"></i>
               +91 - 9873334405
             </p>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-300 text-lg">
               <i className="fa fa-envelope mr-3"></i>
               <a
                 href="mailto:srobearings@outlook.com"

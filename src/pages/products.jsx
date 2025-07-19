@@ -208,7 +208,7 @@ export default function Products() {
               Precision <span className="text-green-300">Bearing</span>{" "}
               Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
+            <p className="text-lg md:text-2xl text-white/90 mb-8">
               Engineered for performance, built for durability
             </p>
           </div>
@@ -246,7 +246,7 @@ export default function Products() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
+                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
                       {product.name}
                     </h3>
                     <p className="text-gray-600 mb-4">{product.description}</p>

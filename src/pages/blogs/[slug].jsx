@@ -98,7 +98,7 @@ export default function BlogPost() {
       <main className="container mx-auto px-4 py-12 max-w-4xl">
         <article>
           <header className="mb-8">
-            <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">
+            <span className="text-lg font-semibold text-green-600 uppercase tracking-wider">
               {post.category}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">
@@ -114,10 +114,10 @@ export default function BlogPost() {
                 />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-lg font-medium text-gray-900">
                   {post.author.name}
                 </p>
-                <div className="flex space-x-1 text-sm text-gray-500">
+                <div className="flex space-x-1 text-lg text-gray-500">
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",

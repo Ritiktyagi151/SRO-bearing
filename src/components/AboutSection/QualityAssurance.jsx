@@ -151,7 +151,7 @@ export default function QualityAssurance() {
               stiffness: 200,
             }}
             whileHover={{ scale: 1.1, rotate: 5 }}
-            className="inline-block px-4 py-2 text-sm font-semibold text-green-700 bg-green-100 rounded-full mb-6 shadow-sm cursor-pointer"
+            className="inline-block px-4 py-2 text-lg font-semibold text-green-700 bg-green-100 rounded-full mb-6 shadow-sm cursor-pointer"
           >
             Quality Assurance
           </motion.span>
@@ -176,7 +176,7 @@ export default function QualityAssurance() {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -229,7 +229,7 @@ export default function QualityAssurance() {
                 </motion.div>
 
                 <motion.h3
-                  className="text-xl font-semibold text-center text-gray-900 mb-4"
+                  className="text-lg font-semibold text-center text-gray-900 mb-4"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: index * 0.1 + 0.3 }}

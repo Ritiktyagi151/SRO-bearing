@@ -208,7 +208,7 @@ export default function WhoWeAreSection() {
               Are
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We are a team of passionate innovators, creative thinkers, and
             problem solvers dedicated to delivering exceptional digital
             solutions that drive success and inspire growth.
@@ -233,7 +233,7 @@ export default function WhoWeAreSection() {
                 <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 min-h-[2rem] sm:min-h-[2.5rem] flex items-center">
                   <span className="tabular-nums">{formatNumber(stat)}</span>
                 </div>
-                <div className="text-sm sm:text-base text-gray-600 font-medium">
+                <div className="text-lg sm:text-base text-gray-600 font-medium">
                   {stat.label}
                 </div>
               </div>
@@ -251,7 +251,7 @@ export default function WhoWeAreSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-2 sm:px-6 sm:py-3 rounded-md sm:rounded-lg font-medium transition-all duration-300 text-sm sm:text-base capitalize ${
+                  className={`px-3 py-2 sm:px-6 sm:py-3 rounded-md sm:rounded-lg font-medium transition-all duration-300 text-lg sm:text-base capitalize ${
                     activeTab === tab
                       ? "bg-white text-green-700 shadow-sm sm:shadow-md"
                       : "text-gray-600 hover:text-green-600"
@@ -267,13 +267,13 @@ export default function WhoWeAreSection() {
               <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">
                 {tabContent[activeTab].image}
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                 {tabContent[activeTab].title}
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+              <p className="text-gray-600 text-lg sm:text-base leading-relaxed mb-4 sm:mb-6">
                 {tabContent[activeTab].content}
               </p>
-              <button className="group inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-green-600 text-white rounded-md sm:rounded-lg hover:bg-green-700 transition-all duration-300 font-medium text-sm sm:text-base">
+              <button className="group inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-green-600 text-white rounded-md sm:rounded-lg hover:bg-green-700 transition-all duration-300 font-medium text-lg sm:text-base">
                 Learn More
                 <ChevronRight className="w-4 h-4 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
@@ -321,10 +321,10 @@ export default function WhoWeAreSection() {
                       <Play className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white ml-0.5 sm:ml-1" />
                     )}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">
+                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4">
                     Meet Our Team
                   </h3>
-                  <p className="text-white/80 text-sm sm:text-base mb-4 sm:mb-6">
+                  <p className="text-white/80 text-lg sm:text-base mb-4 sm:mb-6">
                     {isVideoPlaying
                       ? "Click to pause"
                       : "Click to watch our team in action"}
@@ -361,10 +361,10 @@ export default function WhoWeAreSection() {
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-600 rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-sm sm:text-base mb-0.5 sm:mb-1">
+                    <h4 className="font-semibold text-gray-900 text-lg sm:text-base mb-0.5 sm:mb-1">
                       {feature.title}
                     </h4>
-                    <p className="text-gray-600 text-xs sm:text-sm">
+                    <p className="text-gray-600 text-xs sm:text-lg">
                       {feature.desc}
                     </p>
                   </div>

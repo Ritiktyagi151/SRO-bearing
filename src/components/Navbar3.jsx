@@ -132,7 +132,7 @@ export default function Navbar() {
               <li key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className={`relative text-sm font-semibold uppercase tracking-wide ${
+                  className={`relative text-lg font-semibold uppercase tracking-wide ${
                     isScrolled ? "text-green-800" : "text-white"
                   } hover:text-green-100 transition-colors duration-300 py-2`}
                 >
@@ -150,7 +150,7 @@ export default function Navbar() {
               onMouseLeave={() => setIsProductsOpen(false)}
             >
               <button
-                className={`relative text-sm font-semibold uppercase tracking-wide ${
+                className={`relative text-lg font-semibold uppercase tracking-wide ${
                   isScrolled ? "text-green-800" : "text-white"
                 } hover:text-green-100 transition-colors duration-300 flex items-center gap-1 py-2`}
                 onClick={toggleProductsDropdown}
@@ -359,7 +359,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full px-3 py-2 text-sm text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 text-lg text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                   <button
                     type="submit"
@@ -484,7 +484,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full px-3 py-2 text-sm text-gray-800 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 text-lg text-gray-800 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                   <button
                     type="submit"
@@ -553,7 +553,7 @@ export default function Navbar() {
                 {item.subItems ? (
                   <>
                     <button
-                      className="w-full flex justify-between items-center py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                      className="w-full flex justify-between items-center py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                       onClick={toggleProductsDropdown}
                       aria-expanded={isProductsOpen}
                     >
@@ -581,7 +581,7 @@ export default function Navbar() {
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            className={`block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm ${
+                            className={`block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg ${
                               subItem.href === "/products"
                                 ? "font-semibold bg-green-800 text-white"
                                 : ""
@@ -597,7 +597,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                    className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -612,7 +612,7 @@ export default function Navbar() {
                   setIsQuoteOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full text-left py-2 px-3 bg-green-700 hover:bg-green-600 rounded-md transition-colors font-medium text-sm flex items-center gap-2 justify-center"
+                className="w-full text-left py-2 px-3 bg-green-700 hover:bg-green-600 rounded-md transition-colors font-medium text-lg flex items-center gap-2 justify-center"
               >
                 <svg
                   className="w-4 h-4"
@@ -683,7 +683,7 @@ export default function Navbar() {
           >
             <div className="flex justify-between items-center p-5 border-b border-gray-200">
               <div>
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800">
                   Request a Quote
                 </h3>
                 <p className="text-xs text-gray-500 mt-1">
@@ -717,7 +717,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="product"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Product of Interest
                   </label>
@@ -741,7 +741,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="quantity"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Quantity
                     </label>
@@ -757,7 +757,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Your Email
                     </label>
@@ -774,7 +774,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="details"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Additional Details
                   </label>

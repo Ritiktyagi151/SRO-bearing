@@ -108,7 +108,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/"
-                className="relative text-sm font-semibold uppercase text-green-800 tracking-wide hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase text-green-800 tracking-wide hover:text-green-100 transition-colors duration-300 py-2"
               >
                 Home
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -117,7 +117,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/about"
-                className="relative text-sm font-semibold uppercase  text-green-800 tracking-wide hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase  text-green-800 tracking-wide hover:text-green-100 transition-colors duration-300 py-2"
               >
                 About
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -130,7 +130,7 @@ export default function Navbar() {
               onMouseLeave={() => setIsProductsOpen(false)}
             >
               <button
-                className="relative text-sm font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 flex items-center gap-1 py-2"
+                className="relative text-lg font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 flex items-center gap-1 py-2"
                 onClick={toggleProductsDropdown}
               >
                 Products
@@ -393,7 +393,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/industries"
-                className="relative text-sm font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
               >
                 Industries
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -402,7 +402,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/gallery"
-                className="relative text-sm font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
               >
                 Gallery
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -411,7 +411,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/blogs"
-                className="relative text-sm font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase tracking-wide  text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
               >
                 Blogs
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -420,7 +420,7 @@ export default function Navbar() {
             <li className="relative group">
               <Link
                 href="/contact"
-                className="relative text-sm font-semibold uppercase tracking-wide text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
+                className="relative text-lg font-semibold uppercase tracking-wide text-green-800 hover:text-green-100 transition-colors duration-300 py-2"
               >
                 Contact
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
@@ -457,7 +457,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full px-3 py-2 text-sm text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 text-lg text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                   <button
                     type="submit"
@@ -590,7 +590,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full px-3 py-2 text-sm text-gray-800 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 text-lg text-gray-800 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
                   <button
                     type="submit"
@@ -619,7 +619,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
@@ -628,7 +628,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/about"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
@@ -636,7 +636,7 @@ export default function Navbar() {
             </li>
             <li>
               <button
-                className="w-full flex justify-between items-center py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="w-full flex justify-between items-center py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={toggleProductsDropdown}
               >
                 Products
@@ -661,56 +661,56 @@ export default function Navbar() {
                 <div className="ml-4 mt-1 space-y-1 bg-green-900 rounded-md p-2">
                   <Link
                     href="/products"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm font-semibold bg-green-800 text-white"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg font-semibold bg-green-800 text-white"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     View All Products
                   </Link>
                   <Link
                     href="/products/spherical-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Spherical Roller Bearings
                   </Link>
                   <Link
                     href="/products/taper-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Taper Roller Bearings
                   </Link>
                   <Link
                     href="/products/thrust-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Thrust Bearings
                   </Link>
                   <Link
                     href="/products/multi-row-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Multi Row Bearings
                   </Link>
                   <Link
                     href="/products/pillow-block-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Pillow Block Bearings
                   </Link>
                   <Link
                     href="/products/plummer-blocks"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Plummer Blocks
                   </Link>
                   <Link
                     href="/products/roller-chains"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Roller Chains
@@ -721,7 +721,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/industries"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Industries
@@ -730,7 +730,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/gallery"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Gallery
@@ -739,7 +739,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/blogs"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Blogs
@@ -748,7 +748,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-sm"
+                className="block py-2 px-3 hover:bg-green-700 rounded-md transition-colors font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
@@ -760,7 +760,7 @@ export default function Navbar() {
                   setIsQuoteOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full text-left py-2 px-3 bg-green-700 hover:bg-green-600 rounded-md transition-colors font-medium text-sm flex items-center gap-2 justify-center"
+                className="w-full text-left py-2 px-3 bg-green-700 hover:bg-green-600 rounded-md transition-colors font-medium text-lg flex items-center gap-2 justify-center"
               >
                 <svg
                   className="w-4 h-4"
@@ -839,7 +839,7 @@ export default function Navbar() {
           >
             <div className="flex justify-between items-center p-5 border-b border-gray-200">
               <div>
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800">
                   Request a Quote
                 </h3>
                 <p className="text-xs text-gray-500 mt-1">
@@ -872,7 +872,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="product"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Product of Interest
                   </label>
@@ -895,7 +895,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="quantity"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Quantity
                     </label>
@@ -910,7 +910,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Your Email
                     </label>
@@ -926,7 +926,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="details"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Additional Details
                   </label>

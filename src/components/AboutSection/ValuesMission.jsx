@@ -112,7 +112,7 @@ export default function ValuesAndMission() {
               Our Mission
             </h2>
             <div className="max-w-4xl">
-              <p className="text-xl text-gray-700 font-medium leading-relaxed">
+              <p className="text-lg text-gray-700 font-medium leading-relaxed">
                 {mission.statement}
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function ValuesAndMission() {
                 <div className="flex justify-center text-blue-600 mb-4">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-center text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-center text-gray-900 mb-2">
                   {value.title}
                 </h3>
                 <p className="text-gray-600 text-center">{value.description}</p>
@@ -210,7 +210,7 @@ export default function ValuesAndMission() {
               Our Vision
             </h2>
             <div className="max-w-4xl">
-              <p className="text-xl text-white font-medium leading-relaxed">
+              <p className="text-lg text-white font-medium leading-relaxed">
                 {vision.statement}
               </p>
             </div>
@@ -254,7 +254,7 @@ export default function ValuesAndMission() {
               Our Promise
             </h2>
             <div className="max-w-3xl">
-              <p className="text-xl text-gray-700">
+              <p className="text-lg text-gray-700">
                 We commit to delivering exceptional value, maintaining the
                 highest standards of quality, and building lasting relationships
                 based on trust and mutual success.

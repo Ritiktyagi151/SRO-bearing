@@ -138,7 +138,7 @@ export default function ProductDetail({ product }) {
                   <div className="flex items-center">
                     <Link
                       href="/products"
-                      className="text-sm font-medium text-gray-500 hover:text-green-600"
+                      className="text-lg font-medium text-gray-500 hover:text-green-600"
                     >
                       Products
                     </Link>
@@ -162,7 +162,7 @@ export default function ProductDetail({ product }) {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="ml-2 text-sm font-medium text-green-600">
+                    <span className="ml-2 text-lg font-medium text-green-600">
                       {product.name}
                     </span>
                   </div>
@@ -201,7 +201,7 @@ export default function ProductDetail({ product }) {
                   variants={itemVariants}
                   className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
                 >
-                  <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-4">
                     Key Features
                   </h2>
                   <ul className="space-y-2">
@@ -232,7 +232,7 @@ export default function ProductDetail({ product }) {
                   variants={itemVariants}
                   className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
                 >
-                  <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-4">
                     Technical Specifications
                   </h2>
                   <div className="overflow-x-auto">
@@ -241,10 +241,10 @@ export default function ProductDetail({ product }) {
                         {Object.entries(product.specifications).map(
                           ([key, value], index) => (
                             <tr key={index}>
-                              <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-700 bg-gray-50">
+                              <td className="px-4 py-3 whitespace-nowrap text-lg font-medium text-gray-700 bg-gray-50">
                                 {key}
                               </td>
-                              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                              <td className="px-4 py-3 whitespace-nowrap text-lg text-gray-600">
                                 {value}
                               </td>
                             </tr>
@@ -296,10 +296,10 @@ export default function ProductDetail({ product }) {
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
                           {product.name}
                         </h3>
-                        <p className="text-gray-600 text-sm line-clamp-2">
+                        <p className="text-gray-600 text-lg line-clamp-2">
                           {product.description}
                         </p>
-                        <div className="mt-4 text-green-600 font-medium text-sm">
+                        <div className="mt-4 text-green-600 font-medium text-lg">
                           Learn more →
                         </div>
                       </div>

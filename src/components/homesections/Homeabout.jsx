@@ -53,7 +53,7 @@ const AboutSnapshot = () => {
 
             <motion.h3
               variants={itemVariants}
-              className="text-xl font-semibold text-green-600"
+              className="text-lg font-semibold text-green-600"
             >
               Your Trusted Bearing Solutions Provider!
             </motion.h3>

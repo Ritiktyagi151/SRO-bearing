@@ -164,7 +164,7 @@ export default function ContactPage() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl max-w-2xl mx-auto"
+            className="text-lg md:text-2xl max-w-2xl mx-auto"
           >
             Reach out to us for premium bearing solutions
           </motion.p>
@@ -202,7 +202,7 @@ export default function ContactPage() {
                 >
                   <FaEnvelope className="text-2xl" />
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                <h3 className="text-lg font-semibold mb-3 text-gray-800">
                   Email
                 </h3>
                 <p className="text-gray-600">
@@ -245,7 +245,7 @@ export default function ContactPage() {
                 >
                   <FaPhoneAlt className="text-2xl" />
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                <h3 className="text-lg font-semibold mb-3 text-gray-800">
                   Phone No.
                 </h3>
                 <p className="text-gray-600">
@@ -281,7 +281,7 @@ export default function ContactPage() {
                 >
                   <FaMapMarkerAlt className="text-2xl" />
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                <h3 className="text-lg font-semibold mb-3 text-gray-800">
                   Address
                 </h3>
                 <p className="text-gray-600">
@@ -382,7 +382,7 @@ export default function ContactPage() {
                       <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-red-500 text-sm mt-1 block"
+                        className="text-red-500 text-lg mt-1 block"
                       >
                         {errors.name}
                       </motion.span>
@@ -415,7 +415,7 @@ export default function ContactPage() {
                       <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-red-500 text-sm mt-1 block"
+                        className="text-red-500 text-lg mt-1 block"
                       >
                         {errors.email}
                       </motion.span>
@@ -449,7 +449,7 @@ export default function ContactPage() {
                       <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-red-500 text-sm mt-1 block"
+                        className="text-red-500 text-lg mt-1 block"
                       >
                         {errors.phone}
                       </motion.span>
@@ -504,7 +504,7 @@ export default function ContactPage() {
                       <motion.span
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-red-500 text-sm mt-1 block"
+                        className="text-red-500 text-lg mt-1 block"
                       >
                         {errors.message}
                       </motion.span>
@@ -566,7 +566,7 @@ export default function ContactPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
-                      className="mt-4 p-3 bg-emerald-100 text-emerald-700 rounded-lg flex items-center text-sm"
+                      className="mt-4 p-3 bg-emerald-100 text-emerald-700 rounded-lg flex items-center text-lg"
                     >
                       <FaCheck className="mr-2 text-emerald-600" />
                       Thank you! Your message has been sent successfully.

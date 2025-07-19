@@ -140,7 +140,7 @@ const Testimonials = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Trusted by businesses worldwide - from startups to enterprises
           </p>
           <div className="mt-8 h-1 w-20 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto rounded-full"></div>
@@ -202,7 +202,7 @@ const Testimonials = () => {
                               <h4 className="text-lg font-semibold text-gray-900 mb-1">
                                 {testimonial.name}
                               </h4>
-                              <p className="text-green-600 font-medium text-sm">
+                              <p className="text-green-600 font-medium text-lg">
                                 {testimonial.position}
                               </p>
                               <p className="text-gray-500 text-xs">
@@ -223,7 +223,7 @@ const Testimonials = () => {
 
                           {/* Company */}
                           <div className="border-t border-gray-200 pt-4">
-                            <p className="text-sm text-gray-600 font-medium">
+                            <p className="text-lg text-gray-600 font-medium">
                               {testimonial.company}
                             </p>
                           </div>

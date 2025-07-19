@@ -81,12 +81,12 @@ export default function OurJourney() {
                 >
                   <div className="flex items-center mb-3">
                     <div className="mr-3">{milestone.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-gray-900">
                       {milestone.title}
                     </h3>
                   </div>
                   <p className="text-gray-600">{milestone.description}</p>
-                  <div className="mt-4 text-sm font-medium text-blue-600">
+                  <div className="mt-4 text-lg font-medium text-blue-600">
                     {milestone.year}
                   </div>
                 </div>

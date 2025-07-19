@@ -213,7 +213,7 @@ const HomePageSlider = () => {
               <div className="relative z-10 h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div className="text-center text-white max-w-4xl mx-auto w-full px-2">
                   <div className="mb-2 sm:mb-4 opacity-90">
-                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-sm font-medium tracking-widest uppercase border border-white/20">
+                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-white/10 backdrop-blur-sm rounded-full text-xs sm:text-lg font-medium tracking-widest uppercase border border-white/20">
                       {slide.upperText}
                     </span>
                   </div>
@@ -222,7 +222,7 @@ const HomePageSlider = () => {
                     {slide.title}
                   </h1>
 
-                  <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mb-3 sm:mb-6 text-gray-200">
+                  <h2 className="text-lg sm:text-lg md:text-lg lg:text-2xl font-light mb-3 sm:mb-6 text-gray-200">
                     {slide.subtitle}
                   </h2>
 

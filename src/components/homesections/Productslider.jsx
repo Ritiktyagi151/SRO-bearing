@@ -206,16 +206,16 @@ const ProductSlider = () => {
       </div>
 
       <div className="w-full p-4 sm:p-5 md:p-6 flex flex-col flex-grow bg-gradient-to-br from-white to-gray-50">
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight">
+        <h3 className="text-lg sm:text-lg md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight">
           {product.name}
         </h3>
 
-        <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed">
+        <p className="text-gray-600 text-lg sm:text-base mb-3 sm:mb-4 leading-relaxed">
           {product.description}
         </p>
 
         <div className="mt-auto pt-3 sm:pt-4">
-          <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-gray-50 rounded-lg md:rounded-xl border border-gray-200 text-xs sm:text-sm">
+          <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-gray-50 rounded-lg md:rounded-xl border border-gray-200 text-xs sm:text-lg">
             <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 flex items-center">
               <div className="w-2 h-2 bg-green-600 rounded-full mr-2 sm:mr-3"></div>
               Applications
@@ -224,7 +224,7 @@ const ProductSlider = () => {
           </div>
 
           <button
-            className="w-full py-2 px-1 sm:px-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-lg md:rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-sm"
+            className="w-full py-2 px-1 sm:px-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-lg md:rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-lg"
             onClick={(e) => {
               e.stopPropagation();
               navigateToProduct(product.link);
@@ -244,7 +244,7 @@ const ProductSlider = () => {
           <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
             Premium Bearing Solutions
           </h1>
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-4 sm:mb-6">
+          <p className="text-lg xs:text-base sm:text-lg md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 sm:mb-6">
             Discover our comprehensive range of high-quality bearings engineered
             for industrial excellence
           </p>
@@ -329,7 +329,7 @@ const ProductSlider = () => {
         {/* Product Counter */}
         <div className="flex justify-center mt-4 sm:mt-5 md:mt-6">
           <div className="bg-white/90 backdrop-blur-sm px-3 py-1 sm:px-4 sm:py-2 rounded-full shadow-sm sm:shadow-md border border-gray-200">
-            <span className="text-xs sm:text-sm text-gray-600">
+            <span className="text-xs sm:text-lg text-gray-600">
               <span className="font-semibold text-green-600">
                 {currentIndex + 1}-
                 {Math.min(currentIndex + visibleItems, bearingProducts.length)}

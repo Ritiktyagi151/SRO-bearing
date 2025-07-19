@@ -155,7 +155,7 @@ export default function Gallery() {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                 SRO Bearing Gallery
               </h1>
-              <p className="text-xl text-white max-w-2xl mx-auto">
+              <p className="text-lg text-white max-w-2xl mx-auto">
                 Discover our premium bearing solutions through our visual
                 showcase
               </p>
@@ -232,7 +232,7 @@ export default function Gallery() {
                         <h3 className="text-white font-semibold text-lg">
                           {photo.title}
                         </h3>
-                        <p className="text-gray-200 text-sm">
+                        <p className="text-gray-200 text-lg">
                           {photo.description}
                         </p>
                       </div>
@@ -275,7 +275,7 @@ export default function Gallery() {
                       <h3 className="font-semibold text-gray-800">
                         {video.title}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-lg text-gray-600">
                         {video.description}
                       </p>
                     </div>

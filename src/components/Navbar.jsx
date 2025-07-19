@@ -499,56 +499,56 @@ export default function Navbar() {
                 <div className="ml-4 mt-1 space-y-2 bg-green-900 rounded-lg p-2">
                   <Link
                     href="/products"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm font-semibold bg-green-800 text-white"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg font-semibold bg-green-800 text-white"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     View All Products
                   </Link>
                   <Link
                     href="/products/spherical-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Spherical Roller Bearings
                   </Link>
                   <Link
                     href="/products/taper-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Taper Roller Bearings
                   </Link>
                   <Link
                     href="/products/thrust-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Thrust Bearings
                   </Link>
                   <Link
                     href="/products/multi-row-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Multi Row Bearings
                   </Link>
                   <Link
                     href="/products/pillow-block-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Pillow Block Bearings
                   </Link>
                   <Link
                     href="/products/plummer-blocks"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Plummer Blocks
                   </Link>
                   <Link
                     href="/products/roller-chains"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-sm"
+                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Roller Chains
@@ -634,7 +634,7 @@ export default function Navbar() {
                 <h3 className="text-2xl font-bold text-gray-800">
                   Request a Quote
                 </h3>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-lg text-gray-500 mt-1">
                   Fill out the form and we'll get back to you within 24 hours
                 </p>
               </div>
@@ -666,7 +666,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="product"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Product of Interest
                   </label>
@@ -690,7 +690,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="quantity"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Quantity
                     </label>
@@ -705,7 +705,7 @@ export default function Navbar() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-lg font-medium text-gray-700 mb-1"
                     >
                       Your Email
                     </label>
@@ -722,7 +722,7 @@ export default function Navbar() {
                 <div>
                   <label
                     htmlFor="details"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-lg font-medium text-gray-700 mb-1"
                   >
                     Additional Details
                   </label>

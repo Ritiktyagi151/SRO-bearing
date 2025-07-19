@@ -66,7 +66,7 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
               SRO Insights
             </h1>
-            <p className="text-xl md:text-2xl text-white max-w-2xl mx-auto">
+            <p className="text-lg md:text-2xl text-white max-w-2xl mx-auto">
               Expert knowledge for bearing professionals
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function BlogPage() {
                   </span>
                   <span className="text-xs text-gray-500">{post.readTime}</span>
                 </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-2">
+                <h2 className="text-lg font-bold text-gray-900 mb-2">
                   <Link
                     href={`/blogs/${post.slug}`}
                     className="hover:text-green-600 transition-colors"
@@ -106,7 +106,7 @@ export default function BlogPage() {
                 </h2>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
-                  <time className="text-sm text-gray-500">
+                  <time className="text-lg text-gray-500">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
@@ -115,7 +115,7 @@ export default function BlogPage() {
                   </time>
                   <Link
                     href={`/blogs/${post.slug}`}
-                    className="text-sm font-medium text-green-600 hover:text-green-700 flex items-center"
+                    className="text-lg font-medium text-green-600 hover:text-green-700 flex items-center"
                   >
                     Read more
                     <svg

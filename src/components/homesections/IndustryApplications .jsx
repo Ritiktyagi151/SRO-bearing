@@ -61,7 +61,7 @@ const CompactIndustryApplications = () => {
                       {industry.title}
                     </h3>
                   </div>
-                  <ul className="text-sm text-gray-600 pl-11">
+                  <ul className="text-lg text-gray-600 pl-11">
                     {industry.applications.map((app, i) => (
                       <li key={i} className="mb-1 last:mb-0">
                         • {app}

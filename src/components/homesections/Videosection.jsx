@@ -27,12 +27,12 @@ const HomeSection = () => {
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
           Premium Bearings Trader
         </h1>
-        <p className="text-lg md:text-xl max-w-3xl mb-4">
+        <p className="text-lg md:text-lg max-w-3xl mb-4">
           As trusted traders of premium bearings, we supply high-quality
           industrial and automotive bearings to ensure smooth operations and
           reliability for your machinery.
         </p>
-        <p className="text-lg md:text-xl max-w-3xl mb-6">
+        <p className="text-lg md:text-lg max-w-3xl mb-6">
           With years of expertise, we offer a wide range of bearings, from ball
           and roller to specialized types, catering to industries worldwide. Our
           commitment to quality and customer satisfaction drives us to deliver

@@ -53,7 +53,7 @@ const HeroVideoSection = () => {
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-in-up delay-100">
             Trusted Global Bearing Traders Since 1995
           </h2>
-          <p className="text-lg md:text-xl mb-8 animate-fade-in-up delay-200">
+          <p className="text-lg md:text-lg mb-8 animate-fade-in-up delay-200">
             Premium bearing solutions for industrial, automotive, and aerospace
             applications. We source directly from top manufacturers to deliver
             quality at competitive prices.

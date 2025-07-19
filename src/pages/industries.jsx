@@ -102,7 +102,7 @@ const IndustryPage = () => {
                 <br />
                 Excellence
               </h1>
-              <p className="text-xl md:text-2xl text-gray-100 mb-8 animate-on-scroll opacity-0 transition delay-100">
+              <p className="text-lg md:text-2xl text-gray-100 mb-8 animate-on-scroll opacity-0 transition delay-100">
                 Trusted partner to industries worldwide with premium bearing
                 solutions
               </p>
@@ -171,7 +171,7 @@ const IndustryPage = () => {
                 <span className="gradient-text">Four Decades</span> of Trusted
                 Partnership
               </h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 With over four decades of expertise in the bearings industry, we
                 take immense pride in serving as a reliable partner to
                 industries worldwide. Our commitment to excellence has enabled
@@ -199,7 +199,7 @@ const IndustryPage = () => {
                     <p className="text-3xl font-bold text-green-600 mb-2">
                       {stat.value}
                     </p>
-                    <p className="text-gray-600 text-sm font-medium">
+                    <p className="text-gray-600 text-lg font-medium">
                       {stat.label}
                     </p>
                   </div>
@@ -217,7 +217,7 @@ const IndustryPage = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               Industries <span className="gradient-text">We Serve</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our extensive experience has allowed us to cultivate a vast and
               loyal customer base across diverse sectors
             </p>
@@ -309,7 +309,7 @@ const IndustryPage = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               Comprehensive <span className="gradient-text">Product Range</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Beyond bearings - complete solutions for your industrial needs
             </p>
           </div>
@@ -429,7 +429,7 @@ const IndustryPage = () => {
                 <span className="gradient-text">Quality Assurance</span> &
                 Testing
               </h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Our commitment to excellence is backed by rigorous quality
                 control processes and state-of-the-art testing facilities.
               </p>
@@ -500,7 +500,7 @@ const IndustryPage = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               <span className="gradient-text">Global Presence</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Serving customers worldwide with extensive distribution network
               and local support
             </p>
@@ -553,7 +553,7 @@ const IndustryPage = () => {
                   className="w-full h-auto"
                   loading="lazy"
                 />
-                <div className="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                <div className="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-full text-lg font-medium">
                   Innovation Hub
                 </div>
               </div>
@@ -562,7 +562,7 @@ const IndustryPage = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
                 <span className="gradient-text">Innovation</span> & Technology
               </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Continuous research and development drives our innovation,
                 ensuring we stay at the forefront of bearing technology.
               </p>
@@ -599,7 +599,7 @@ const IndustryPage = () => {
                     <p className="text-3xl font-bold text-green-600 mb-1">
                       {stat.value}
                     </p>
-                    <p className="text-gray-600 text-sm">{stat.desc}</p>
+                    <p className="text-gray-600 text-lg">{stat.desc}</p>
                   </div>
                 ))}
               </div>
@@ -650,7 +650,7 @@ const IndustryPage = () => {
                     <div className="flex items-start space-x-4">
                       <div className="text-2xl">{item.icon}</div>
                       <div>
-                        <h3 className="text-xl font-bold text-green-600 mb-2">
+                        <h3 className="text-lg font-bold text-green-600 mb-2">
                           {item.title}
                         </h3>
                         <p className="text-gray-600 leading-relaxed">
