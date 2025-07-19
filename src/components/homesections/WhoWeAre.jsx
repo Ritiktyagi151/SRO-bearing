@@ -262,6 +262,19 @@ export default function WhoWeAreSection() {
               ))}
             </div>
 
+            {/* Image Section */}
+            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
+              <img
+                src="https://media.istockphoto.com/id/882326716/photo/industrial-bearings.jpg?s=612x612&w=0&k=20&c=oixlP8mlXYhkDBJm-kC9eEl_ddH3MtyyAQjg4Q_mXMY="
+                alt="Our Mission Illustration"
+                className="w-full h-64 sm:h-80 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              <p className="absolute bottom-4 left-4 text-white text-lg sm:text-base font-medium">
+                Empowering Digital Transformation
+              </p>
+            </div>
+
             {/* Tab Content */}
             <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-md sm:shadow-lg border border-gray-100">
               <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">
