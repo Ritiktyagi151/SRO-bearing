@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 const VideoGridSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(null);
+  const [slidesToShow, setSlidesToShow] = useState(3); // Default to 3 videos per slide
   const videoRefs = useRef([]);
   const intervalRef = useRef(null);
+  const sliderRef = useRef(null);
 
-  // Sample video data - 6 videos with your original paths
+  // Sample video data
   const allVideos = [
     {
       id: 1,
@@ -52,10 +54,27 @@ const VideoGridSlider = () => {
     },
   ];
 
-  // Group videos into slides of 3 videos each
+  // Handle responsive layout
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 768) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Group videos into slides based on current slidesToShow
   const groupedVideos = [];
-  for (let i = 0; i < allVideos.length; i += 3) {
-    groupedVideos.push(allVideos.slice(i, i + 3));
+  for (let i = 0; i < allVideos.length; i += slidesToShow) {
+    groupedVideos.push(allVideos.slice(i, i + slidesToShow));
   }
 
   // Auto-rotate slides
@@ -67,7 +86,7 @@ const VideoGridSlider = () => {
     }, 5000);
 
     return () => clearInterval(intervalRef.current);
-  }, [groupedVideos.length]);
+  }, [groupedVideos.length, slidesToShow]);
 
   const goToNext = () => {
     setCurrentSlide((prev) =>
@@ -116,17 +135,34 @@ const VideoGridSlider = () => {
     }
   };
 
+  // Calculate the appropriate height based on aspect ratio
+  const getVideoHeight = () => {
+    if (typeof window !== "undefined") {
+      const width = sliderRef.current?.offsetWidth || 0;
+      const videoWidth =
+        width /
+        Math.min(slidesToShow, groupedVideos[currentSlide]?.length || 1);
+      return (videoWidth * 9) / 16; // 16:9 aspect ratio
+    }
+    return 200; // Default height
+  };
+
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-50 rounded-xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Video Gallery</h2>
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 rounded-xl">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center md:text-left">
+        Video Gallery
+      </h2>
 
       {/* Main Slider */}
-      <div className="relative mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-h-[300px]">
+      <div className="relative mb-8" ref={sliderRef}>
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 transition-all duration-300`}
+          style={{ minHeight: `${getVideoHeight()}px` }}
+        >
           {groupedVideos[currentSlide]?.map((video) => (
             <div
               key={video.id}
-              className="relative rounded-lg overflow-hidden shadow-md bg-white"
+              className="relative rounded-lg overflow-hidden shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
               onMouseEnter={() => handleVideoHover(video.id)}
               onMouseLeave={() => handleVideoLeave(video.id)}
             >
@@ -157,13 +193,15 @@ const VideoGridSlider = () => {
           <>
             <button
               onClick={goToPrev}
-              className="absolute -left-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
+              className="absolute left-2 sm:-left-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
+              aria-label="Previous slide"
             >
               &lt;
             </button>
             <button
               onClick={goToNext}
-              className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
+              className="absolute right-2 sm:-right-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
+              aria-label="Next slide"
             >
               &gt;
             </button>
@@ -181,6 +219,7 @@ const VideoGridSlider = () => {
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide ? "bg-green-500 w-6" : "bg-gray-300"
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
