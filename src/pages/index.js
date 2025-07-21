@@ -7,6 +7,7 @@ import IndustryApplications from "@/components/homesections/IndustryApplications
 import OurClient from "@/components/homesections/OurClient";
 import ProductSlider from "@/components/homesections/Productslider";
 import Testimonials from "@/components/homesections/Testimonials";
+import Videoshowcase from "@/components/homesections/Videoshowcase";
 import WhoWeAre from "@/components/homesections/WhoWeAre";
 
 import Head from "next/head";
@@ -20,6 +21,7 @@ export default function Home() {
       <HeroVideoSection />
       <Homeabout />
       <ProductSlider />
+      <Videoshowcase />
       <WhoWeAre />
       <IndustryApplications />
       <Testimonials />

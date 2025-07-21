@@ -1,41 +1,79 @@
 import Link from "next/link";
+import {
+  Info,
+  Link as LinkIcon,
+  Settings,
+  Mail,
+  MapPin,
+  Phone,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer
-      className="text-white py-12 mt-10 bg-cover bg-center shadow-lg animate-fadeIn"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/image/srofooter.jpg')`,
-      }}
-    >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* About Us Section */}
-          <div className="space-y-4 animate-slideUp">
-            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
-              About SRO Bearings
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, #10b981 0%, transparent 50%), 
+                           radial-gradient(circle at 75% 75%, #10b981 0%, transparent 50%)`,
+          }}
+        ></div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="relative z-10 container mx-auto px-6 py-16">
+        {/* Top Section with Brand */}
+        <div className="text-center mb-12 pb-8 border-b border-gray-700">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+            SRO Bearings
+          </h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Leading provider of premium bearings and mechanical components,
+            delivering excellence across industries with unwavering quality and
+            innovation.
+          </p>
+        </div>
+
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Company Info */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                <Info className="text-white w-4 h-4" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">About Us</h3>
+            </div>
+            <p className="text-gray-400 leading-relaxed text-sm">
               At SRO, we understand the critical role bearings play in ensuring
-              seamless operations across various industries. With an unwavering
+              seamless operations across various industries with our unwavering
               focus on quality.
             </p>
-            <div>
-              <a
-                href="/about"
-                className="text-green-400 hover:text-green-500 font-medium transition-transform duration-300 hover:scale-105 inline-block"
-              >
-                Read More
-              </a>
-            </div>
+            <Link
+              href="/about"
+              className="inline-flex items-center text-green-400 hover:text-green-300 font-medium text-sm transition-all duration-300 group"
+            >
+              Learn More
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </div>
 
-          {/* Links Section */}
-          <div className="space-y-4 animate-slideUp delay-100">
-            <h3 className="text-2xl font-bold text-green-400 border-l-4 border-green-400 pl-4">
-              Links
-            </h3>
-            <ul className="space-y-3 ">
+          {/* Quick Links */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                <LinkIcon className="text-white w-4 h-4" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">Quick Links</h3>
+            </div>
+            <nav className="space-y-2">
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
@@ -43,26 +81,28 @@ export default function Footer() {
                 { name: "Gallery", href: "/gallery" },
                 { name: "Blogs", href: "/blogs" },
                 { name: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-lg"
-                  >
-                    <i className="far fa-hand-point-right mr-3"></i>
-                    {link.name}
-                  </a>
-                </li>
+              ].map((link, index) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="block text-gray-400 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {link.name}
+                </Link>
               ))}
-            </ul>
+            </nav>
           </div>
 
-          {/* Our Products Section */}
-          <div className="space-y-4 animate-slideUp delay-200">
-            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
-              Our Products
-            </h3>
-            <ul className="space-y-3">
+          {/* Products */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                <Settings className="text-white w-4 h-4" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">Our Products</h3>
+            </div>
+            <nav className="space-y-2">
               {[
                 "Spherical Roller Bearings",
                 "Taper Roller Bearings",
@@ -71,68 +111,121 @@ export default function Footer() {
                 "Pillow Block Bearing",
                 "Plummer Blocks",
                 "Roller Chains",
-              ].map((product) => (
-                <li key={product}>
-                  <a
-                    href={`/products/${product
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")
-                      .replace(/[^a-z-]/g, "")}`}
-                    className="text-gray-300 hover:text-green-400 transition-transform duration-300 hover:scale-105 flex items-center text-lg"
-                  >
-                    <i className="far fa-hand-point-right mr-3"></i>
-                    {product}
-                  </a>
-                </li>
+              ].map((product, index) => (
+                <Link
+                  key={product}
+                  href={`/products/${product
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-z-]/g, "")}`}
+                  className="block text-gray-400 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {product}
+                </Link>
               ))}
-            </ul>
+            </nav>
           </div>
 
-          {/* Contact Us Section */}
-          <div className="space-y-4 animate-slideUp delay-300">
-            <h3 className="text-lg font-semibold text-green-400 border-l-4 border-green-400 pl-4">
-              Contact Us
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              <i className="fas fa-map-marker-alt mr-3"></i>
-              1st Floor, 3856/5, Shradhanand Marg, <br />
-              Shah Ganj, Chandni Chowk, Delhi, 110006
-            </p>
-            <p className="text-gray-300 text-lg">
-              <i className="fa fa-phone mr-3"></i>
-              +91 - 9873334405
-            </p>
-            <p className="text-gray-300 text-lg">
-              <i className="fa fa-envelope mr-3"></i>
-              <a
-                href="mailto:srobearings@outlook.com"
-                className="hover:text-green-400 transition-transform duration-300 hover:scale-105"
-              >
-                srobearings@outlook.com
-              </a>
-              ,{" "}
-              <a
-                href="mailto:info@srobearings.com"
-                className="hover:text-green-400 transition-transform duration-300 hover:scale-105"
-              >
-                info@srobearings.com
-              </a>
-            </p>
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                <Mail className="text-white w-4 h-4" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">Get In Touch</h3>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3 group">
+                <div className="mt-1 text-green-400 group-hover:text-green-300 transition-colors">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  1st Floor, 3856/5, Shradhanand Marg,
+                  <br />
+                  Shah Ganj, Chandni Chowk,
+                  <br />
+                  Delhi, 110006
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-3 group">
+                <div className="text-green-400 group-hover:text-green-300 transition-colors">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <a
+                  href="tel:+919873334405"
+                  className="text-gray-400 hover:text-green-400 transition-colors text-sm"
+                >
+                  +91 - 9873334405
+                </a>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3 group">
+                  <div className="text-green-400 group-hover:text-green-300 transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <a
+                    href="mailto:srobearings@outlook.com"
+                    className="text-gray-400 hover:text-green-400 transition-colors text-sm"
+                  >
+                    srobearings@outlook.com
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3 group ml-6">
+                  <a
+                    href="mailto:info@srobearings.com"
+                    className="text-gray-400 hover:text-green-400 transition-colors text-sm"
+                  >
+                    info@srobearings.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="mt-12 text-center border-t border-gray-700 pt-6 animate-fadeIn">
-          <p className="text-gray-300 text-xs">
-            © {new Date().getFullYear()} SRO Bearing. All rights reserved.
-            Powered by:{" "}
-            <Link
-              href="https://jaikvik.com/"
-              className="hover:text-green-400 transition-transform duration-300 hover:scale-105"
-            >
-              Jaikvik Technology India Pvt Ltd
-            </Link>
-          </p>
+        {/* Social Links */}
+        <div className="text-center mb-8">
+          <h4 className="text-lg font-semibold mb-4 text-white">Follow Us</h4>
+          <div className="flex justify-center space-x-4">
+            {[
+              { icon: Facebook, href: "#" },
+              { icon: Twitter, href: "#" },
+              { icon: Linkedin, href: "#" },
+              { icon: Instagram, href: "#" },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                className="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-green-400 hover:to-emerald-500 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110"
+              >
+                <social.icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="relative z-10 bg-gray-800 border-t border-gray-700">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} SRO Bearing. All rights reserved.
+            </p>
+            <p className="text-gray-400 text-sm">
+              Powered by{" "}
+              <Link
+                href="https://jaikvik.com/"
+                className="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"
+              >
+                Jaikvik Technology India Pvt Ltd
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
