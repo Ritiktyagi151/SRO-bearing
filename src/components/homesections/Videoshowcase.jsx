@@ -10,42 +10,42 @@ const VideoGridSlider = () => {
   const allVideos = [
     {
       id: 1,
-      title: "Nature 1",
+      title: "bearings 1",
       src: "/video/video-1.mp4",
       thumbnail:
         "https://t3.ftcdn.net/jpg/11/85/62/64/240_F_1185626483_PiyZOBtxyZBV9AGrEdiXpZnUVCu5esxg.jpg",
     },
     {
       id: 2,
-      title: "Nature 2",
+      title: "bearings 2",
       src: "/video/video-2.mp4",
       thumbnail:
         "https://t3.ftcdn.net/jpg/14/47/37/64/240_F_1447376418_T3GqRJPHHYIeBbtlHxRCs3N7NHtM7OAJ.jpg",
     },
     {
       id: 3,
-      title: "Nature 3",
+      title: "bearings 3",
       src: "/video/video-3.mp4",
       thumbnail:
         "https://t4.ftcdn.net/jpg/00/02/06/03/240_F_2060321_jH5uacaP5qrj7zMsld0FuHnABZabyM.jpg",
     },
     {
       id: 4,
-      title: "City 1",
+      title: "bearings 4",
       src: "/video/video-4.mp4",
       thumbnail:
         "https://t4.ftcdn.net/jpg/01/02/07/23/240_F_102072378_RoaFenLsl4mFdID93imJj0wFd5iOzRVH.jpg",
     },
     {
       id: 5,
-      title: "City 2",
+      title: "bearings 5",
       src: "/video/video-5.mp4",
       thumbnail:
         "https://t4.ftcdn.net/jpg/03/27/32/11/240_F_327321151_vggESRUygFWkw0pMeomH62gDcsgNnr2Y.jpg",
     },
     {
       id: 6,
-      title: "City 3",
+      title: "bearings 6",
       src: "/video/video-6.mp4",
       thumbnail:
         "https://t4.ftcdn.net/jpg/02/55/89/01/240_F_255890167_1ji66H4IpOJrepji5KiiAaBmTMRnsFBj.jpg",

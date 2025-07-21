@@ -134,7 +134,7 @@ export default function ContactPage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           onLoadedData={() => setIsVideoLoaded(true)}
-          poster="https://media.istockphoto.com/id/1452771551/vector/contact-us-button-with-cursor-pointer-click-vector-web-button.jpg?s=612x612&w=0&k=20&c=IGWQ-VhsNAnZyKnuWhggHhpozUiuFRq5jd-rJ7-KqIc=" // Fallback image
+          poster="https://t4.ftcdn.net/jpg/04/86/06/43/240_F_486064333_ueCjCQfwPt6rlXAEcphciGbxp4n6imuh.jpg" // Fallback image
         >
           <source
             src="https://videocdn.cdnpk.net/videos/a50cc503-4e76-522c-b8bf-2ea1ab341869/horizontal/previews/clear/small.mp4?token=exp=1752585333~hmac=7e5fafcfcfe4c164c3ba385fe2dd3da73096c975e93b4f077740d5cdb957e075"
