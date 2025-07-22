@@ -11,7 +11,7 @@ const blogPosts = [
     excerpt:
       "Learn how to properly maintain your bearings to extend their lifespan.",
     date: "2023-10-15",
-    image: "/blog/bearing-maintenance.jpg",
+    image: "https://picsum.photos/seed/bearings1/400/250",
     category: "Maintenance",
     readTime: "4 min read",
   },
@@ -22,9 +22,64 @@ const blogPosts = [
     excerpt:
       "Guide to selecting bearings based on load and speed requirements.",
     date: "2023-09-28",
-    image: "/blog/choosing-bearing.jpg",
+    image: "https://picsum.photos/seed/bearings2/400/250",
     category: "Guide",
     readTime: "6 min read",
+  },
+  {
+    id: 3,
+    slug: "installation-tips-bearings",
+    title: "Top Installation Tips for Long-Lasting Bearings",
+    excerpt:
+      "Discover the best practices for installing bearings to maximize their performance.",
+    date: "2023-12-05",
+    image: "https://picsum.photos/seed/bearings3/400/250",
+    category: "Installation",
+    readTime: "5 min read",
+  },
+  {
+    id: 4,
+    slug: "bearing-inspection-guide",
+    title: "A Complete Guide to Bearing Inspection",
+    excerpt:
+      "Step-by-step guide for inspecting bearings for wear, damage, and performance.",
+    date: "2024-01-12",
+    image: "https://picsum.photos/seed/bearings4/400/250",
+    category: "Inspection",
+    readTime: "4 min read",
+  },
+  {
+    id: 5,
+    slug: "bearing-replacement-checklist",
+    title: "Bearing Replacement Checklist You Should Follow",
+    excerpt:
+      "Key signs and checklist to help you know when it's time to replace a bearing.",
+    date: "2024-02-25",
+    image: "https://picsum.photos/seed/bearings5/400/250",
+    category: "Maintenance",
+    readTime: "4 min read",
+  },
+  {
+    id: 6,
+    slug: "bearing-performance-optimization",
+    title: "How to Optimize Bearing Performance",
+    excerpt:
+      "Tips and techniques to enhance bearing efficiency and extend operational life.",
+    date: "2024-03-15",
+    image: "https://picsum.photos/seed/bearings6/400/250",
+    category: "Performance",
+    readTime: "5 min read",
+  },
+  {
+    id: 7,
+    slug: "types-of-industrial-bearings",
+    title: "Understanding Different Types of Industrial Bearings",
+    excerpt:
+      "Overview of various industrial bearing types and their key applications.",
+    date: "2024-04-10",
+    image: "https://picsum.photos/seed/bearings7/400/250",
+    category: "Technical Insights",
+    readTime: "5 min read",
   },
 ];
 
@@ -54,7 +109,7 @@ export default function BlogPage() {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-80"
-          poster="/blog/video-poster.jpg"
+          poster="https://media.istockphoto.com/id/687071416/photo/gears-on-dark.jpg?s=612x612&w=0&k=20&c=eYmN-qOeKAxHxASEbut7V5pFzVycrp_sT3MPAc4TK3s="
         >
           <source
             src="https://videocdn.cdnpk.net/videos/f7fb57fd-c837-57ed-8a7e-06e902a30f08/horizontal/previews/clear/small.mp4?token=exp=1752735106~hmac=6dee04e92efc9fee1854ccd73e30c95c23490827031aed2bb4f574b486aef8de"

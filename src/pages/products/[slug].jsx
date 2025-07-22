@@ -42,6 +42,104 @@ const productData = {
       Sealing: "Open, shielded or sealed",
     },
   },
+  "thrust-bearings": {
+    name: "Thrust Bearings",
+    description: "Handles axial loads in high-speed applications.",
+    image:
+      "https://media.istockphoto.com/id/537377996/photo/bearing.jpg?s=612x612&w=0&k=20&c=MJeT8jNpEtLkKZX0rCiEw6-3jHXSbFkO_gkFXMKq1ps=",
+    features: [
+      "Designed for axial load support",
+      "High-speed capability",
+      "Reduced friction and wear",
+      "Available in various configurations",
+    ],
+    specifications: {
+      Material: "Bearing steel",
+      "Load Direction": "Axial only",
+      Applications: "Automotive, aerospace, industrial machinery",
+      Sealing: "Open or sealed",
+    },
+  },
+  "multi-row-bearings": {
+    name: "Multi Row Bearings",
+    description: "Suitable for large radial loads and high-speed rotation.",
+    image:
+      "https://media.istockphoto.com/id/696640668/photo/3d-rendering-of-tapered-roller-bearings.jpg?s=612x612&w=0&k=20&c=VVGBMzlgasGoNf7BIHMK3IN-tBB-kFnv94LNXaH8ooY=",
+    features: [
+      "Multiple rows for higher load capacity",
+      "High-speed rotation capability",
+      "Improved alignment",
+      "Durable under heavy loads",
+    ],
+    specifications: {
+      Material: "Chrome steel",
+      Rows: "2 to 4 rows",
+      "Application Areas": "Rolling mills, heavy machinery",
+      Cage: "Steel or brass",
+    },
+  },
+  "pillow-block-bearing": {
+    name: "Pillow Block Bearing",
+    description: "Used in mounted bearing units for industrial machines.",
+    image:
+      "https://media.istockphoto.com/id/960982298/photo/support-bearing-assembly.jpg?s=612x612&w=0&k=20&c=Oy75zBQpWgk36rP70r9Hv1TdB9Wrjv74noM_fwpT49o=",
+    features: [
+      "Easy mounting and installation",
+      "Provides stable support",
+      "Available in different housing materials",
+      "Low maintenance",
+    ],
+    specifications: {
+      Housing: "Cast iron or pressed steel",
+      Bearing: "Insert bearing with seals",
+      "Lubrication Type": "Grease",
+      Applications: "Conveyors, fans, industrial equipment",
+    },
+  },
+  "plummer-blocks": {
+    name: "Plummer Blocks",
+    description: "Reliable and efficient housing for rotary shafts.",
+    image:
+      "https://media.istockphoto.com/id/1400522671/photo/bearing-unit.jpg?s=612x612&w=0&k=20&c=gioMYKovMFDvK7Hm_dxtI-9m6pKbAtHCln-wFdn3WPE=",
+    features: [
+      "Heavy-duty housing support",
+      "Easy shaft alignment",
+      "Long service life",
+      "Suitable for harsh environments",
+    ],
+    specifications: {
+      Material: "Cast iron or ductile iron",
+      Mounting: "Foot-mounted",
+      Sealing: "Multiple sealing options",
+      Applications: "Mining, aggregate, cement industries",
+    },
+  },
+  "roller-chains": {
+    name: "Roller Chains",
+    description: "High-performance transmission chain for power systems.",
+    image:
+      "https://media.istockphoto.com/id/636828986/photo/timing-mechanism-on-a-white-background.jpg?s=612x612&w=0&k=20&c=NRdgODUjCj07dR7ijdrrtbMWq5BOWlplGgvlmXBvIkA=",
+    features: [
+      "High tensile strength",
+      "Wear resistance",
+      "Smooth operation at high speed",
+      "Precision engineered",
+    ],
+    specifications: {
+      Material: "Carbon steel or stainless steel",
+      "Pitch Range": "6 mm to 76.2 mm",
+      Standard: "ANSI/ISO",
+      Applications: "Power transmission, conveyor systems",
+    },
+  },
+};
+
+const bannerVideo = {
+  src: "https://example.com/path-to-your-video.mp4", // Replace with your actual video URL
+  fallbackImage:
+    "https://t3.ftcdn.net/jpg/13/74/03/58/240_F_1374035846_7XnRZfXZnG1BXIq9Wx5nWx20eIvFdLZc.jpg",
+  title: "Premium Industrial Bearings",
+  subtitle: "Engineered for Performance and Durability",
 };
 
 const containerVariants = {
@@ -122,6 +220,50 @@ export default function ProductDetail({ product }) {
         <title>{product.name} | Industrial Bearings</title>
         <meta name="description" content={product.description} />
       </Head>
+
+      {/* Banner Video Section */}
+      <div className="relative w-full h-[80vh] overflow-hidden bg-gray-900">
+        {/* Fallback image in case video doesn't load */}
+        <img
+          src={bannerVideo.fallbackImage}
+          alt="Industrial bearings"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+
+        {/* Video element */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={bannerVideo.src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay content */}
+        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div className="text-center px-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl font-bold text-white mb-4"
+            >
+              {bannerVideo.title}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-white max-w-2xl mx-auto"
+            >
+              {bannerVideo.subtitle}
+            </motion.p>
+          </div>
+        </div>
+      </div>
 
       <motion.div
         initial="hidden"
