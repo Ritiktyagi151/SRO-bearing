@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 const VideoGridSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(null);
-  const [slidesToShow, setSlidesToShow] = useState(3); // Default to 3 videos per slide
+  const [slidesToShow, setSlidesToShow] = useState(3);
   const videoRefs = useRef([]);
   const intervalRef = useRef(null);
   const sliderRef = useRef(null);
@@ -59,7 +59,7 @@ const VideoGridSlider = () => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
         setSlidesToShow(1);
-      } else if (window.innerWidth < 768) {
+      } else if (window.innerWidth < 1024) {
         setSlidesToShow(2);
       } else {
         setSlidesToShow(3);
@@ -135,34 +135,21 @@ const VideoGridSlider = () => {
     }
   };
 
-  // Calculate the appropriate height based on aspect ratio
-  const getVideoHeight = () => {
-    if (typeof window !== "undefined") {
-      const width = sliderRef.current?.offsetWidth || 0;
-      const videoWidth =
-        width /
-        Math.min(slidesToShow, groupedVideos[currentSlide]?.length || 1);
-      return (videoWidth * 9) / 16; // 16:9 aspect ratio
-    }
-    return 200; // Default height
-  };
-
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 rounded-xl">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 rounded-xl max-w-screen-2xl mx-auto">
       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center md:text-left">
         Video Gallery
       </h2>
 
       {/* Main Slider */}
-      <div className="relative mb-8" ref={sliderRef}>
+      <div className="relative mb-8 w-full overflow-hidden" ref={sliderRef}>
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 transition-all duration-300`}
-          style={{ minHeight: `${getVideoHeight()}px` }}
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-300 w-full`}
         >
           {groupedVideos[currentSlide]?.map((video) => (
             <div
               key={video.id}
-              className="relative rounded-lg overflow-hidden shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
+              className="relative rounded-lg overflow-hidden shadow-md bg-white hover:shadow-lg transition-shadow duration-300 aspect-video"
               onMouseEnter={() => handleVideoHover(video.id)}
               onMouseLeave={() => handleVideoLeave(video.id)}
             >
@@ -193,14 +180,14 @@ const VideoGridSlider = () => {
           <>
             <button
               onClick={goToPrev}
-              className="absolute left-2 sm:-left-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
               aria-label="Previous slide"
             >
               &lt;
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 sm:-right-12 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/90 text-gray-800 hover:bg-green-500 hover:text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg transition-all duration-300 z-10"
               aria-label="Next slide"
             >
               &gt;
