@@ -472,7 +472,7 @@ export default function Navbar() {
         {/* Social Icons - Only Facebook and LinkedIn */}
         <div className="hidden md:flex gap-4 items-center justify-end">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/people/SRO-Bearings/61578079778501/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-green-100 transition-colors duration-200"
@@ -483,7 +483,7 @@ export default function Navbar() {
             </svg>
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/srobharat/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-green-100 transition-colors duration-200"
@@ -742,7 +742,7 @@ export default function Navbar() {
             {/* Social Icons */}
             <li className="flex gap-4 justify-center pt-2">
               <a
-                href="https://www.facebook.com/profile.php?id=61578079778501"
+                href="https://www.facebook.com/people/SRO-Bearings/61578079778501/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-100 transition-colors duration-200"
@@ -757,7 +757,7 @@ export default function Navbar() {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/srobharat/?originalSubdomain=io"
+                href="https://www.linkedin.com/company/srobharat/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-100 transition-colors duration-200"
