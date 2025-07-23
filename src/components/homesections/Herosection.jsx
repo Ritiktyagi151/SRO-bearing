@@ -62,6 +62,18 @@ const HomePageSlider = () => {
       bgImage:
         "https://as1.ftcdn.net/v2/jpg/11/77/95/16/1000_F_1177951650_Jxu0QsY7kzQtZCpUZx8SS9AmgvHSrNF0.jpg",
     },
+    {
+      id: 4,
+      upperText: "OVER 40 YEARS OF TRUST",
+      title: "SRO Bharat – A Legacy of Excellence",
+      subtitle: "Empowering Industries Worldwide",
+      description:
+        "With a legacy spanning 40+ years, SRO Bharat delivers high-performance bearings and industrial solutions across steel, mining, automotive, and more. Our values: Quality, Precision, Integrity, and Innovation.",
+      buttonText: "Know More About Us",
+      bgGradient: "from-gray-800 to-green-800",
+      bgImage:
+        "https://as2.ftcdn.net/v2/jpg/04/13/01/33/1000_F_413013351_jkU9KwzPfTcLFkXqT08HnvJcWmq8WaUk.jpg",
+    },
   ];
 
   // Memoized navigation functions

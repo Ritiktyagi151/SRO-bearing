@@ -48,31 +48,33 @@ const AboutSnapshot = () => {
               variants={itemVariants}
               className="text-4xl font-bold text-gray-800 leading-tight"
             >
-              Welcome to SRO Bearings
+              Experience. Quality. Trust.
             </motion.h2>
 
             <motion.h3
               variants={itemVariants}
               className="text-lg font-semibold text-green-600"
             >
-              Your Trusted Bearing Solutions Provider!
+              40+ Years of Bearing Excellence at SRO Bharat
             </motion.h3>
 
             <motion.p
               variants={itemVariants}
               className="text-gray-600 text-lg leading-relaxed"
             >
-              With over four decades of expertise in the bearings industry, we
-              take immense pride in serving as a reliable partner to industries
-              worldwide.
+              Since 1982, SRO Bharat has delivered precision-engineered bearing
+              solutions to power industries across the globe — from Steel Plants
+              and Cement to Automotive, Mining, Sugar, and more.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-gray-600 text-lg leading-relaxed"
             >
-              At SRO, we understand the critical role bearings play in ensuring
-              seamless operations across various industries.
+              Alongside our wide bearing range, we provide essential industrial
+              products including Bearing Sleeves, Housings, Roller Chains,
+              Tools, Maintenance Kits, Lubricants, and Condition Monitoring
+              Equipment — all with unmatched quality and competitive pricing.
             </motion.p>
 
             <motion.div variants={itemVariants} className="pt-4">
@@ -83,7 +85,7 @@ const AboutSnapshot = () => {
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 aria-label="Navigate to products page"
               >
-                Discover Our Products
+                View Product Range
               </motion.button>
             </motion.div>
           </motion.div>
@@ -98,14 +100,13 @@ const AboutSnapshot = () => {
               className="relative h-96 w-full rounded-xl overflow-hidden shadow-2xl border-4 border-white"
               style={{ perspective: "1000px" }}
             >
-              {/* Loading skeleton */}
               {!imageLoaded && (
-                <div className="absolute inset-0 bg-gradient-to-r" />
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse" />
               )}
 
               <motion.img
                 src="https://media3.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dXIxM3owYWh2eXNpMWVkeGlwOGNmNHhtNTZxYjZmOHhraW5yN2gzbyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/llxkS0wUmLOMuPHRqy/giphy.webp"
-                alt="Industrial bearings manufacturing process showing precision engineering and quality control"
+                alt="High precision industrial bearing equipment"
                 className="w-full h-full object-cover transition-transform duration-700"
                 onLoad={() => setImageLoaded(true)}
                 whileHover={{ scale: 1.05 }}

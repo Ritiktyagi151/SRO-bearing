@@ -1,34 +1,48 @@
 import { motion } from "framer-motion";
-import { FaRocket, FaLightbulb, FaChartLine, FaTrophy } from "react-icons/fa";
+import {
+  FaRocket,
+  FaIndustry,
+  FaMapMarkedAlt,
+  FaGlobeAsia,
+  FaMicrochip,
+} from "react-icons/fa";
 
 export default function OurJourney() {
   const milestones = [
     {
-      year: "2015",
-      title: "Founded",
+      year: "2010",
+      title: "Humble Beginnings",
       description:
-        "Started in a small office with just 3 team members and big dreams.",
+        "Started as a local trading firm with a focus on delivering high-quality bearing solutions.",
       icon: <FaRocket className="text-blue-500 text-2xl" />,
     },
     {
-      year: "2017",
-      title: "First Breakthrough",
+      year: "2013",
+      title: "First Manufacturing Unit",
       description:
-        "Launched our flagship product that revolutionized our industry.",
-      icon: <FaLightbulb className="text-yellow-500 text-2xl" />,
+        "Established our first production facility to meet growing demand and maintain strict quality control.",
+      icon: <FaIndustry className="text-gray-600 text-2xl" />,
     },
     {
-      year: "2019",
-      title: "Expansion",
-      description: "Opened international offices and grew to 50+ employees.",
-      icon: <FaChartLine className="text-green-500 text-2xl" />,
+      year: "2016",
+      title: "Pan-India Expansion",
+      description:
+        "Built a strong presence across India's major industrial regions, serving multiple sectors.",
+      icon: <FaMapMarkedAlt className="text-red-500 text-2xl" />,
     },
     {
-      year: "2023",
-      title: "Industry Recognition",
+      year: "2020",
+      title: "Global Recognition",
       description:
-        "Awarded 'Best Innovation Company' for three consecutive years.",
-      icon: <FaTrophy className="text-purple-500 text-2xl" />,
+        "Became a trusted export partner to clients in Southeast Asia, the Middle East, and Europe.",
+      icon: <FaGlobeAsia className="text-green-600 text-2xl" />,
+    },
+    {
+      year: "2024",
+      title: "Smart Innovations",
+      description:
+        "Invested in digital diagnostics and predictive maintenance for next-gen bearing solutions.",
+      icon: <FaMicrochip className="text-purple-600 text-2xl" />,
     },
   ];
 
@@ -46,8 +60,8 @@ export default function OurJourney() {
             Our Journey
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            From humble beginnings to industry leaders - our story of growth and
-            innovation.
+            From modest roots to a global industrial presence — our milestones
+            reflect passion, innovation, and excellence.
           </p>
         </motion.div>
 

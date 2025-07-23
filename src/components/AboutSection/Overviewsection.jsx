@@ -13,12 +13,13 @@ export default function GreenOverview() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold text-green-800 sm:text-4xl">
-              Sustainable Solutions
+              Driving a Greener Future
             </h2>
             <p className="mt-4 text-lg text-green-700">
-              We're committed to eco-friendly practices that benefit both your
-              business and the planet. Our green initiatives reduce carbon
-              footprint while maintaining top performance.
+              Our mission is to blend innovation with sustainability. By
+              integrating eco-conscious strategies into our workflow, we help
+              businesses reduce environmental impact while boosting efficiency
+              and value.
             </p>
             <motion.div
               className="mt-8"
@@ -26,7 +27,7 @@ export default function GreenOverview() {
               whileTap={{ scale: 0.95 }}
             >
               <button className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition shadow-md hover:shadow-lg">
-                Explore Our Green Approach
+                Discover Our Sustainable Impact
               </button>
             </motion.div>
           </motion.div>
@@ -40,10 +41,9 @@ export default function GreenOverview() {
           >
             <img
               src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnhncTdxMnV1c2prZnl6bXpud2dtYW5vMWs5OHV5azBxaWV1NXo2MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Kd61lL6mzxZyIy1smx/giphy.gif"
-              alt="Green solutions"
+              alt="Green sustainability animation"
               className="object-cover w-full h-auto"
             />
-
             <motion.div
               className="absolute inset-0 bg-green-800 bg-opacity-20 hover:bg-opacity-0 transition"
               whileHover={{ opacity: 0 }}

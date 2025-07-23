@@ -41,10 +41,13 @@ const CompactIndustryApplications = () => {
           {/* Content */}
           <div className="md:w-1/2">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Industry Solutions
+              Driving Performance Across Industries
             </h2>
             <p className="text-gray-600 mb-6">
-              Tailored solutions for your industry's unique challenges.
+              At SRO Bharat, we deliver precision-bearing solutions and allied
+              products to meet the demanding needs of multiple industries. Our
+              products are engineered for durability, efficiency, and
+              performance.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
@@ -77,7 +80,7 @@ const CompactIndustryApplications = () => {
           <div className="md:w-1/2">
             <img
               src="https://media.istockphoto.com/id/177025972/photo/close-up-snapshot-of-small-gears-from-an-automobile-engine.jpg?s=612x612&w=0&k=20&c=PT5H4E8F_oaDOkxOI1Abi4auEwbX97HCOHoEdgYzY0I="
-              alt="Industry solutions"
+              alt="Precision engineering for multiple industries"
               className="rounded-xl shadow-md w-full h-auto object-cover"
             />
           </div>

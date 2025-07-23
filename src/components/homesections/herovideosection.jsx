@@ -47,23 +47,24 @@ const HeroVideoSection = () => {
       {/* Content Overlay */}
       <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-6 lg:px-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-            SRO Bearings
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">
+            SRO Bharat
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-in-up delay-100">
-            Trusted Global Bearing Traders Since 1995
+          <h2 className="text-xl md:text-3xl font-semibold mb-4 animate-fade-in-up delay-100">
+            Powering Industries with Bearings Since 1982
           </h2>
-          <p className="text-lg md:text-lg mb-8 animate-fade-in-up delay-200">
-            Premium bearing solutions for industrial, automotive, and aerospace
-            applications. We source directly from top manufacturers to deliver
-            quality at competitive prices.
+          <p className="text-base md:text-lg mb-6 animate-fade-in-up delay-200 leading-relaxed">
+            With over 40 years of industry excellence, SRO Bharat is a trusted
+            name in high-performance bearings and industrial solutions. We cater
+            to Steel, Automotive, Mining, Sugar, and more—ensuring reliability
+            and efficiency at every level.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-300">
-            <button className="px-8 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-colors">
-              Browse Products
+            <button className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-colors shadow-md">
+              Explore Our Bearings
             </button>
-            <button className="px-8 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium backdrop-blur-sm transition-colors">
-              Contact Experts
+            <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium backdrop-blur-sm transition-colors border border-white/20 shadow-md">
+              Talk to Our Experts
             </button>
           </div>
         </div>

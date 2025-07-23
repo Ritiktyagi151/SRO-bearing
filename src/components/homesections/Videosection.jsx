@@ -25,24 +25,18 @@ const HomeSection = () => {
       {/* Text Content and Button */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
-          Your Trusted Bearing Partner
+          Empowering Industries with Precision Bearings
         </h1>
         <p className="text-lg md:text-lg max-w-3xl mb-4">
-          With over four decades of experience, we proudly serve industries
-          worldwide as reliable traders of premium industrial and automotive
-          bearings — ensuring seamless operations and long-term reliability for
-          your machinery.
+          For over 40 years, we've been a trusted name in supplying
+          high-performance industrial and automotive bearings to clients around
+          the globe. Our expertise ensures operational excellence across diverse
+          industries.
         </p>
-        <p className="text-lg md:text-lg max-w-3xl mb-6">
-          From ball and roller bearings to specialized solutions, our
-          wide-ranging portfolio meets the highest industry standards. At SRO
-          Bearings, we are driven by a commitment to quality, precision, and
-          customer satisfaction, delivering engineered products that power
-          industries of all sizes.
-        </p>
+
         <Link href="/products">
           <button className="bg-green-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
-            Explore Our Products
+            View Our Bearings
           </button>
         </Link>
       </div>

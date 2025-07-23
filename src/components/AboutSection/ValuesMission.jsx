@@ -22,7 +22,7 @@ export default function ValuesAndMission() {
   // Mission data
   const mission = {
     statement:
-      "To empower businesses and individuals through innovative solutions that simplify complexity, drive sustainable growth, and create meaningful connections in an increasingly digital world.",
+      "To deliver high-quality bearing solutions that enhance industrial performance, foster long-term partnerships, and support customer success through reliability and innovation.",
     icon: <FiTarget className="w-10 h-10 text-blue-600" />,
     image: getRandomImage("mission"),
   };
@@ -30,7 +30,7 @@ export default function ValuesAndMission() {
   // Vision data
   const vision = {
     statement:
-      "To be recognized globally as the most trusted partner for transformative digital solutions, setting the standard for innovation, quality, and positive impact in our industry.",
+      "To be a global leader in the bearing industry, known for our integrity, cutting-edge technology, and unwavering commitment to excellence.",
     icon: <FiEye className="w-10 h-10 text-purple-600" />,
     image: getRandomImage("vision"),
   };
@@ -39,37 +39,37 @@ export default function ValuesAndMission() {
   const values = [
     {
       icon: <FiUsers className="w-8 h-8" />,
-      title: "People First",
+      title: "Customer Commitment",
       description:
-        "We prioritize relationships and believe success comes from putting people first.",
+        "We build lasting relationships by exceeding expectations and putting customers first in everything we do.",
       image: getRandomImage("people"),
     },
     {
       icon: <FiShield className="w-8 h-8" />,
       title: "Integrity",
       description:
-        "We do what's right, not what's easy. Honesty and ethics guide every decision.",
+        "We uphold transparency, honesty, and responsibility in all our operations and decisions.",
       image: getRandomImage("integrity"),
     },
     {
       icon: <FiTrendingUp className="w-8 h-8" />,
-      title: "Continuous Growth",
+      title: "Innovation",
       description:
-        "We embrace learning and innovation to constantly improve ourselves and our solutions.",
+        "We continuously invest in new ideas and technologies to provide better, smarter solutions.",
       image: getRandomImage("growth"),
     },
     {
       icon: <FiGlobe className="w-8 h-8" />,
-      title: "Global Impact",
+      title: "Sustainability",
       description:
-        "We think beyond borders to create solutions with worldwide relevance.",
+        "We are committed to environmentally friendly practices and reducing our global footprint.",
       image: getRandomImage("global"),
     },
     {
       icon: <FiHeart className="w-8 h-8" />,
-      title: "Passion",
+      title: "Passion for Excellence",
       description:
-        "We love what we do, and it shows in the quality of our work.",
+        "We take pride in our work and aim for the highest standards in product quality and service.",
       image: getRandomImage("passion"),
     },
   ];

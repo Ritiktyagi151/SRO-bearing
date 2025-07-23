@@ -27,33 +27,33 @@ export default function WhoWeAreSection() {
 
   const stats = [
     {
-      number: "500+",
-      label: "Happy Clients",
+      number: "1000+",
+      label: "Clients Served Globally",
       icon: Users,
       animatedValue: animatedNumbers.clients,
-      targetValue: 500,
+      targetValue: 1000,
     },
     {
-      number: "10+",
-      label: "Years Experience",
+      number: "40+",
+      label: "Years of Excellence",
       icon: Award,
       animatedValue: animatedNumbers.experience,
-      targetValue: 10,
+      targetValue: 40,
     },
     {
-      number: "99%",
-      label: "Success Rate",
+      number: "99.9%",
+      label: "On-Time Delivery Rate",
       icon: Target,
       animatedValue: animatedNumbers.success,
-      targetValue: 99,
+      targetValue: 99.9,
     },
     {
-      number: "24/7",
-      label: "Support",
+      number: "365",
+      label: "Days of Dedicated Support",
       icon: Lightbulb,
       animatedValue: animatedNumbers.support,
-      targetValue: 24,
-      suffix: "/7",
+      targetValue: 365,
+      suffix: "/yr",
     },
   ];
 
@@ -134,19 +134,19 @@ export default function WhoWeAreSection() {
     mission: {
       title: "Our Mission",
       content:
-        "We are driven by a singular mission: to transform innovative ideas into extraordinary digital experiences that make a meaningful impact on businesses and communities worldwide.",
+        "To deliver innovative, reliable, and scalable digital solutions that empower businesses to grow, adapt, and lead in their industries.",
       image: "🎯",
     },
     vision: {
       title: "Our Vision",
       content:
-        "To be the leading catalyst for digital transformation, empowering organizations to thrive in an ever-evolving technological landscape through cutting-edge solutions and unwavering commitment to excellence.",
+        "To become a globally trusted partner in digital excellence, shaping the future through technology and a customer-first approach.",
       image: "🚀",
     },
     values: {
       title: "Our Values",
       content:
-        "Innovation, integrity, and collaboration form the cornerstone of everything we do. We believe in pushing boundaries, maintaining transparency, and building lasting partnerships with our clients.",
+        "We value innovation, transparency, and a results-driven mindset. Our team thrives on creativity, collaboration, and a passion for solving real-world challenges.",
       image: "💎",
     },
   };
@@ -209,9 +209,10 @@ export default function WhoWeAreSection() {
             </span>
           </h2>
           <p className="text-lg sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We are a team of passionate innovators, creative thinkers, and
-            problem solvers dedicated to delivering exceptional digital
-            solutions that drive success and inspire growth.
+            We are a dynamic team of innovators and strategists committed to
+            crafting impactful digital experiences. Our goal is to empower
+            businesses with tailored solutions that accelerate growth and foster
+            long-term success.
           </p>
         </div>
 
@@ -350,20 +351,20 @@ export default function WhoWeAreSection() {
             <div className="space-y-3 sm:space-y-4">
               {[
                 {
-                  title: "Expert Leadership",
-                  desc: "Seasoned professionals with decades of industry experience",
+                  title: "Strategic Vision",
+                  desc: "We align every project with your long-term business goals for meaningful growth.",
                 },
                 {
-                  title: "Diverse Expertise",
-                  desc: "Specialists across design, development, and strategy",
+                  title: "End-to-End Solutions",
+                  desc: "From ideation to launch, we cover every aspect of your digital journey.",
                 },
                 {
-                  title: "Global Perspective",
-                  desc: "International team bringing varied cultural insights",
+                  title: "Client-Centric Approach",
+                  desc: "Your success is our priority—we collaborate closely for tailored outcomes.",
                 },
                 {
-                  title: "Continuous Learning",
-                  desc: "Always staying ahead with latest technologies and trends",
+                  title: "Future-Ready Mindset",
+                  desc: "We embrace emerging technologies to future-proof your digital presence.",
                 },
               ].map((feature, index) => (
                 <div
