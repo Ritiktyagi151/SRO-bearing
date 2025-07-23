@@ -12,6 +12,7 @@ import {
 const Blogs = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
   const blogs = [
     {
@@ -124,7 +125,21 @@ const Blogs = () => {
     },
   ];
 
-  const cardsPerSlide = 3;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setCardsPerSlide(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerSlide(2);
+      } else {
+        setCardsPerSlide(3);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalSlides = Math.ceil(blogs.length / cardsPerSlide);
 
   const nextSlide = () => {
@@ -140,7 +155,7 @@ const Blogs = () => {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlaying, currentIndex]);
+  }, [isAutoPlaying, currentIndex, cardsPerSlide]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -169,7 +184,6 @@ const Blogs = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Latest Insights & Articles
@@ -181,7 +195,6 @@ const Blogs = () => {
           <div className="mt-8 h-1 w-20 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Blog Cards Slider */}
         <div
           className="relative"
           onMouseEnter={() => setIsAutoPlaying(false)}
@@ -202,7 +215,7 @@ const Blogs = () => {
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Cards Container */}
+          {/* Carousel Content */}
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -210,7 +223,15 @@ const Blogs = () => {
             >
               {Array.from({ length: totalSlides }, (_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4">
+                  <div
+                    className={`grid gap-8 px-4 ${
+                      cardsPerSlide === 1
+                        ? "grid-cols-1"
+                        : cardsPerSlide === 2
+                        ? "grid-cols-1 sm:grid-cols-2"
+                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                    }`}
+                  >
                     {blogs
                       .slice(
                         slideIndex * cardsPerSlide,
@@ -221,7 +242,6 @@ const Blogs = () => {
                           key={blog.id}
                           className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-green-200 group cursor-pointer"
                         >
-                          {/* Blog Image */}
                           <div className="relative overflow-hidden">
                             <img
                               src={blog.image}
@@ -239,31 +259,27 @@ const Blogs = () => {
                             </div>
                           </div>
 
-                          {/* Blog Content */}
                           <div className="p-6">
-                            {/* Meta Info */}
-                            <div className="flex items-center text-lg text-gray-500 mb-3">
-                              <User className="w-4 h-4 mr-1" />
-                              <span className="mr-4">{blog.author}</span>
-                              <Calendar className="w-4 h-4 mr-1" />
-                              <span className="mr-4">
+                            <div className="flex items-center text-sm text-gray-500 mb-3 flex-wrap gap-x-3 gap-y-1">
+                              <span className="flex items-center gap-1">
+                                <User className="w-4 h-4" />
+                                {blog.author}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
                                 {formatDate(blog.date)}
                               </span>
-                              <Clock className="w-4 h-4 mr-1" />
-                              <span>{blog.readTime}</span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                {blog.readTime}
+                              </span>
                             </div>
-
-                            {/* Title */}
                             <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
                               {blog.title}
                             </h3>
-
-                            {/* Excerpt */}
                             <p className="text-gray-600 mb-4 line-clamp-3">
                               {blog.excerpt}
                             </p>
-
-                            {/* Tags */}
                             <div className="flex flex-wrap gap-2 mb-4">
                               {blog.tags.slice(0, 3).map((tag, index) => (
                                 <span
@@ -275,15 +291,11 @@ const Blogs = () => {
                                 </span>
                               ))}
                             </div>
-
-                            {/* Read More Button */}
                             <div className="flex items-center text-green-600 font-semibold group-hover:text-green-700 transition-colors">
                               <span className="mr-2">Read More</span>
                               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
-
-                          {/* Hover Effect Border */}
                           <div className="absolute inset-0 border-2 border-transparent group-hover:border-green-500 rounded-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
                         </article>
                       ))}
@@ -294,7 +306,7 @@ const Blogs = () => {
           </div>
         </div>
 
-        {/* Dots Indicator */}
+        {/* Pagination Dots */}
         <div className="flex justify-center mt-12 space-x-2">
           {Array.from({ length: totalSlides }, (_, index) => (
             <button
@@ -307,13 +319,6 @@ const Blogs = () => {
               }`}
             />
           ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl">
-            View All Articles
-          </button>
         </div>
       </div>
     </section>
