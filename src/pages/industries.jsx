@@ -155,7 +155,7 @@ const IndustryPage = () => {
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
                   <h3 className="text-white text-2xl font-bold mb-2">
-                    Since 1983
+                    Since 19**
                   </h3>
                   <p className="text-gray-200 text-lg">
                     Delivering precision bearing solutions

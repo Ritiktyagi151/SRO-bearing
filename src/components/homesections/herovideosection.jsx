@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 const HeroVideoSection = () => {
   const videoRef = useRef(null);
@@ -51,7 +52,7 @@ const HeroVideoSection = () => {
             SRO Bharat
           </h1>
           <h2 className="text-xl md:text-3xl font-semibold mb-4 animate-fade-in-up delay-100">
-            Powering Industries with Bearings Since 1982
+            Powering Industries with Bearings Since 19**
           </h2>
           <p className="text-base md:text-lg mb-6 animate-fade-in-up delay-200 leading-relaxed">
             With over 40 years of industry excellence, SRO Bharat is a trusted
@@ -60,12 +61,17 @@ const HeroVideoSection = () => {
             and efficiency at every level.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-300">
-            <button className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-colors shadow-md">
-              Explore Our Bearings
-            </button>
-            <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium backdrop-blur-sm transition-colors border border-white/20 shadow-md">
-              Talk to Our Experts
-            </button>
+            <Link href="/products">
+              <button className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-colors shadow-md">
+                Explore Our Bearings
+              </button>
+            </Link>
+
+            <Link href="/contact">
+              <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium backdrop-blur-sm transition-colors border border-white/20 shadow-md">
+                Talk to Our Experts
+              </button>
+            </Link>
           </div>
         </div>
       </div>

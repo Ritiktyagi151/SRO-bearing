@@ -62,7 +62,7 @@ const AboutSnapshot = () => {
               variants={itemVariants}
               className="text-gray-600 text-lg leading-relaxed"
             >
-              Since 1982, SRO Bharat has delivered precision-engineered bearing
+              Since 19**, SRO Bharat has delivered precision-engineered bearing
               solutions to power industries across the globe — from Steel Plants
               and Cement to Automotive, Mining, Sugar, and more.
             </motion.p>

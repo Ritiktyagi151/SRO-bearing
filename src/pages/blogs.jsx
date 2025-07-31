@@ -17,7 +17,7 @@ const blogPosts = [
   },
   {
     id: 2,
-    slug: "choosing-right-bearing",
+    slug: "lubrication-best-practices",
     title: "How to Choose the Right Bearing",
     excerpt:
       "Guide to selecting bearings based on load and speed requirements.",
