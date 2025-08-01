@@ -1,14 +1,13 @@
 import Blogs from "@/components/homesections/Blogs";
 import HeroVideoSection from "@/components/homesections/herovideosection";
-// import Herosection from "@/components/homesections/Herosection";
-
 import Homeabout from "@/components/homesections/Homeabout";
-import IndustryApplications from "@/components/homesections/IndustryApplications ";
+import IndustryApplications from "@/components/homesections/ResearchApplications";
 import OurClient from "@/components/homesections/OurClient";
 import ProductSlider from "@/components/homesections/Productslider";
-import Testimonials from "@/components/homesections/Testimonials";
+import ExploreMore from "@/components/homesections/ExploreMoreSection";
 import Videoshowcase from "@/components/homesections/Videoshowcase";
 import WhoWeAre from "@/components/homesections/WhoWeAre";
+import ThisIsUs from "@/components/homesections/ThisIsUs";
 
 import Head from "next/head";
 
@@ -23,8 +22,9 @@ export default function Home() {
       <ProductSlider />
       <Videoshowcase />
       <WhoWeAre />
+      <ThisIsUs />
       <IndustryApplications />
-      <Testimonials />
+      <ExploreMore />
       <Blogs />
       <OurClient />
     </>

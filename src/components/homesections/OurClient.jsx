@@ -106,14 +106,14 @@ const ValuedClients = () => {
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-white py-4 px-4 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full opacity-30 translate-x-48 -translate-y-48 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gray-200 rounded-full opacity-20 -translate-x-40 translate-y-40 animate-pulse delay-1000"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100 rounded-full opacity-30 translate-x-48 -translate-y-48 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gray-100 rounded-full opacity-20 -translate-x-40 translate-y-40 animate-pulse delay-1000"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center min-h-[500px]">
           {/* Left Side - Our Clients Text */}
           <div className="space-y-8 animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
+            <div className="inline-flex items-center gap-2 bg-gray-100 text-green-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
               <Users className="w-4 h-4" />
               <span>Trusted Partnership</span>
             </div>
@@ -134,13 +134,13 @@ const ValuedClients = () => {
 
             {/* Statistics */}
             <div className="grid grid-cols-2 gap-6 max-w-md">
-              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <div className="text-3xl font-bold text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   {clients.length}+
                 </div>
                 <div className="text-gray-600 font-medium">Happy Clients</div>
               </div>
-              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <div className="text-3xl font-bold text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   98%
                 </div>
@@ -151,7 +151,7 @@ const ValuedClients = () => {
             </div>
 
             {/* Rating */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 ">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -175,20 +175,20 @@ const ValuedClients = () => {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
               <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-green-500" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
               <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-green-500" />
             </button>
 
             {/* Client Logo Grid */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+            <div className="bg-gray-100 rounded-3xl shadow-2xl p-8 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-50"></div>
 
               <div className="relative z-10">
@@ -196,7 +196,7 @@ const ValuedClients = () => {
                   {getVisibleClients().map((client, index) => (
                     <div
                       key={client.id}
-                      className="aspect-square bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center group cursor-pointer animate-scale-in"
+                      className="aspect-square bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center group cursor-pointer animate-scale-in"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <div
@@ -231,7 +231,7 @@ const ValuedClients = () => {
                   onClick={() => setCurrentSlide(i)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     i === currentSlide
-                      ? "bg-green-500 w-6"
+                      ? "bg-gray-100 w-6"
                       : "bg-green-200 hover:bg-green-300"
                   }`}
                 />

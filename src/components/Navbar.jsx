@@ -6,9 +6,13 @@ export default function Navbar() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef(null);
   const quoteRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const searchRef = useRef(null);
 
   // Toggle dropdown on click for mobile
   const toggleProductsDropdown = () => {
@@ -24,6 +28,9 @@ export default function Navbar() {
       if (quoteRef.current && !quoteRef.current.contains(event.target)) {
         setIsQuoteOpen(false);
       }
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearchOpen(false);
+      }
       if (
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(event.target)
@@ -38,14 +45,64 @@ export default function Navbar() {
     };
   }, []);
 
+  // Add scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Handle search functionality here
+    console.log("Searching for:", searchQuery);
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
+
   return (
-    <nav className="bg-gradient-to-r from-gray-300 to-green-600 text-white p-4 shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-opacity-90">
+    <nav
+      className={`text-white p-4 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-colors duration-300 ${
+        isScrolled ? "bg-gray-800 bg-opacity-90" : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo with Image */}
-        <Link href="/" className="flex items-center group">
-          <div className="relative h-10 w-32 mr-2 transition-transform duration-300 group-hover:scale-105">
+        {/* Mobile Hamburger Menu Button (Left) */}
+        <button
+          className="md:hidden focus:outline-none p-2 rounded-lg hover:bg-gray-700 transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={
+                isMobileMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
+
+        {/* Logo (Centered) */}
+        <Link href="/" className="flex items-center group mx-auto md:mx-0">
+          <div className="relative h-10 w-32 transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/srologo2.png" // Update with your logo path
+              src="/srologo2.png"
               alt="SRO Bearings Logo"
               fill
               className="object-contain"
@@ -55,24 +112,12 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-6 items-center">
-          <li className="relative group">
-            <Link
-              href="/"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
-            >
-              <span className="relative">
-                Home
-                <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
-              </span>
-            </Link>
-          </li>
-
+        {/* Desktop Navigation - Left Side */}
+        <ul className="hidden md:flex gap-6 items-center mr-auto ml-6">
           <li className="relative group">
             <Link
               href="/about"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
+              className="hover:text-green-300 transition-colors duration-300 font-medium py-2 px-1"
             >
               <span className="relative">
                 About
@@ -88,7 +133,7 @@ export default function Navbar() {
             onMouseLeave={() => setIsProductsOpen(false)}
           >
             <button
-              className="hover:text-green-100 transition-colors duration-300 font-medium flex items-center gap-1 py-2 px-1"
+              className="hover:text-green-300 transition-colors duration-300 font-medium flex items-center gap-1 py-2 px-1"
               onClick={toggleProductsDropdown}
             >
               <span className="relative">
@@ -351,56 +396,24 @@ export default function Navbar() {
 
           <li className="relative group">
             <Link
-              href="/industries"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
+              href="/services"
+              className="hover:text-green-300 transition-colors duration-300 font-medium py-2 px-1"
             >
               <span className="relative">
-                Industries
+                Services
                 <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
               </span>
             </Link>
           </li>
-          <li className="relative group">
-            <Link
-              href="/gallery"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
-            >
-              <span className="relative">
-                Gallery
-                <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
-              </span>
-            </Link>
-          </li>
+        </ul>
 
-          <li className="relative group">
-            <Link
-              href="/blogs"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
-            >
-              <span className="relative">
-                Blogs
-                <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
-              </span>
-            </Link>
-          </li>
-
-          <li className="relative group">
-            <Link
-              href="/contact"
-              className="hover:text-green-100 transition-colors duration-300 font-medium py-2 px-1"
-            >
-              <span className="relative">
-                Contact
-                <span className="absolute left-0 bottom-0 h-0.5 bg-green-300 w-0 group-hover:w-full transition-all duration-300"></span>
-              </span>
-            </Link>
-          </li>
-
-          {/* Get a Quote Button */}
-          <li>
+        {/* Right Side Icons (Search, Language, Get in Touch) */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* Search Icon with dropdown */}
+          <div className="relative" ref={searchRef}>
             <button
-              onClick={() => setIsQuoteOpen(true)}
-              className="ml-4 bg-white text-green-700 hover:bg-green-50 px-5 py-2.5 rounded-lg font-medium transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-2 border-2 border-transparent hover:border-green-300"
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-2 rounded-full hover:bg-gray-700 transition-colors group relative"
             >
               <svg
                 className="w-5 h-5"
@@ -413,21 +426,106 @@ export default function Navbar() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              Get a Quote
+              <span className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                Search
+              </span>
             </button>
-          </li>
-        </ul>
 
-        {/* Mobile Menu Button */}
+            {searchOpen && (
+              <div className="absolute right-0 mt-2 w-72 bg-white text-gray-800 rounded-lg shadow-xl py-2 z-20 border border-gray-100 animate-fadeIn">
+                <form onSubmit={handleSearchSubmit} className="px-4 py-2">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search products..."
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    />
+                    <svg
+                      className="absolute left-3 top-3 w-4 h-4 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                  </div>
+                  <button
+                    type="submit"
+                    className="mt-2 w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-300 text-sm"
+                  >
+                    Search
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+
+          {/* Language Translator */}
+          <div className="relative group">
+            <button className="p-2 rounded-full hover:bg-gray-700 transition-colors flex items-center">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+                />
+              </svg>
+            </button>
+            <span className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              Language
+            </span>
+          </div>
+
+          {/* Get in Touch */}
+          <button
+            onClick={() => setIsQuoteOpen(true)}
+            className="p-2 rounded-full hover:bg-gray-700 transition-colors group relative"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            <span className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              Get in Touch
+            </span>
+          </button>
+        </div>
+
+        {/* Mobile Search Icon (Right) */}
         <button
-          className="md:hidden focus:outline-none p-2 rounded-lg hover:bg-green-700 transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 rounded-full hover:bg-gray-700 transition-colors"
+          onClick={() => setSearchOpen(!searchOpen)}
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -437,36 +535,54 @@ export default function Navbar() {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d={
-                isMobileMenuOpen
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M4 6h16M4 12h16M4 18h16"
-              }
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
         </button>
       </div>
 
+      {/* Mobile Search Bar */}
+      {searchOpen && (
+        <div className="md:hidden px-4 py-2 bg-gray-800">
+          <form onSubmit={handleSearchSubmit} className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              className="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+            <svg
+              className="absolute left-3 top-3 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </form>
+        </div>
+      )}
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="md:hidden bg-green-800 shadow-lg animate-slideDown rounded-lg mt-2 mx-2 overflow-hidden"
+          className={`md:hidden ${
+            isScrolled ? "bg-gray-800" : "bg-gray-900"
+          } shadow-lg animate-slideDown rounded-lg mt-2 mx-2 overflow-hidden`}
         >
           <ul className="px-4 py-3 space-y-3">
             <li>
               <Link
-                href="/"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/about"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
+                className="block py-3 px-3 hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
@@ -474,7 +590,7 @@ export default function Navbar() {
             </li>
             <li>
               <button
-                className="w-full flex justify-between items-center py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
+                className="w-full flex justify-between items-center py-3 px-3 hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={toggleProductsDropdown}
               >
                 Products
@@ -496,59 +612,59 @@ export default function Navbar() {
                 </svg>
               </button>
               {isProductsOpen && (
-                <div className="ml-4 mt-1 space-y-2 bg-green-900 rounded-lg p-2">
+                <div className="ml-4 mt-1 space-y-2 bg-gray-700 rounded-lg p-2">
                   <Link
                     href="/products"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg font-semibold bg-green-800 text-white"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg font-semibold"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     View All Products
                   </Link>
                   <Link
                     href="/products/spherical-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Spherical Roller Bearings
                   </Link>
                   <Link
                     href="/products/taper-roller-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Taper Roller Bearings
                   </Link>
                   <Link
                     href="/products/thrust-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Thrust Bearings
                   </Link>
                   <Link
                     href="/products/multi-row-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Multi Row Bearings
                   </Link>
                   <Link
                     href="/products/pillow-block-bearings"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Pillow Block Bearings
                   </Link>
                   <Link
                     href="/products/plummer-blocks"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Plummer Blocks
                   </Link>
                   <Link
                     href="/products/roller-chains"
-                    className="block py-2 px-3 hover:bg-green-800 rounded-md transition-colors text-lg"
+                    className="block py-2 px-3 hover:bg-gray-600 rounded-md transition-colors text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Roller Chains
@@ -558,38 +674,11 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/industries"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
+                href="/services"
+                className="block py-3 px-3 hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Industries
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/gallery"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blogs"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blogs
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="block py-3 px-3 hover:bg-green-700 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
+                Services
               </Link>
             </li>
             <li className="pt-2">
@@ -598,7 +687,7 @@ export default function Navbar() {
                   setIsQuoteOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full text-left py-3 px-4 bg-green-700 hover:bg-green-600 rounded-lg flex items-center gap-2 font-medium justify-center shadow-sm"
+                className="w-full text-left py-3 px-4 bg-gray-700 hover:bg-gray-600 rounded-lg flex items-center gap-2 font-medium justify-center shadow-sm"
               >
                 <svg
                   className="w-5 h-5"
@@ -611,10 +700,10 @@ export default function Navbar() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                Get a Quote
+                Get in Touch
               </button>
             </li>
           </ul>
@@ -623,13 +712,13 @@ export default function Navbar() {
 
       {/* Quote Popup Modal */}
       {isQuoteOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4  mt-96 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div
             ref={quoteRef}
             className="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 animate-popIn overflow-hidden"
           >
             {/* Modal Header */}
-            <div className="flex justify-between items-center p-6   border-b border-gray-200">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
               <div>
                 <h3 className="text-2xl font-bold text-gray-800">
                   Request a Quote

@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const bearingProducts = [
   {
@@ -116,234 +116,160 @@ const bearingProducts = [
   },
 ];
 
-const ProductSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState("right");
-  const [visibleItems, setVisibleItems] = useState(2);
+export default function ProductSlider() {
   const sliderRef = useRef(null);
+  const containerRef = useRef(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const cardWidth = 320;
+  const cardGap = 24;
 
+  // Calculate number of cards based on container width
   useEffect(() => {
-    const updateVisibleItems = () => {
-      if (window.innerWidth < 768) {
-        setVisibleItems(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleItems(1);
-      } else {
-        setVisibleItems(2);
+    const updateVisibleCards = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const newVisibleCards = Math.max(
+          1,
+          Math.floor(containerWidth / (cardWidth + cardGap))
+        );
+        setVisibleCards(Math.min(newVisibleCards, bearingProducts.length));
       }
     };
 
-    updateVisibleItems();
-    window.addEventListener("resize", updateVisibleItems);
-    return () => window.removeEventListener("resize", updateVisibleItems);
+    updateVisibleCards();
+    window.addEventListener("resize", updateVisibleCards);
+    return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
-  const navigateToProduct = (link) => {
-    window.location.href = link;
-  };
+  const totalGroups = Math.ceil(bearingProducts.length / visibleCards);
 
-  const goToNext = () => {
-    setDirection("right");
-    setCurrentIndex((prev) => (prev + visibleItems) % bearingProducts.length);
-  };
-
-  const goToPrev = () => {
-    setDirection("left");
-    setCurrentIndex(
-      (prev) =>
-        (prev - visibleItems + bearingProducts.length) % bearingProducts.length
-    );
-  };
-
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction === "right" ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-    exit: (direction) => ({
-      x: direction === "right" ? "-100%" : "100%",
-      opacity: 0,
-      transition: { duration: 0.3 },
-    }),
-  };
-
-  const getCurrentProducts = () => {
-    const products = [];
-    for (let i = 0; i < visibleItems; i++) {
-      const index = (currentIndex + i) % bearingProducts.length;
-      products.push(bearingProducts[index]);
+  const scrollTo = (index) => {
+    if (sliderRef.current) {
+      const scrollAmount = index * (cardWidth + cardGap) * visibleCards;
+      sliderRef.current.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+      setCurrentIndex(index);
     }
-    return products;
   };
 
-  const ProductCard = ({ product }) => (
-    <div
-      className="bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl w-full h-full min-h-[450px] max-h-[550px] md:min-h-[500px] md:max-h-[600px] cursor-pointer overflow-hidden group transition-all duration-300 flex flex-col mx-auto"
-      onClick={() => navigateToProduct(product.link)}
-    >
-      <div className="w-full h-40 sm:h-48 md:h-56 bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden flex-shrink-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-600/10 to-green-800/10"></div>
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300"></div>
+  const scroll = (direction) => {
+    const newIndex =
+      direction === "left"
+        ? (currentIndex - 1 + totalGroups) % totalGroups
+        : (currentIndex + 1) % totalGroups;
+    scrollTo(newIndex);
+  };
 
-        <div className="absolute top-3 left-3 bg-gradient-to-r from-green-600 to-green-700 text-white px-2 py-1 rounded-full text-[10px] xs:text-xs font-semibold shadow-md">
-          {product.id.split("-").join(" ").toUpperCase()}
-        </div>
+  // Auto-scroll effect
+  useEffect(() => {
+    if (totalGroups <= 1) return; // Don't auto-scroll if all cards fit
 
-        <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-green-700 px-2 py-1 rounded-full text-[10px] xs:text-xs font-medium shadow-sm">
-          Premium Grade
-        </div>
-      </div>
+    const interval = setInterval(() => {
+      if (!isHovering) {
+        scroll("right");
+      }
+    }, 3000);
 
-      <div className="w-full p-4 sm:p-5 md:p-6 flex flex-col flex-grow bg-gradient-to-br from-white to-gray-50">
-        <h3 className="text-lg sm:text-lg md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight">
-          {product.name}
-        </h3>
-
-        <p className="text-gray-600 text-lg sm:text-base mb-3 sm:mb-4 leading-relaxed">
-          {product.description}
-        </p>
-
-        <div className="mt-auto pt-3 sm:pt-4">
-          <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-gray-50 rounded-lg md:rounded-xl border border-gray-200 text-xs sm:text-lg">
-            <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 flex items-center">
-              <div className="w-2 h-2 bg-green-600 rounded-full mr-2 sm:mr-3"></div>
-              Applications
-            </h4>
-            <p className="text-gray-600">{product.applications}</p>
-          </div>
-
-          <button
-            className="w-full py-2 px-1 sm:px-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold rounded-lg md:rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-lg"
-            onClick={(e) => {
-              e.stopPropagation();
-              navigateToProduct(product.link);
-            }}
-          >
-            View Detailed Specifications
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    return () => clearInterval(interval);
+  }, [currentIndex, isHovering, totalGroups]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 sm:py-10 md:py-12 px-4 sm:px-6">
-      <div className="relative w-full max-w-7xl mx-auto" ref={sliderRef}>
-        <div className="text-center mb-6 sm:mb-8 px-2">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
-            Premium Bearing Solutions
-          </h1>
-          <p className="text-lg xs:text-base sm:text-lg md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 sm:mb-6">
-            Discover our comprehensive range of high-quality bearings engineered
-            for industrial excellence
-          </p>
-        </div>
+    <div
+      ref={containerRef}
+      className="relative py-12 px-4 max-w-7xl mx-auto"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <h2 className="text-3xl font-bold text-center mb-10 text-gray-600">
+        Our Bearing Products
+      </h2>
 
-        <div className="relative w-full h-auto min-h-[450px] sm:min-h-[500px] md:min-h-[550px] overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl">
-          <AnimatePresence custom={direction} initial={false}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-6"
-            >
-              <div
-                className={`grid ${
-                  visibleItems === 1
-                    ? "grid-cols-1"
-                    : "grid-cols-1 md:grid-cols-2"
-                } gap-3 sm:gap-4 md:gap-6 w-full max-w-6xl mx-auto`}
-              >
-                {getCurrentProducts().map((product, index) => (
-                  <div
-                    key={`${product.id}-${index}`}
-                    className="w-full h-full px-1 sm:px-2"
-                  >
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* Navigation Arrows */}
+      {totalGroups > 1 && (
+        <>
+          <button
+            onClick={() => scroll("left")}
+            className={`absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-gray-100 p-3 rounded-full shadow-md hover:bg-gray-400 transition-all ${
+              isHovering ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            }`}
+            aria-label="Previous products"
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-700" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className={`absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-gray-100 p-3 rounded-full shadow-md hover:bg-gray-400 transition-all ${
+              isHovering ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            }`}
+            aria-label="Next products"
+          >
+            <ChevronRight className="w-6 h-6 text-gray-600" />
+          </button>
+        </>
+      )}
 
-        {/* Navigation Controls */}
-        {bearingProducts.length > visibleItems && (
-          <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2 sm:px-3 md:px-4">
-            <button
-              onClick={goToPrev}
-              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/95 backdrop-blur-sm shadow-md sm:shadow-lg flex items-center justify-center text-gray-700 hover:text-green-600 hover:bg-white transition-all duration-300 pointer-events-auto group border border-gray-200"
-              aria-label="Previous products"
+      {/* Products Slider */}
+      <div
+        ref={sliderRef}
+        className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory"
+      >
+        {bearingProducts.map((product) => (
+          <div
+            key={product.id}
+            className="flex-shrink-0 w-[300px] md:w-[320px] bg-gray-100 rounded-xl border border-gray-300 p-6 shadow-sm hover:shadow-md transition-shadow duration-300 snap-start"
+          >
+            <div className="h-48 w-full flex items-center justify-center mb-5">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-full w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-gray-600">
+              {product.name}
+            </h3>
+            <p className="text-gray-600 mb-4">{product.description}</p>
+            <ul className="text-sm list-disc list-inside mb-4 space-y-1 text-gray-700">
+              {product.features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+            <p className="text-sm text-gray-500 italic mb-5">
+              <span className="font-medium">Applications:</span>{" "}
+              {product.applications}
+            </p>
+            <a
+              href={product.link}
+              className="inline-block px-5 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
             >
-              <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/95 backdrop-blur-sm shadow-md sm:shadow-lg flex items-center justify-center text-gray-700 hover:text-green-600 hover:bg-white transition-all duration-300 pointer-events-auto group border border-gray-200"
-              aria-label="Next products"
-            >
-              <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+              View Details
+            </a>
           </div>
-        )}
-
-        {/* Product Counter */}
-        <div className="flex justify-center mt-4 sm:mt-5 md:mt-6">
-          <div className="bg-white/90 backdrop-blur-sm px-3 py-1 sm:px-4 sm:py-2 rounded-full shadow-sm sm:shadow-md border border-gray-200">
-            <span className="text-xs sm:text-lg text-gray-600">
-              <span className="font-semibold text-green-600">
-                {currentIndex + 1}-
-                {Math.min(currentIndex + visibleItems, bearingProducts.length)}
-              </span>
-              <span className="mx-1">of</span>
-              <span className="font-semibold text-gray-800">
-                {bearingProducts.length}
-              </span>
-            </span>
-          </div>
-        </div>
+        ))}
       </div>
+
+      {/* Pagination Dots */}
+      {totalGroups > 1 && (
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: totalGroups }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollTo(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                currentIndex === index
+                  ? "bg-blue-600 w-6"
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
-};
-
-export default ProductSlider;
+}

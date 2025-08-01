@@ -1,127 +1,78 @@
 import React, { useState, useEffect } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar,
-  Clock,
-  ArrowRight,
-  User,
-  Tag,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Blogs = () => {
+const NewsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
-  const blogs = [
+  const newsItems = [
     {
       id: 1,
-      title: "Engineering Reliability: The Core of Our Bearing Solutions",
+      title: "SRO Bearings to publish Q2 financial results on 22 July",
+      date: "2025-07-10",
+      location: "Mumbai",
       excerpt:
-        "Discover how SRO Bearings designs reliability into every product — ensuring long-lasting performance for critical industrial applications.",
-      image: `https://picsum.photos/seed/reliability1/400/250`,
-      author: "SRO Bearings",
-      date: "2025-07-01",
-      readTime: "3 min read",
-      category: "Product Engineering",
-      tags: ["Reliability", "Engineering", "Industrial Bearings"],
+        "SRO Bearings will announce its Q2 2025 financial results on 22 July at 09:00 (IST). The report will be followed by an investor conference call.",
+      category: "Financial Report",
+      image: "https://source.unsplash.com/random/600x400/?bearing,industry",
     },
     {
       id: 2,
-      title: "Supplying the World: How SRO Bearings Serves Global Markets",
+      title:
+        "SRO Bearings partners with renewable energy leaders for wind turbine solutions",
+      date: "2025-07-05",
+      location: "Pune",
       excerpt:
-        "With a robust supply chain and strong distribution network, SRO Bearings proudly serves industries across 30+ countries.",
-      image: `https://picsum.photos/seed/global2/400/250`,
-      author: "SRO Bearings",
-      date: "2025-06-25",
-      readTime: "3 min read",
-      category: "Global Outreach",
-      tags: ["International Trade", "Logistics", "Global Presence"],
+        "SRO Bearings has entered a strategic partnership with GreenPower Tech to develop specialized bearings for next-generation wind turbines.",
+      category: "Partnership",
+      image: "https://source.unsplash.com/random/600x400/?wind,turbine",
     },
     {
       id: 3,
-      title: "How Quality Bearings Reduce Downtime and Save Costs",
+      title:
+        "SRO Bearings expands manufacturing capacity with new Gujarat plant",
+      date: "2025-06-28",
+      location: "Ahmedabad",
       excerpt:
-        "Unplanned breakdowns cost industries millions. Learn how our precision bearings enhance uptime and boost operational efficiency.",
-      image: `https://picsum.photos/seed/uptime3/400/250`,
-      author: "SRO Bearings",
-      date: "2025-06-20",
-      readTime: "3 min read",
-      category: "Cost Efficiency",
-      tags: ["Downtime Reduction", "ROI", "Performance"],
+        "The new 50,000 sqm facility will produce high-precision bearings for automotive and aerospace industries, creating 300+ jobs.",
+      category: "Expansion",
+      image:
+        "https://source.unsplash.com/random/600x400/?factory,manufacturing",
     },
     {
       id: 4,
-      title: "Smart Selection: Choosing the Right Bearings for Your Industry",
-      excerpt:
-        "Not all bearings are created equal. This guide walks you through selecting the best-fit bearing types based on your sector and application.",
-      image: `https://picsum.photos/seed/selection4/400/250`,
-      author: "SRO Bearings",
+      title:
+        "SRO Bearings awarded 'Supplier of the Year' by major automotive OEM",
       date: "2025-06-15",
-      readTime: "4 min read",
-      category: "Application Guide",
-      tags: ["Bearing Types", "Selection Guide", "Industry Fit"],
+      location: "Chennai",
+      excerpt:
+        "Recognized for exceptional quality and delivery performance in supplying bearings for electric vehicle platforms.",
+      category: "Award",
+      image: "https://source.unsplash.com/random/600x400/?award,automotive",
     },
     {
       id: 5,
-      title: "Inside SRO: What Drives Our Commitment to Excellence",
+      title:
+        "SRO Bearings launches sustainability initiative with 2030 carbon neutrality target",
+      date: "2025-06-08",
+      location: "Bangalore",
       excerpt:
-        "Go behind the scenes to understand the values, technology, and expertise that drive SRO Bearings’ mission to serve global industries.",
-      image: `https://picsum.photos/seed/company5/400/250`,
-      author: "SRO Bearings",
-      date: "2025-06-10",
-      readTime: "3 min read",
-      category: "Company Culture",
-      tags: ["SRO Bearings", "Our Mission", "Excellence"],
+        "New program includes renewable energy investments, waste reduction, and eco-friendly bearing lubricants.",
+      category: "Sustainability",
+      image: "https://source.unsplash.com/random/600x400/?sustainability,green",
     },
     {
       id: 6,
-      title: "The Role of Bearings in the Future of Green Manufacturing",
-      excerpt:
-        "As industries adopt greener practices, discover how SRO Bearings supports sustainable operations through efficiency-driven components.",
-      image: `https://picsum.photos/seed/green6/400/250`,
-      author: "SRO Bearings",
-      date: "2025-06-05",
-      readTime: "3 min read",
-      category: "Sustainability",
-      tags: ["Green Industry", "Sustainability", "Efficiency"],
-    },
-    {
-      id: 7,
-      title: "Precision Matters: The Science Behind Our Bearings",
-      excerpt:
-        "Learn about the cutting-edge engineering and quality assurance practices that ensure every SRO bearing performs with precision.",
-      image: `https://picsum.photos/seed/precision7/400/250`,
-      author: "SRO Bearings",
-      date: "2025-06-01",
-      readTime: "3 min read",
-      category: "R&D Focus",
-      tags: ["Precision", "Engineering", "Testing"],
-    },
-    {
-      id: 8,
-      title: "Industries We Power: A Look at Our Diverse Applications",
-      excerpt:
-        "From steel plants to renewable energy, explore how our bearing solutions support critical functions across varied industrial ecosystems.",
-      image: `https://picsum.photos/seed/industries8/400/250`,
-      author: "SRO Bearings",
+      title:
+        "SRO Bearings introduces breakthrough high-temperature bearing technology",
       date: "2025-05-25",
-      readTime: "3 min read",
-      category: "Client Industries",
-      tags: ["Steel", "Energy", "Heavy Machinery"],
-    },
-    {
-      id: 9,
-      title: "Partnering for Progress: Collaborating with OEMs Worldwide",
+      location: "Hyderabad",
       excerpt:
-        "We work closely with Original Equipment Manufacturers to develop and deliver bearings that meet their precise technical requirements.",
-      image: `https://picsum.photos/seed/oem9/400/250`,
-      author: "SRO Bearings",
-      date: "2025-05-20",
-      readTime: "3 min read",
-      category: "OEM Partnerships",
-      tags: ["OEMs", "Collaboration", "Engineering Services"],
+        "New ceramic hybrid bearings withstand extreme conditions in metal processing and energy applications.",
+      category: "Innovation",
+      image:
+        "https://source.unsplash.com/random/600x400/?technology,engineering",
     },
   ];
 
@@ -140,7 +91,7 @@ const Blogs = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const totalSlides = Math.ceil(blogs.length / cardsPerSlide);
+  const totalSlides = Math.ceil(newsItems.length / cardsPerSlide);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
@@ -168,31 +119,24 @@ const Blogs = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      Technology: "bg-blue-100 text-blue-800",
-      "AI & Machine Learning": "bg-purple-100 text-purple-800",
-      Design: "bg-pink-100 text-pink-800",
-      "Cloud Technology": "bg-indigo-100 text-indigo-800",
-      Security: "bg-red-100 text-red-800",
-      "Web Development": "bg-green-100 text-green-800",
-      "Data Science": "bg-yellow-100 text-yellow-800",
-      Blockchain: "bg-orange-100 text-orange-800",
-      DevOps: "bg-gray-100 text-gray-800",
+      "Financial Report": "bg-blue-100 text-blue-800",
+      Partnership: "bg-purple-100 text-purple-800",
+      Expansion: "bg-green-100 text-green-800",
+      Award: "bg-yellow-100 text-yellow-800",
+      Sustainability: "bg-emerald-100 text-emerald-800",
+      Innovation: "bg-red-100 text-red-800",
     };
     return colors[category] || "bg-gray-100 text-gray-800";
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Latest Insights & Articles
+    <section className="py-12 bg-gray-100">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Latest News from SRO Bearings
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Stay updated with the latest trends, tips, and insights from our
-            expert team
-          </p>
-          <div className="mt-8 h-1 w-20 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto rounded-full"></div>
+          <div className="h-1 w-16 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
         <div
@@ -203,16 +147,16 @@ const Blogs = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10 border border-gray-200"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10 border border-gray-200"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10 border border-gray-200"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl z-10 border border-gray-200"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
 
           {/* Carousel Content */}
@@ -224,7 +168,7 @@ const Blogs = () => {
               {Array.from({ length: totalSlides }, (_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
                   <div
-                    className={`grid gap-8 px-4 ${
+                    className={`grid gap-6 px-4 ${
                       cardsPerSlide === 1
                         ? "grid-cols-1"
                         : cardsPerSlide === 2
@@ -232,71 +176,54 @@ const Blogs = () => {
                         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                     }`}
                   >
-                    {blogs
+                    {newsItems
                       .slice(
                         slideIndex * cardsPerSlide,
                         (slideIndex + 1) * cardsPerSlide
                       )
-                      .map((blog) => (
+                      .map((news) => (
                         <article
-                          key={blog.id}
-                          className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-green-200 group cursor-pointer"
+                          key={news.id}
+                          className="bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer"
                         >
-                          <div className="relative overflow-hidden">
+                          <div className="h-48 overflow-hidden">
                             <img
-                              src={blog.image}
-                              alt={blog.title}
-                              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                              src={news.image}
+                              alt={news.title}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                             />
-                            <div className="absolute top-4 left-4">
+                          </div>
+                          <div className="p-6">
+                            <div className="flex justify-between items-start mb-3">
+                              <span className="text-sm font-medium text-gray-500">
+                                Press release
+                              </span>
+                              <span className="text-sm text-gray-500">
+                                {formatDate(news.date)}
+                              </span>
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                              {news.title}
+                            </h3>
+                            <p className="text-sm text-gray-500 mb-2">
+                              {news.location}, {formatDate(news.date)}
+                            </p>
+                            <p className="text-gray-700 mb-4 line-clamp-3">
+                              {news.excerpt}
+                            </p>
+                            <div className="flex justify-between items-center">
                               <span
                                 className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(
-                                  blog.category
+                                  news.category
                                 )}`}
                               >
-                                {blog.category}
+                                {news.category}
                               </span>
+                              <button className="text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">
+                                Read more →
+                              </button>
                             </div>
                           </div>
-
-                          <div className="p-6">
-                            <div className="flex items-center text-sm text-gray-500 mb-3 flex-wrap gap-x-3 gap-y-1">
-                              <span className="flex items-center gap-1">
-                                <User className="w-4 h-4" />
-                                {blog.author}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                {formatDate(blog.date)}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-4 h-4" />
-                                {blog.readTime}
-                              </span>
-                            </div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
-                              {blog.title}
-                            </h3>
-                            <p className="text-gray-600 mb-4 line-clamp-3">
-                              {blog.excerpt}
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              {blog.tags.slice(0, 3).map((tag, index) => (
-                                <span
-                                  key={index}
-                                  className="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
-                                >
-                                  <Tag className="w-3 h-3 mr-1" />
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="flex items-center text-green-600 font-semibold group-hover:text-green-700 transition-colors">
-                              <span className="mr-2">Read More</span>
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </div>
-                          <div className="absolute inset-0 border-2 border-transparent group-hover:border-green-500 rounded-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
                         </article>
                       ))}
                   </div>
@@ -307,22 +234,28 @@ const Blogs = () => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center mt-12 space-x-2">
+        <div className="flex justify-center mt-8 space-x-2">
           {Array.from({ length: totalSlides }, (_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-green-500 w-8"
-                  : "bg-gray-300 hover:bg-gray-400 w-3"
+                  ? "bg-blue-600 w-6"
+                  : "bg-gray-300 hover:bg-gray-400 w-2"
               }`}
             />
           ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <button className="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800 transition-colors">
+            View all press releases
+          </button>
         </div>
       </div>
     </section>
   );
 };
 
-export default Blogs;
+export default NewsSlider;

@@ -15,7 +15,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-400 via-gray-600 to-gray-700 text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br bg-gray-100 text-gray-600 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -31,10 +31,10 @@ export default function Footer() {
       <div className="relative z-10 container mx-auto px-6 py-16">
         {/* Top Section with Brand */}
         <div className="text-center mb-12 pb-8 border-b border-gray-700">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-700  bg-clip-text text-transparent">
             SRO Bearings
           </h2>
-          <p className="text-white text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
             Leading provider of premium bearings and mechanical components,
             delivering excellence across industries with unwavering quality and
             innovation.
@@ -47,11 +47,11 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                <Info className="text-white w-4 h-4" />
+                <Info className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-white">About Us</h3>
+              <h3 className="text-xl font-semibold text-gray-600">About Us</h3>
             </div>
-            <p className="text-white leading-relaxed text-sm">
+            <p className="text-gray-600 leading-relaxed text-sm">
               At SRO, we understand the critical role bearings play in ensuring
               seamless operations across various industries with our unwavering
               focus on quality.
@@ -69,9 +69,11 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                <LinkIcon className="text-white w-4 h-4" />
+                <LinkIcon className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Quick Links</h3>
+              <h3 className="text-xl font-semibold text-gray-600">
+                Quick Links
+              </h3>
             </div>
             <nav className="space-y-2">
               {[
@@ -85,7 +87,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-white hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {link.name}
@@ -98,9 +100,11 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                <Settings className="text-white w-4 h-4" />
+                <Settings className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Our Products</h3>
+              <h3 className="text-xl font-semibold text-gray-600">
+                Our Products
+              </h3>
             </div>
             <nav className="space-y-2 ">
               {[
@@ -118,7 +122,7 @@ export default function Footer() {
                     .toLowerCase()
                     .replace(/\s+/g, "-")
                     .replace(/[^a-z-]/g, "")}`}
-                  className="block text-white hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {product}
@@ -131,17 +135,19 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                <Mail className="text-white w-4 h-4" />
+                <Mail className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Get In Touch</h3>
+              <h3 className="text-xl font-semibold text-gray-600">
+                Get In Touch
+              </h3>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3 group">
-                <div className="mt-1 text-white group-hover:text-green-300 transition-colors">
+                <div className="mt-1 text-gray-600 group-hover:text-green-300 transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <p className="text-white text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   1st Floor, 3856/5, Shradhanand Marg,
                   <br />
                   Shah Ganj, Chandni Chowk,
@@ -151,12 +157,12 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-3 group">
-                <div className="text-white group-hover:text-green-300 transition-colors">
+                <div className="text-gray-600 group-hover:text-green-300 transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
                 <a
                   href="tel:+919873334405"
-                  className="text-white hover:text-green-400 transition-colors text-sm"
+                  className="text-gray-600 hover:text-green-400 transition-colors text-sm"
                 >
                   +91 - 9873334405
                 </a>
@@ -164,12 +170,12 @@ export default function Footer() {
 
               <div className="space-y-2">
                 <div className="flex items-center space-x-3 group">
-                  <div className="text-white group-hover:text-green-300 transition-colors">
+                  <div className="text-gray-600 group-hover:text-green-300 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   <a
                     href="mailto:srobearings@outlook.com"
-                    className="text-white hover:text-green-400 transition-colors text-sm"
+                    className="text-gray-600 hover:text-green-400 transition-colors text-sm"
                   >
                     srobearings@outlook.com
                   </a>
@@ -177,7 +183,7 @@ export default function Footer() {
                 <div className="flex items-center space-x-3 group ml-6">
                   <a
                     href="mailto:info@srobearings.com"
-                    className="text-white hover:text-green-400 transition-colors text-sm"
+                    className="text-gray-600 hover:text-green-400 transition-colors text-sm"
                   >
                     info@srobearings.com
                   </a>
@@ -189,14 +195,16 @@ export default function Footer() {
 
         {/* Social Links */}
         <div className="text-center mb-8">
-          <h4 className="text-lg font-semibold mb-4 text-white">Follow Us</h4>
+          <h4 className="text-lg font-semibold mb-4 text-gray-600">
+            Follow Us
+          </h4>
           <div className="flex justify-center space-x-4">
             {[
               {
                 icon: Facebook,
                 href: "https://www.facebook.com/profile.php?id=61578079778501",
               },
-              // { icon: Twitter, href: "#" },
+
               {
                 icon: Linkedin,
                 href: "https://www.linkedin.com/company/srobharat/?originalSubdomain=io",
@@ -206,7 +214,7 @@ export default function Footer() {
               <a
                 key={index}
                 href={social.href}
-                className="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-green-400 hover:to-emerald-500 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-green-400 hover:to-emerald-500 rounded-full flex items-center justify-center text-gray-300 hover:text-gray-600 transition-all duration-300 hover:scale-110"
               >
                 <social.icon className="w-5 h-5" />
               </a>
@@ -216,10 +224,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 bg-gray-800 border-t border-gray-700">
+      <div className="relative z-10 bg-gray-100 border-t border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-600 text-sm">
               © {new Date().getFullYear()} SRO Bearing. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">

@@ -3,34 +3,55 @@ import Link from "next/link";
 
 const HeroVideoSection = () => {
   const videoRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-
-  // Sample video data
-  const videoSources = [
-    "/video/newsro.mp4",
-    "https://www.shutterstock.com/shutterstock/videos/3717573081/preview/stock-footage-ball-bearings-falling-and-fill-the-screen-d-animation-on-transparent-background.webm",
-    "https://www.shutterstock.com/shutterstock/videos/1022446408/preview/stock-footage--d-animation-of-disintegration-and-connection-of-the-ball-bearing-alpha-channel-available.webm",
-  ];
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [autoplayError, setAutoplayError] = useState(false);
+
+  const videoSources = [
+    "https://media.istockphoto.com/id/2197564114/video/autonomous-electronics-factory-with-precision-robotic-arms-at-work-facility-operating-with.mp4?s=mp4-640x640-is&k=20&c=OivWM0YfBd95EjvQ4qGnbNesxD4BXINhrnG7JSxP2l4=",
+    "/video/newsro.mp4",
+    "https://media.istockphoto.com/id/472912587/video/coal-mining-in-an-open-pit.mp4?s=mp4-640x640-is&k=20&c=yOhMm4pP9R-uNITxYjHjl23izeehhpvHfSr8TeU54h4=",
+    "https://media.istockphoto.com/id/1454586681/video/chief-engineer-using-laptop-computer-analyzing-and-researching-how-a-futuristic-turbofan.mp4?s=mp4-640x640-is&k=20&c=gb0XdnDBVpiOMHc8bn034z8N3aYCEIvZNM0XIa297F4=",
+  ];
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const video = videoRef.current;
     if (video) {
-      isPlaying ? video.play() : video.pause();
+      const playPromise = isPlaying ? video.play() : video.pause();
+
+      if (isPlaying && playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Autoplay prevented:", error);
+          setAutoplayError(true);
+          setIsPlaying(false);
+        });
+      }
     }
-  }, [isPlaying]);
+  }, [isPlaying, currentVideo, isClient]);
 
-  const togglePlay = () => setIsPlaying(!isPlaying);
-  const toggleMute = () => setIsMuted(!isMuted);
-
-  const changeVideo = () => {
-    setCurrentVideo((prev) => (prev + 1) % videoSources.length);
-    setIsPlaying(true);
+  const togglePlay = () => {
+    if (autoplayError) setAutoplayError(false);
+    setIsPlaying(!isPlaying);
   };
 
+  const toggleMute = () => setIsMuted(!isMuted);
+  const changeVideo = () => {
+    setCurrentVideo((prev) => (prev + 1) % videoSources.length);
+    if (autoplayError) setAutoplayError(false);
+  };
+
+  if (!isClient) return null;
+
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden font-futuristic">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -41,42 +62,72 @@ const HeroVideoSection = () => {
           loop
           className="w-full h-full object-cover"
           onClick={togglePlay}
+          playsInline
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
+
+        {/* Fallback play button when autoplay fails */}
+        {autoplayError && (
+          <button
+            onClick={togglePlay}
+            className="absolute inset-0 z-20 flex items-center justify-center w-full h-full"
+          >
+            <div className="bg-black/50 hover:bg-black/70 rounded-full p-4 transition-all">
+              <svg
+                className="h-16 w-16 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                />
+              </svg>
+            </div>
+          </button>
+        )}
       </div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-6 lg:px-8 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">
-            SRO Bharat
+      {/* Text Content Layout */}
+      <div className="absolute inset-0 z-10 text-white">
+        {/* Top-Right Corner Text */}
+        <div className="absolute top-[100px] right-6 md:right-12 text-right space-y-2">
+          <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
+            STONE
           </h1>
-          <h2 className="text-xl md:text-3xl font-semibold mb-4 animate-fade-in-up delay-100">
-            Powering Industries with Bearings Since 19**
-          </h2>
-          <p className="text-base md:text-lg mb-6 animate-fade-in-up delay-200 leading-relaxed">
-            With over 40 years of industry excellence, SRO Bharat is a trusted
-            name in high-performance bearings and industrial solutions. We cater
-            to Steel, Automotive, Mining, Sugar, and more—ensuring reliability
-            and efficiency at every level.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-300">
-            <Link href="/products">
-              <button className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-medium transition-colors shadow-md">
-                Explore Our Bearings
-              </button>
-            </Link>
+          <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
+            CRUSHER
+          </h1>
+        </div>
 
-            <Link href="/contact">
-              <button className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium backdrop-blur-sm transition-colors border border-white/20 shadow-md">
-                Talk to Our Experts
-              </button>
+        {/* Bottom-Left Corner Text */}
+        <div className="absolute bottom-10 left-6 md:left-12 text-left space-y-2">
+          <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
+            WIND
+          </h1>
+          <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
+            MILLS
+          </h1>
+
+          {/* Optional CTA under bottom-left text */}
+          <div className="mt-4">
+            <p className="mb-2 text-sm md:text-base text-white/90">
+              Innovative machinery and clean energy solutions
+            </p>
+            <Link
+              href="#"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded transition"
+            >
+              Explore More
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Video Controls */}
+      {/* Controls */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex items-center gap-4 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
         <button
           onClick={togglePlay}
@@ -85,7 +136,6 @@ const HeroVideoSection = () => {
         >
           {isPlaying ? (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
@@ -100,7 +150,6 @@ const HeroVideoSection = () => {
             </svg>
           ) : (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
@@ -129,7 +178,6 @@ const HeroVideoSection = () => {
         >
           {isMuted ? (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
@@ -140,7 +188,6 @@ const HeroVideoSection = () => {
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                clipRule="evenodd"
               />
               <path
                 strokeLinecap="round"
@@ -151,7 +198,6 @@ const HeroVideoSection = () => {
             </svg>
           ) : (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
@@ -170,10 +216,9 @@ const HeroVideoSection = () => {
         <button
           onClick={changeVideo}
           className="text-white hover:text-green-400 transition-colors flex items-center gap-1"
-          aria-label="Change video"
+          aria-label="Next video"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
             fill="none"
             viewBox="0 0 24 24"
@@ -186,7 +231,7 @@ const HeroVideoSection = () => {
               d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
             />
           </svg>
-          <span>Next Video</span>
+          <span className="tracking-wide text-sm">NEXT VIDEO</span>
         </button>
       </div>
     </section>
