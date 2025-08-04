@@ -157,7 +157,7 @@ export default function Navbar() {
       <nav
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-gradient-to-r from-white to-green-950 text-white shadow-md backdrop-blur-md bg-opacity-95"
+            ? "bg-gradient-to-r from-white to-gray-600 text-white shadow-md backdrop-blur-md bg-opacity-95"
             : "bg-transparent text-white"
         }`}
       >

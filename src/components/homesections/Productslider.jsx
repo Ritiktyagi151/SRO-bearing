@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const bearingProducts = [
   {
@@ -116,160 +116,125 @@ const bearingProducts = [
   },
 ];
 
-export default function ProductSlider() {
-  const sliderRef = useRef(null);
-  const containerRef = useRef(null);
-  const [isHovering, setIsHovering] = useState(false);
+export default function BearingGrid() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(3);
-  const cardWidth = 320;
-  const cardGap = 24;
+  const [isHovering, setIsHovering] = useState(false);
+  const [visibleItems, setVisibleItems] = useState(3);
+  const sliderRef = useRef(null);
+  const autoSlideInterval = useRef(null);
 
-  // Calculate number of cards based on container width
+  // Handle responsive visible items
   useEffect(() => {
-    const updateVisibleCards = () => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const newVisibleCards = Math.max(
-          1,
-          Math.floor(containerWidth / (cardWidth + cardGap))
-        );
-        setVisibleCards(Math.min(newVisibleCards, bearingProducts.length));
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleItems(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleItems(2);
+      } else {
+        setVisibleItems(3);
       }
     };
 
-    updateVisibleCards();
-    window.addEventListener("resize", updateVisibleCards);
-    return () => window.removeEventListener("resize", updateVisibleCards);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const totalGroups = Math.ceil(bearingProducts.length / visibleCards);
-
-  const scrollTo = (index) => {
-    if (sliderRef.current) {
-      const scrollAmount = index * (cardWidth + cardGap) * visibleCards;
-      sliderRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-      setCurrentIndex(index);
-    }
-  };
-
-  const scroll = (direction) => {
-    const newIndex =
-      direction === "left"
-        ? (currentIndex - 1 + totalGroups) % totalGroups
-        : (currentIndex + 1) % totalGroups;
-    scrollTo(newIndex);
-  };
-
-  // Auto-scroll effect
+  // Auto slide functionality
   useEffect(() => {
-    if (totalGroups <= 1) return; // Don't auto-scroll if all cards fit
+    if (!isHovering) {
+      autoSlideInterval.current = setInterval(() => {
+        setCurrentIndex(
+          (prev) => (prev + 1) % (bearingProducts.length - visibleItems + 1)
+        );
+      }, 3000);
+    } else {
+      clearInterval(autoSlideInterval.current);
+    }
 
-    const interval = setInterval(() => {
-      if (!isHovering) {
-        scroll("right");
-      }
-    }, 3000);
+    return () => clearInterval(autoSlideInterval.current);
+  }, [isHovering, visibleItems]);
 
-    return () => clearInterval(interval);
-  }, [currentIndex, isHovering, totalGroups]);
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      Math.min(prev + 1, bearingProducts.length - visibleItems)
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative py-12 px-4 max-w-7xl mx-auto"
+    <section
+      className="max-w-8xl mx-auto px-4 py-16 relative overflow-hidden bg-gray-100"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      ref={sliderRef}
     >
-      <h2 className="text-3xl font-bold text-center mb-10 text-gray-600">
-        Our Bearing Products
-      </h2>
-
-      {/* Navigation Arrows */}
-      {totalGroups > 1 && (
-        <>
-          <button
-            onClick={() => scroll("left")}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-gray-100 p-3 rounded-full shadow-md hover:bg-gray-400 transition-all ${
-              isHovering ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-            }`}
-            aria-label="Previous products"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-gray-100 p-3 rounded-full shadow-md hover:bg-gray-400 transition-all ${
-              isHovering ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-            }`}
-            aria-label="Next products"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
-        </>
-      )}
-
-      {/* Products Slider */}
-      <div
-        ref={sliderRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory"
-      >
-        {bearingProducts.map((product) => (
-          <div
-            key={product.id}
-            className="flex-shrink-0 w-[300px] md:w-[320px] bg-gray-100 rounded-xl border border-gray-300 p-6 shadow-sm hover:shadow-md transition-shadow duration-300 snap-start"
-          >
-            <div className="h-48 w-full flex items-center justify-center mb-5">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-full w-full object-contain"
-                loading="lazy"
-              />
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-gray-600">
-              {product.name}
-            </h3>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <ul className="text-sm list-disc list-inside mb-4 space-y-1 text-gray-700">
-              {product.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-            <p className="text-sm text-gray-500 italic mb-5">
-              <span className="font-medium">Applications:</span>{" "}
-              {product.applications}
-            </p>
-            <a
-              href={product.link}
-              className="inline-block px-5 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+      <div className="relative">
+        {/* Slider container */}
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * (100 / visibleItems)}%)`,
+          }}
+        >
+          {bearingProducts.map((product) => (
+            <div
+              key={product.id}
+              className="flex-shrink-0 px-4"
+              style={{ width: `${100 / visibleItems}%` }}
             >
-              View Details
-            </a>
-          </div>
-        ))}
-      </div>
-
-      {/* Pagination Dots */}
-      {totalGroups > 1 && (
-        <div className="flex justify-center gap-2 mt-8">
-          {Array.from({ length: totalGroups }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollTo(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                currentIndex === index
-                  ? "bg-blue-600 w-6"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+              <div className="flex flex-col items-center text-gray-700 h-full">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-44 mb-6 object-contain"
+                  loading="lazy"
+                />
+                <h3 className="text-2xl font-semibold text-gray-700 mb-4">
+                  {product.name}
+                </h3>
+                <p className="text-sm mb-4 px-2">{product.description}</p>
+                <a
+                  href={product.link}
+                  className="flex items-center text-green-600 font-medium hover:underline mt-auto"
+                >
+                  <ArrowRight className="mr-2 h-4 w-4" />
+                  Explore products
+                </a>
+              </div>
+            </div>
           ))}
         </div>
-      )}
-    </div>
+
+        {/* Navigation buttons */}
+        {isHovering && (
+          <>
+            <button
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 bg-gray-500 p-2 rounded-full shadow-md hover:bg-gray-600 transition ${
+                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              <ChevronLeft className="h-6 w-6 text-gray-200" />
+            </button>
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex >= bearingProducts.length - visibleItems}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 bg-gray-500 p-2 rounded-full shadow-md hover:bg-gray-600 transition ${
+                currentIndex >= bearingProducts.length - visibleItems
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
+            >
+              <ChevronRight className="h-6 w-6 text-gray-200" />
+            </button>
+          </>
+        )}
+      </div>
+    </section>
   );
 }

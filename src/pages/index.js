@@ -5,7 +5,7 @@ import IndustryApplications from "@/components/homesections/ResearchApplications
 import OurClient from "@/components/homesections/OurClient";
 import ProductSlider from "@/components/homesections/Productslider";
 import ExploreMore from "@/components/homesections/ExploreMoreSection";
-import Videoshowcase from "@/components/homesections/Videoshowcase";
+// import Videoshowcase from "@/components/homesections/Videoshowcase";
 import WhoWeAre from "@/components/homesections/WhoWeAre";
 import ThisIsUs from "@/components/homesections/ThisIsUs";
 
@@ -20,7 +20,7 @@ export default function Home() {
       <HeroVideoSection />
       <Homeabout />
       <ProductSlider />
-      <Videoshowcase />
+      {/* <Videoshowcase /> */}
       <WhoWeAre />
       <ThisIsUs />
       <IndustryApplications />

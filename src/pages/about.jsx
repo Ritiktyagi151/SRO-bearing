@@ -1,10 +1,13 @@
 import Head from "next/head";
-import Videosection from "@/components/homesections/Videosection";
+import AboutHomeSection from "@/components/AboutSection/AboutHomeSection";
 import Overviewsection from "@/components/AboutSection/Overviewsection";
 import Journeysection from "@/components/AboutSection/Journeysection";
 import ValuesMission from "@/components/AboutSection/ValuesMission";
-import QualityAssurance from "@/components/AboutSection/QualityAssurance";
-import Leadershipsection from "@/components/AboutSection/Leadershipsection";
+import Sustainability from "@/components/AboutSection/Sustainability";
+import Ourpurpose from "@/components/AboutSection/Ourpurpose";
+import CodeOfConduct from "@/components/AboutSection/CodeOfConduct";
+import ThisIsUS from "@/components/homesections/ThisIsUs";
+import ExploreMoreSection from "@/components/homesections/ExploreMoreSection";
 
 export default function About() {
   return (
@@ -12,12 +15,15 @@ export default function About() {
       <Head>
         <title>About | SRO bearing</title>
       </Head>
-      <Videosection />
+      <AboutHomeSection />
       <Overviewsection />
       <Journeysection />
       <ValuesMission />
-      <QualityAssurance />
-      <Leadershipsection />
+      <Sustainability />
+      <ThisIsUS />
+      <Ourpurpose />
+      <CodeOfConduct />
+      <ExploreMoreSection />
     </>
   );
 }

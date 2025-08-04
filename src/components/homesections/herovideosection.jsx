@@ -10,10 +10,10 @@ const HeroVideoSection = () => {
   const [autoplayError, setAutoplayError] = useState(false);
 
   const videoSources = [
-    "https://media.istockphoto.com/id/2197564114/video/autonomous-electronics-factory-with-precision-robotic-arms-at-work-facility-operating-with.mp4?s=mp4-640x640-is&k=20&c=OivWM0YfBd95EjvQ4qGnbNesxD4BXINhrnG7JSxP2l4=",
-    "/video/newsro.mp4",
-    "https://media.istockphoto.com/id/472912587/video/coal-mining-in-an-open-pit.mp4?s=mp4-640x640-is&k=20&c=yOhMm4pP9R-uNITxYjHjl23izeehhpvHfSr8TeU54h4=",
-    "https://media.istockphoto.com/id/1454586681/video/chief-engineer-using-laptop-computer-analyzing-and-researching-how-a-futuristic-turbofan.mp4?s=mp4-640x640-is&k=20&c=gb0XdnDBVpiOMHc8bn034z8N3aYCEIvZNM0XIa297F4=",
+    "https://videos.pexels.com/video-files/3802790/3802790-uhd_2560_1440_30fps.mp4",
+    "https://videos.pexels.com/video-files/20300376/20300376-hd_1920_1080_60fps.mp4",
+    "https://videos.pexels.com/video-files/5462676/5462676-uhd_2560_1440_30fps.mp4",
+    "https://videos.pexels.com/video-files/4198778/4198778-uhd_2560_1440_24fps.mp4",
   ];
 
   useEffect(() => {
@@ -96,20 +96,20 @@ const HeroVideoSection = () => {
         {/* Top-Right Corner Text */}
         <div className="absolute top-[100px] right-6 md:right-12 text-right space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            STONE
+            Paper
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            CRUSHER
+            INDUSTRIES
           </h1>
         </div>
 
         {/* Bottom-Left Corner Text */}
         <div className="absolute bottom-10 left-6 md:left-12 text-left space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            WIND
+            Steel
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            MILLS
+            INDUSTRIES
           </h1>
 
           {/* Optional CTA under bottom-left text */}
@@ -118,8 +118,8 @@ const HeroVideoSection = () => {
               Innovative machinery and clean energy solutions
             </p>
             <Link
-              href="#"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded transition"
+              href="/industries"
+              className="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-5 rounded transition"
             >
               Explore More
             </Link>

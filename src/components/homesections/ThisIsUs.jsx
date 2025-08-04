@@ -11,14 +11,14 @@ const AboutSection = () => {
           <img
             src="https://images.unsplash.com/photo-1718824331840-399943ff5c1e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
             alt="Team Member"
-            className="rounded-lg shadow-lg w-full h-auto object-cover"
+            className="rounded-lg shadow-lg w-full h-[80vh] object-cover"
           />
         </div>
 
         {/* Text content */}
         <div className="md:w-1/2">
           <p className="text-gray-500 text-sm mb-2">Get to Know Us</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-500 mb-6 leading-tight">
             People think we’re just a <br className="hidden md:block" />
             bearing company
           </h2>

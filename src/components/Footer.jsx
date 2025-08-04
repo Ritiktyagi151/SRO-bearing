@@ -29,18 +29,6 @@ export default function Footer() {
 
       {/* Main Footer Content */}
       <div className="relative z-10 container mx-auto px-6 py-16">
-        {/* Top Section with Brand */}
-        <div className="text-center mb-12 pb-8 border-b border-gray-700">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-700  bg-clip-text text-transparent">
-            SRO Bearings
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-            Leading provider of premium bearings and mechanical components,
-            delivering excellence across industries with unwavering quality and
-            innovation.
-          </p>
-        </div>
-
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -52,10 +40,16 @@ export default function Footer() {
               <h3 className="text-xl font-semibold text-gray-600">About Us</h3>
             </div>
             <p className="text-gray-600 leading-relaxed text-sm">
-              At SRO, we understand the critical role bearings play in ensuring
-              seamless operations across various industries with our unwavering
-              focus on quality.
+              SRO Bearings understands the critical role bearings play in
+              ensuring seamless operations across various industries with our
+              unwavering focus on quality.
             </p>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Our commitment to excellence drives us to deliver high-performance
+              bearings that meet the diverse needs of our clients, ensuring
+              reliability and efficiency in every application.
+            </p>
+
             <Link
               href="/about"
               className="inline-flex items-center text-green-400 hover:text-green-300 font-medium text-sm transition-all duration-300 group"
@@ -80,6 +74,7 @@ export default function Footer() {
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
                 { name: "Industries", href: "/industries" },
+                { name: "Services", href: "/services" },
                 { name: "Gallery", href: "/gallery" },
                 { name: "Blogs", href: "/blogs" },
                 { name: "Contact", href: "/contact" },
@@ -180,9 +175,12 @@ export default function Footer() {
                     srobearings@outlook.com
                   </a>
                 </div>
-                <div className="flex items-center space-x-3 group ml-6">
+                <div className="flex items-center space-x-3 group">
+                  <div className="text-gray-600 group-hover:text-green-300 transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </div>
                   <a
-                    href="mailto:info@srobearings.com"
+                    href="mailto:srobearings@outlook.com"
                     className="text-gray-600 hover:text-green-400 transition-colors text-sm"
                   >
                     info@srobearings.com
@@ -194,7 +192,7 @@ export default function Footer() {
         </div>
 
         {/* Social Links */}
-        <div className="text-center mb-8">
+        <div className="text-center ">
           <h4 className="text-lg font-semibold mb-4 text-gray-600">
             Follow Us
           </h4>
