@@ -15,7 +15,8 @@ const NewsSlider = () => {
       excerpt:
         "SRO Bearings will announce its Q2 2025 financial results on 22 July at 09:00 (IST). The report will be followed by an investor conference call.",
       category: "Financial Report",
-      image: "https://source.unsplash.com/random/600x400/?bearing,industry",
+      image:
+        "https://t3.ftcdn.net/jpg/13/74/03/58/240_F_1374035846_7XnRZfXZnG1BXIq9Wx5nWx20eIvFdLZc.jpg",
     },
     {
       id: 2,
@@ -24,9 +25,10 @@ const NewsSlider = () => {
       date: "2025-07-05",
       location: "Pune",
       excerpt:
-        "SRO Bearings has entered a strategic partnership with GreenPower Tech to develop specialized bearings for next-generation wind turbines.",
+        "SRO Bearings has entegray a strategic partnership with GreenPower Tech to develop specialized bearings for next-generation wind turbines.",
       category: "Partnership",
-      image: "https://source.unsplash.com/random/600x400/?wind,turbine",
+      image:
+        "https://t3.ftcdn.net/jpg/03/14/76/20/240_F_314762012_Ujc3BNLEdzQ6yfYAiCRbHQaPHxZxu2EF.jpg",
     },
     {
       id: 3,
@@ -38,7 +40,7 @@ const NewsSlider = () => {
         "The new 50,000 sqm facility will produce high-precision bearings for automotive and aerospace industries, creating 300+ jobs.",
       category: "Expansion",
       image:
-        "https://source.unsplash.com/random/600x400/?factory,manufacturing",
+        "https://t4.ftcdn.net/jpg/11/86/60/59/240_F_1186605927_xIyNo6Hw4DSSP0myEk7r3oHRc9xyRxl7.jpg",
     },
     {
       id: 4,
@@ -49,7 +51,8 @@ const NewsSlider = () => {
       excerpt:
         "Recognized for exceptional quality and delivery performance in supplying bearings for electric vehicle platforms.",
       category: "Award",
-      image: "https://source.unsplash.com/random/600x400/?award,automotive",
+      image:
+        "https://t3.ftcdn.net/jpg/11/19/94/78/240_F_1119947888_mab34TBVzoVFc56OH96ELZk4MJE1qhis.jpg",
     },
     {
       id: 5,
@@ -58,9 +61,10 @@ const NewsSlider = () => {
       date: "2025-06-08",
       location: "Bangalore",
       excerpt:
-        "New program includes renewable energy investments, waste reduction, and eco-friendly bearing lubricants.",
+        "New program includes renewable energy investments, waste grayuction, and eco-friendly bearing lubricants.",
       category: "Sustainability",
-      image: "https://source.unsplash.com/random/600x400/?sustainability,green",
+      image:
+        "https://t4.ftcdn.net/jpg/11/10/99/07/240_F_1110990700_5Fq0VFo1CSzfVgIfnaRARdlvy0TF8k3k.jpg",
     },
     {
       id: 6,
@@ -72,7 +76,7 @@ const NewsSlider = () => {
         "New ceramic hybrid bearings withstand extreme conditions in metal processing and energy applications.",
       category: "Innovation",
       image:
-        "https://source.unsplash.com/random/600x400/?technology,engineering",
+        "https://t4.ftcdn.net/jpg/05/85/00/55/240_F_585005559_YNUJFQaDLRWN61mGNxWzz9GZypXSrOgz.jpg",
     },
   ];
 
@@ -119,12 +123,12 @@ const NewsSlider = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      "Financial Report": "bg-blue-100 text-blue-800",
-      Partnership: "bg-purple-100 text-purple-800",
+      "Financial Report": "bg-gray-100 text-gray-800",
+      Partnership: "bg-gray-100 text-gray-800",
       Expansion: "bg-green-100 text-green-800",
-      Award: "bg-yellow-100 text-yellow-800",
-      Sustainability: "bg-emerald-100 text-emerald-800",
-      Innovation: "bg-red-100 text-red-800",
+      Award: "bg-gray-100 text-gray-800",
+      Sustainability: "bg-gray-100 text-gray-800",
+      Innovation: "bg-gray-100 text-gray-800",
     };
     return colors[category] || "bg-gray-100 text-gray-800";
   };
@@ -136,7 +140,7 @@ const NewsSlider = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Latest News from SRO Bearings
           </h2>
-          <div className="h-1 w-16 bg-blue-600 mx-auto rounded-full"></div>
+          <div className="h-1 w-16 bg-gray-600 mx-auto rounded-full"></div>
         </div>
 
         <div
@@ -202,7 +206,7 @@ const NewsSlider = () => {
                                 {formatDate(news.date)}
                               </span>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
+                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors line-clamp-2">
                               {news.title}
                             </h3>
                             <p className="text-sm text-gray-500 mb-2">
@@ -219,7 +223,7 @@ const NewsSlider = () => {
                               >
                                 {news.category}
                               </span>
-                              <button className="text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">
+                              <button className="text-gray-600 hover:text-gray-800 text-sm font-medium transition-colors">
                                 Read more →
                               </button>
                             </div>
@@ -241,7 +245,7 @@ const NewsSlider = () => {
               onClick={() => setCurrentIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-blue-600 w-6"
+                  ? "bg-gray-600 w-6"
                   : "bg-gray-300 hover:bg-gray-400 w-2"
               }`}
             />
@@ -249,7 +253,7 @@ const NewsSlider = () => {
         </div>
 
         <div className="text-center mt-8">
-          <button className="text-blue-600 hover:text-blue-800 font-medium border-b border-blue-600 hover:border-blue-800 transition-colors">
+          <button className="text-gray-600 hover:text-gray-800 font-medium border-b border-gray-600 hover:border-gray-800 transition-colors">
             View all press releases
           </button>
         </div>

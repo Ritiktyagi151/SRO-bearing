@@ -34,7 +34,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Info className="text-gray-600 w-4 h-4" />
               </div>
               <h3 className="text-xl font-semibold text-gray-600">About Us</h3>
@@ -52,7 +52,7 @@ export default function Footer() {
 
             <Link
               href="/about"
-              className="inline-flex items-center text-green-400 hover:text-green-300 font-medium text-sm transition-all duration-300 group"
+              className="inline-flex items-center text-gray-400 hover:text-gray-300 font-medium text-sm transition-all duration-300 group"
             >
               Learn More
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -62,7 +62,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <LinkIcon className="text-gray-600 w-4 h-4" />
               </div>
               <h3 className="text-xl font-semibold text-gray-600">
@@ -82,7 +82,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-gray-600 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-gray-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {link.name}
@@ -94,7 +94,7 @@ export default function Footer() {
           {/* Products */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Settings className="text-gray-600 w-4 h-4" />
               </div>
               <h3 className="text-xl font-semibold text-gray-600">
@@ -117,7 +117,7 @@ export default function Footer() {
                     .toLowerCase()
                     .replace(/\s+/g, "-")
                     .replace(/[^a-z-]/g, "")}`}
-                  className="block text-gray-600 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-gray-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {product}
@@ -129,7 +129,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Mail className="text-gray-600 w-4 h-4" />
               </div>
               <h3 className="text-xl font-semibold text-gray-600">
@@ -139,7 +139,7 @@ export default function Footer() {
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3 group">
-                <div className="mt-1 text-gray-600 group-hover:text-green-300 transition-colors">
+                <div className="mt-1 text-gray-600 group-hover:text-gray-300 transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">
@@ -152,12 +152,12 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-3 group">
-                <div className="text-gray-600 group-hover:text-green-300 transition-colors">
+                <div className="text-gray-600 group-hover:text-gray-300 transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
                 <a
                   href="tel:+919873334405"
-                  className="text-gray-600 hover:text-green-400 transition-colors text-sm"
+                  className="text-gray-600 hover:text-gray-400 transition-colors text-sm"
                 >
                   +91 - 9873334405
                 </a>
@@ -165,23 +165,23 @@ export default function Footer() {
 
               <div className="space-y-2">
                 <div className="flex items-center space-x-3 group">
-                  <div className="text-gray-600 group-hover:text-green-300 transition-colors">
+                  <div className="text-gray-600 group-hover:text-gray-300 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   <a
                     href="mailto:srobearings@outlook.com"
-                    className="text-gray-600 hover:text-green-400 transition-colors text-sm"
+                    className="text-gray-600 hover:text-gray-400 transition-colors text-sm"
                   >
                     srobearings@outlook.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 group">
-                  <div className="text-gray-600 group-hover:text-green-300 transition-colors">
+                  <div className="text-gray-600 group-hover:text-gray-300 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
                   <a
                     href="mailto:srobearings@outlook.com"
-                    className="text-gray-600 hover:text-green-400 transition-colors text-sm"
+                    className="text-gray-600 hover:text-gray-400 transition-colors text-sm"
                   >
                     info@srobearings.com
                   </a>
@@ -212,7 +212,7 @@ export default function Footer() {
               <a
                 key={index}
                 href={social.href}
-                className="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-green-400 hover:to-emerald-500 rounded-full flex items-center justify-center text-gray-300 hover:text-gray-600 transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-gray-400 hover:to-emerald-500 rounded-full flex items-center justify-center text-gray-300 hover:text-gray-600 transition-all duration-300 hover:scale-110"
               >
                 <social.icon className="w-5 h-5" />
               </a>
@@ -232,7 +232,7 @@ export default function Footer() {
               Powered by{" "}
               <Link
                 href="https://jaikvik.com/"
-                className="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"
+                className="text-gray-400 hover:text-gray-300 transition-colors duration-300 font-medium"
               >
                 Jaikvik Technology India Pvt Ltd
               </Link>

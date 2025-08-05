@@ -10,7 +10,7 @@ const ValuedClients = () => {
       id: 1,
       name: "TechCorp",
       logo: "TC",
-      color: "from-green-500 to-green-600",
+      color: "from-gray-500 to-gray-600",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const ValuedClients = () => {
       id: 3,
       name: "Creative Co",
       logo: "CC",
-      color: "from-green-400 to-green-500",
+      color: "from-gray-400 to-gray-500",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const ValuedClients = () => {
       id: 5,
       name: "HealthPlus",
       logo: "HP",
-      color: "from-green-600 to-green-700",
+      color: "from-gray-600 to-gray-700",
     },
     {
       id: 6,
@@ -46,7 +46,7 @@ const ValuedClients = () => {
       id: 7,
       name: "FinanceX",
       logo: "FX",
-      color: "from-green-300 to-green-400",
+      color: "from-gray-300 to-gray-400",
     },
     {
       id: 8,
@@ -58,7 +58,7 @@ const ValuedClients = () => {
       id: 9,
       name: "MediaFlow",
       logo: "MF",
-      color: "from-green-700 to-green-800",
+      color: "from-gray-700 to-gray-800",
     },
     {
       id: 10,
@@ -70,7 +70,7 @@ const ValuedClients = () => {
       id: 11,
       name: "CloudSync",
       logo: "CS",
-      color: "from-green-200 to-green-300",
+      color: "from-gray-200 to-gray-300",
     },
     {
       id: 12,
@@ -113,15 +113,15 @@ const ValuedClients = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center min-h-[500px]">
           {/* Left Side - Our Clients Text */}
           <div className="space-y-8 animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-gray-100 text-green-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
+            <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
               <Users className="w-4 h-4" />
               <span>Trusted Partnership</span>
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-4xl font-bold text-gray-800 leading-tight">
+              <h1 className="text-4xl lg:text-4xl font-bold text-gray-600 leading-tight">
                 Our{" "}
-                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gray-500 to-gray-600 bg-clip-text text-transparent">
                   Client
                 </span>
               </h1>
@@ -135,13 +135,13 @@ const ValuedClients = () => {
             {/* Statistics */}
             <div className="grid grid-cols-2 gap-6 max-w-md">
               <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="text-3xl font-bold text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   {clients.length}+
                 </div>
                 <div className="text-gray-600 font-medium">Happy Clients</div>
               </div>
               <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="text-3xl font-bold text-green-500 mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   98%
                 </div>
                 <div className="text-gray-600 font-medium">
@@ -156,7 +156,7 @@ const ValuedClients = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-6 h-6 text-green-400 fill-green-400"
+                    className="w-6 h-6 text-gray-400 fill-gray-400"
                   />
                 ))}
               </div>
@@ -175,21 +175,21 @@ const ValuedClients = () => {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-green-500" />
+              <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-gray-500" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-green-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-green-500" />
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-gray-500" />
             </button>
 
             {/* Client Logo Grid */}
             <div className="bg-gray-100 rounded-3xl shadow-2xl p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-50"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-50"></div>
 
               <div className="relative z-10">
                 <div className="grid grid-cols-4 gap-4 mb-6">
@@ -232,7 +232,7 @@ const ValuedClients = () => {
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     i === currentSlide
                       ? "bg-gray-100 w-6"
-                      : "bg-green-200 hover:bg-green-300"
+                      : "bg-gray-200 hover:bg-gray-300"
                   }`}
                 />
               ))}

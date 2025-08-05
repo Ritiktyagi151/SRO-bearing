@@ -1,30 +1,32 @@
 import React from "react";
 import Link from "next/link";
-
 const exploreItems = [
   {
-    title: "Sustainability",
+    title: "Industry",
     description:
-      "Sustainability is an integral part of our business. By setting ambitious goals of our own, we aspire to enable the future of a sustainable supply chain.",
-    image: "https://source.unsplash.com/600x400/?nature,road",
-    linkText: "Explore our sustainability efforts",
-    href: "/sustainability",
+      "Explore how SRO bearings power critical operations across industries like automotive, manufacturing, and energy with precision and reliability.",
+    image:
+      "https://images.unsplash.com/photo-1542274368-443d694d79aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW5kdXN0cnl8ZW58MHx8MHx8fDA%3D",
+    linkText: "Explore our industry solutions",
+    href: "/industries",
   },
   {
-    title: "Career",
+    title: "Services",
     description:
-      "Our company is home to people within many different fields of expertise, located around the world. Are you also looking for an impactful career?",
-    image: "https://source.unsplash.com/600x400/?employee,working",
-    linkText: "Explore our job opportunities",
-    href: "/careers",
+      "We offer expert support and tailored bearing services to maximize equipment uptime and extend product life. Discover what we can do for you.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1683120929511-af05758ec1e5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fFNlcnZpY2VzfGVufDB8fDB8fHww",
+    linkText: "Explore our services",
+    href: "/services",
   },
   {
-    title: "Stories",
+    title: "Contact",
     description:
-      "From innovations in bearing technology to our impact on critical industries — discover how SRO is shaping the future with precision engineering.",
-    image: "https://source.unsplash.com/600x400/?industry,engineering",
-    linkText: "Explore the SRO success stories",
-    href: "/stories",
+      "Need help or have a question? Our experts are here to assist you with inquiries, support, and tailored solutions for your business.",
+    image:
+      "https://images.unsplash.com/photo-1703669020883-66f3e77ae929?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGNvbnRhY3R8ZW58MHx8MHx8fDA%3D",
+    linkText: "Get in touch with us",
+    href: "/contact",
   },
 ];
 
