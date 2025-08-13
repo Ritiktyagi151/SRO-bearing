@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const NewsSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // start at 1 because of clone at start
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   const newsItems = [
     {
@@ -97,20 +98,45 @@ const NewsSlider = () => {
 
   const totalSlides = Math.ceil(newsItems.length / cardsPerSlide);
 
+  // Prepare cloned slides for seamless loop
+  const slides = [];
+  for (let i = 0; i < totalSlides; i++) {
+    slides.push(newsItems.slice(i * cardsPerSlide, (i + 1) * cardsPerSlide));
+  }
+  const clonedSlides = [slides[slides.length - 1], ...slides, slides[0]]; // add last to front, first to end
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+    setCurrentIndex((prev) => prev + 1);
+    setIsTransitioning(true);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+    setCurrentIndex((prev) => prev - 1);
+    setIsTransitioning(true);
   };
+
+  // Handle instant jump without animation at edges
+  useEffect(() => {
+    if (currentIndex === clonedSlides.length - 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 500); // match transition duration
+    }
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(clonedSlides.length - 2);
+      }, 500);
+    }
+  }, [currentIndex, clonedSlides.length]);
 
   useEffect(() => {
     if (isAutoPlaying) {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlaying, currentIndex, cardsPerSlide]);
+  }, [isAutoPlaying, currentIndex]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -166,10 +192,14 @@ const NewsSlider = () => {
           {/* Carousel Content */}
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className={`flex ${
+                isTransitioning
+                  ? "transition-transform duration-500 ease-in-out"
+                  : ""
+              }`}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {Array.from({ length: totalSlides }, (_, slideIndex) => (
+              {clonedSlides.map((group, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
                   <div
                     className={`grid gap-6 px-4 ${
@@ -180,56 +210,51 @@ const NewsSlider = () => {
                         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                     }`}
                   >
-                    {newsItems
-                      .slice(
-                        slideIndex * cardsPerSlide,
-                        (slideIndex + 1) * cardsPerSlide
-                      )
-                      .map((news) => (
-                        <article
-                          key={news.id}
-                          className="bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer"
-                        >
-                          <div className="h-48 overflow-hidden">
-                            <img
-                              src={news.image}
-                              alt={news.title}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            />
+                    {group.map((news) => (
+                      <article
+                        key={news.id}
+                        className="bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer"
+                      >
+                        <div className="h-48 overflow-hidden">
+                          <img
+                            src={news.image}
+                            alt={news.title}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <div className="flex justify-between items-start mb-3">
+                            <span className="text-sm font-medium text-gray-500">
+                              Press release
+                            </span>
+                            <span className="text-sm text-gray-500">
+                              {formatDate(news.date)}
+                            </span>
                           </div>
-                          <div className="p-6">
-                            <div className="flex justify-between items-start mb-3">
-                              <span className="text-sm font-medium text-gray-500">
-                                Press release
-                              </span>
-                              <span className="text-sm text-gray-500">
-                                {formatDate(news.date)}
-                              </span>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors line-clamp-2">
-                              {news.title}
-                            </h3>
-                            <p className="text-sm text-gray-500 mb-2">
-                              {news.location}, {formatDate(news.date)}
-                            </p>
-                            <p className="text-gray-700 mb-4 line-clamp-3">
-                              {news.excerpt}
-                            </p>
-                            <div className="flex justify-between items-center">
-                              <span
-                                className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(
-                                  news.category
-                                )}`}
-                              >
-                                {news.category}
-                              </span>
-                              <button className="text-gray-600 hover:text-gray-800 text-sm font-medium transition-colors">
-                                Read more →
-                              </button>
-                            </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors line-clamp-2">
+                            {news.title}
+                          </h3>
+                          <p className="text-sm text-gray-500 mb-2">
+                            {news.location}, {formatDate(news.date)}
+                          </p>
+                          <p className="text-gray-700 mb-4 line-clamp-3">
+                            {news.excerpt}
+                          </p>
+                          <div className="flex justify-between items-center">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(
+                                news.category
+                              )}`}
+                            >
+                              {news.category}
+                            </span>
+                            <button className="text-gray-600 hover:text-gray-800 text-sm font-medium transition-colors">
+                              Read more →
+                            </button>
                           </div>
-                        </article>
-                      ))}
+                        </div>
+                      </article>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -242,20 +267,14 @@ const NewsSlider = () => {
           {Array.from({ length: totalSlides }, (_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => setCurrentIndex(index + 1)} // adjust for clone
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
+                index + 1 === currentIndex
                   ? "bg-gray-600 w-6"
                   : "bg-gray-300 hover:bg-gray-400 w-2"
               }`}
             />
           ))}
-        </div>
-
-        <div className="text-center mt-8">
-          <button className="text-gray-600 hover:text-gray-800 font-medium border-b border-gray-600 hover:border-gray-800 transition-colors">
-            View all press releases
-          </button>
         </div>
       </div>
     </section>
