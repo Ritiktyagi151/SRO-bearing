@@ -96,20 +96,20 @@ const HeroVideoSection = () => {
         {/* Top-Right Corner Text */}
         <div className="absolute top-[100px] right-6 md:right-12 text-right space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            Paper
+            PRECISION IN
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            INDUSTRIES
+            MOTION
           </h1>
         </div>
 
         {/* Bottom-Left Corner Text */}
         <div className="absolute bottom-10 left-6 md:left-12 text-left space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            Steel
+            EXCELLENCE IN
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            INDUSTRIES
+            DESIGN
           </h1>
 
           {/* Optional CTA under bottom-left text */}
