@@ -8,14 +8,8 @@ const HeroVideoSection = () => {
 
   const videoSources = [
     "https://www.pexels.com/download/video/9136352/",
-    // "/video/propeller.mp4",
-    "https://www.pexels.com/download/video/856237/",
-    "https://www.pexels.com/download/video/2257010/",
-    "https://cdn.pixabay.com/video/2020/11/07/55567-502340046_large.mp4",
-    "https://cdn.pixabay.com/video/2017/03/01/8064-206468120_large.mp4",
-    // "https://videos.pexels.com/video-files/3802790/3802790-uhd_2560_1440_30fps.mp4",
-    // "https://videos.pexels.com/video-files/5462676/5462676-uhd_2560_1440_30fps.mp4",
-    // "https://videos.pexels.com/video-files/4198778/4198778-uhd_2560_1440_24fps.mp4",
+    "/video/propeller.mp4",
+    "https://www.pexels.com/download/video/5914774/",
   ];
 
   useEffect(() => {
@@ -30,7 +24,7 @@ const HeroVideoSection = () => {
       setTimeout(() => {
         setCurrentVideo((prev) => (prev + 1) % videoSources.length);
         setFade(true); // fade-in
-      }, 600); // fade duration
+      }, 300); // fade duration
     }, 10000);
 
     return () => clearInterval(interval);
@@ -50,7 +44,7 @@ const HeroVideoSection = () => {
           loop
           playsInline
           className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            fade ? "opacity-80" : "opacity-0"
+            fade ? "opacity-90" : "opacity-0"
           }`}
         />
         <div className="absolute inset-0 bg-black/10"></div>
