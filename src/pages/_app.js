@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar4";
 // import Navbar from "@/components/Navbar4";
 import Footer from "@/components/Footer";
 import WhatsAppBubble from "@/components/whatsappIcon.jsx";

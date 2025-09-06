@@ -3,15 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  Menu,
-  Search,
-  Globe,
-  X,
-  ChevronDown,
-  Phone,
-  FileText,
-} from "lucide-react";
+import { Menu, Search, X, ChevronDown, FileText } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -295,7 +287,7 @@ const Navbar = () => {
           <div className="absolute transform left-[17px] lg:left-[60px] w-[120px] h-[60px] relative">
             <Link href="/">
               <Image
-                src="/srologo2.png"
+                src="/sro-newlogo.png"
                 alt="SRO Bearings Logo"
                 fill
                 className="object-contain"

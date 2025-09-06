@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function GreenOverview() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-300">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100">
       <div className="max-w-7xl mx-auto">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <motion.div

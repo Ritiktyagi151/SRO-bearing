@@ -15,7 +15,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br bg-gray-100 text-gray-600 relative overflow-hidden">
+    <footer className="bg-gradient-to-br bg-gray-100 text-green-600 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -37,7 +37,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Info className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600">About Us</h3>
+              <h3 className="text-xl font-semibold text-green-600">About Us</h3>
             </div>
             <p className="text-gray-600 leading-relaxed text-sm">
               SRO Bearings understands the critical role bearings play in
@@ -52,7 +52,7 @@ export default function Footer() {
 
             <Link
               href="/about"
-              className="inline-flex items-center text-gray-400 hover:text-gray-300 font-medium text-sm transition-all duration-300 group"
+              className="inline-flex items-center text-green-400 hover:text-green-700 font-medium text-sm transition-all duration-300 group"
             >
               Learn More
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -65,7 +65,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <LinkIcon className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600">
+              <h3 className="text-xl font-semibold text-green-600">
                 Quick Links
               </h3>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-gray-600 hover:text-gray-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-green-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {link.name}
@@ -97,7 +97,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Settings className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600">
+              <h3 className="text-xl font-semibold text-green-600">
                 Our Products
               </h3>
             </div>
@@ -117,7 +117,7 @@ export default function Footer() {
                     .toLowerCase()
                     .replace(/\s+/g, "-")
                     .replace(/[^a-z-]/g, "")}`}
-                  className="block text-gray-600 hover:text-gray-400 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
+                  className="block text-gray-600 hover:text-green-600 transition-colors duration-300 text-sm py-1 hover:pl-2 transition-all"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {product}
@@ -132,7 +132,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-emerald-500 rounded-full flex items-center justify-center">
                 <Mail className="text-gray-600 w-4 h-4" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-600">
+              <h3 className="text-xl font-semibold text-green-600">
                 Get In Touch
               </h3>
             </div>
@@ -225,14 +225,14 @@ export default function Footer() {
       <div className="relative z-10 bg-gray-100 border-t border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <p className="text-gray-600 text-sm">
+            <p className="text-green-600 text-sm">
               © {new Date().getFullYear()} SRO Bearing. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
               Powered by{" "}
               <Link
                 href="https://jaikvik.com/"
-                className="text-gray-400 hover:text-gray-300 transition-colors duration-300 font-medium"
+                className="text-green-400 hover:text-green-700 transition-colors duration-300 font-medium"
               >
                 Jaikvik Technology India Pvt Ltd
               </Link>

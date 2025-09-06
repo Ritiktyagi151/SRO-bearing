@@ -17,8 +17,8 @@ const AboutSection = () => {
 
         {/* Text content */}
         <div className="md:w-1/2">
-          <p className="text-gray-500 text-sm mb-2">Get to Know Us</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-500 mb-6 leading-tight">
+          <p className="text-green-500 text-sm mb-2">Get to Know Us</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-green-500 mb-6 leading-tight">
             People think we’re just a <br className="hidden md:block" />
             bearing company
           </h2>
@@ -30,7 +30,7 @@ const AboutSection = () => {
           </p>
           <Link
             href="/"
-            className="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-md transition"
+            className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition"
           >
             Why work at SRO Bearings
           </Link>

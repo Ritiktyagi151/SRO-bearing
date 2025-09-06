@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["picsum.photos", "source.unsplash.com", "images.unsplash.com"],
+    domains: [
+      "picsum.photos",
+      "source.unsplash.com",
+      "images.unsplash.com",
+      "media.istockphoto.com",
+    ],
   },
   webpack: (config) => {
     config.snapshot = {

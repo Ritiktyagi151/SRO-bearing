@@ -228,47 +228,36 @@ export default function Products() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-8">
             {products.map((product) => (
               <Link
                 key={product.slug}
                 href={`/products/${product.slug}`}
                 passHref
               >
-                <div className="group relative h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:border-green-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                  <div className="relative h-60 overflow-hidden">
+                <div className="flex flex-col md:flex-row items-center justify-between border border-gray-200 rounded-xl p-6 bg-white shadow-md hover:shadow-lg transition duration-300 group">
+                  {/* Left Image */}
+                  <div className="w-80 h-80 flex-shrink-0">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent" />
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
+                  {/* Center Content */}
+                  <div className="flex-1 md:mx-8 text-center md:text-left mt-4 md:mt-0">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600 mb-4">{product.description}</p>
-                    <div className="flex items-center text-green-600 font-medium">
-                      <span>View Details</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 ml-1 transition-transform group-hover:translate-x-1"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
+                    <p className="text-gray-600">{product.description}</p>
                   </div>
 
-                  <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-600 transform rotate-45 -translate-y-1/2 translate-x-1/2 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  {/* Right Button */}
+                  <div>
+                    <button className="px-5 py-2 bg-green-600 text-white font-medium rounded-lg shadow hover:bg-green-700 transition">
+                      View Product
+                    </button>
                   </div>
                 </div>
               </Link>
@@ -276,22 +265,6 @@ export default function Products() {
           </div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-            Need help selecting the right bearing?
-          </h3>
-          <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
-            Our engineering team is ready to assist you in finding the perfect
-            solution for your application.
-          </p>
-          <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
-            Contact Our Experts
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

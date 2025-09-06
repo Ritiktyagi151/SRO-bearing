@@ -11,7 +11,8 @@ const blogPosts = [
     excerpt:
       "Learn how to properly maintain your bearings to extend their lifespan.",
     date: "2023-10-15",
-    image: "https://picsum.photos/seed/bearings1/400/250",
+    image:
+      "https://images.unsplash.com/photo-1503507739298-dce173d09653?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmVhcmluZyUyMG1haW50ZW5hbmNlJTIwdGlwc3xlbnwwfHwwfHx8MA%3D%3D",
     category: "Maintenance",
     readTime: "4 min read",
   },
@@ -22,7 +23,8 @@ const blogPosts = [
     excerpt:
       "Guide to selecting bearings based on load and speed requirements.",
     date: "2023-09-28",
-    image: "https://picsum.photos/seed/bearings2/400/250",
+    image:
+      "https://images.unsplash.com/photo-1709294324061-fc40251bb002?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bHVicmljYXRpb24lMjBiZXN0JTIwcHJhY3RpY2VzfGVufDB8fDB8fHww",
     category: "Guide",
     readTime: "6 min read",
   },
@@ -33,7 +35,8 @@ const blogPosts = [
     excerpt:
       "Discover the best practices for installing bearings to maximize their performance.",
     date: "2023-12-05",
-    image: "https://picsum.photos/seed/bearings3/400/250",
+    image:
+      "https://images.unsplash.com/photo-1656597631995-9fa0e1072279?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGluc3RhbGxhdGlvbiUyMHRpcHMlMjBiZWFyaW5nc3xlbnwwfHwwfHx8MA%3D%3D",
     category: "Installation",
     readTime: "5 min read",
   },
@@ -44,7 +47,8 @@ const blogPosts = [
     excerpt:
       "Step-by-step guide for inspecting bearings for wear, damage, and performance.",
     date: "2024-01-12",
-    image: "https://picsum.photos/seed/bearings4/400/250",
+    image:
+      "https://images.unsplash.com/photo-1615746363486-92cd8c5e0a90?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhcmluZyUyMGluc3BlY3Rpb24lMjBndWlkZXxlbnwwfHwwfHx8MA%3D%3D",
     category: "Inspection",
     readTime: "4 min read",
   },
@@ -55,7 +59,8 @@ const blogPosts = [
     excerpt:
       "Key signs and checklist to help you know when it's time to replace a bearing.",
     date: "2024-02-25",
-    image: "https://picsum.photos/seed/bearings5/400/250",
+    image:
+      "https://images.unsplash.com/photo-1567093322503-341d262ad8f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJlYXJpbmclMjByZXBsYWNlbWVudCUyMGNoZWNrbGlzdHxlbnwwfHwwfHx8MA%3D%3D",
     category: "Maintenance",
     readTime: "4 min read",
   },
@@ -66,7 +71,8 @@ const blogPosts = [
     excerpt:
       "Tips and techniques to enhance bearing efficiency and extend operational life.",
     date: "2024-03-15",
-    image: "https://picsum.photos/seed/bearings6/400/250",
+    image:
+      "https://images.unsplash.com/photo-1715079005638-c37bfd236c1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJlYXJpbmclMjBwZXJmb3JtYW5jZSUyMG9wdGltaXphdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
     category: "Performance",
     readTime: "5 min read",
   },
@@ -77,7 +83,8 @@ const blogPosts = [
     excerpt:
       "Overview of various industrial bearing types and their key applications.",
     date: "2024-04-10",
-    image: "https://picsum.photos/seed/bearings7/400/250",
+    image:
+      "https://images.unsplash.com/photo-1658248165127-f880b5a74e98?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dHlwZXMlMjBvZiUyMGluZHVzdHJpYWwlMjBiZWFyaW5ncyUyMnxlbnwwfHwwfHx8MA%3D%3D",
     category: "Technical Insights",
     readTime: "5 min read",
   },

@@ -113,20 +113,20 @@ const ValuedClients = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center min-h-[500px]">
           {/* Left Side - Our Clients Text */}
           <div className="space-y-8 animate-fade-in-left">
-            <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-gray-600 px-4 py-2 rounded-full text-lg font-medium animate-bounce">
               <Users className="w-4 h-4" />
               <span>Trusted Partnership</span>
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-4xl font-bold text-gray-600 leading-tight">
+              <h1 className="text-4xl lg:text-4xl font-bold text-green-600 leading-tight">
                 Our{" "}
                 <span className="bg-gradient-to-r from-gray-500 to-gray-600 bg-clip-text text-transparent">
                   Client
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-lg text-green-600 leading-relaxed max-w-lg">
                 We're proud to work with industry-leading companies who trust us
                 to deliver exceptional results and drive their success forward.
               </p>
@@ -138,13 +138,13 @@ const ValuedClients = () => {
                 <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   {clients.length}+
                 </div>
-                <div className="text-gray-600 font-medium">Happy Clients</div>
+                <div className="text-green-600 font-medium">Happy Clients</div>
               </div>
               <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   98%
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-green-600 font-medium">
                   Satisfaction Rate
                 </div>
               </div>
@@ -156,7 +156,7 @@ const ValuedClients = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-6 h-6 text-gray-400 fill-gray-400"
+                    className="w-6 h-6 text-green-400 fill-green-400"
                   />
                 ))}
               </div>
@@ -177,14 +177,14 @@ const ValuedClients = () => {
               onClick={prevSlide}
               className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-gray-500" />
+              <ChevronLeft className="w-5 h-5 text-green-600 group-hover:text-green-500" />
             </button>
 
             <button
               onClick={nextSlide}
               className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-gray-500" />
+              <ChevronRight className="w-5 h-5 text-green-600 group-hover:text-green-500" />
             </button>
 
             {/* Client Logo Grid */}
@@ -213,7 +213,7 @@ const ValuedClients = () => {
                   {getVisibleClients().map((client, index) => (
                     <div
                       key={`name-${client.id}`}
-                      className="text-xs font-medium text-gray-600 truncate animate-fade-in-up"
+                      className="text-xs font-medium text-green-600 truncate animate-fade-in-up"
                       style={{ animationDelay: `${index * 100 + 200}ms` }}
                     >
                       {client.name}
@@ -221,21 +221,6 @@ const ValuedClients = () => {
                   ))}
                 </div>
               </div>
-            </div>
-
-            {/* Slide Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {Array.from({ length: totalSlides }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === currentSlide
-                      ? "bg-gray-100 w-6"
-                      : "bg-gray-200 hover:bg-gray-300"
-                  }`}
-                />
-              ))}
             </div>
           </div>
         </div>

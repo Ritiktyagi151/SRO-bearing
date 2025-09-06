@@ -5,8 +5,8 @@ import Journeysection from "@/components/AboutSection/Journeysection";
 import ValuesMission from "@/components/AboutSection/ValuesMission";
 import Sustainability from "@/components/AboutSection/Sustainability";
 import Ourpurpose from "@/components/AboutSection/Ourpurpose";
-import CodeOfConduct from "@/components/AboutSection/CodeOfConduct";
-import ThisIsUS from "@/components/homesections/ThisIsUs";
+// import CodeOfConduct from "@/components/AboutSection/CodeOfConduct";
+// import ThisIsUS from "@/components/homesections/ThisIsUs";
 import ExploreMoreSection from "@/components/homesections/ExploreMoreSection";
 
 export default function About() {
@@ -20,9 +20,9 @@ export default function About() {
       <Journeysection />
       <ValuesMission />
       <Sustainability />
-      <ThisIsUS />
+      {/* <ThisIsUS /> */}
       <Ourpurpose />
-      <CodeOfConduct />
+      {/* <CodeOfConduct /> */}
       <ExploreMoreSection />
     </>
   );

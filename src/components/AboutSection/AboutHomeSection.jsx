@@ -3,14 +3,14 @@ import Image from "next/image";
 
 const SROBearingsSection = () => {
   return (
-    <section className="w-full bg-gray-400 py-24 px-6 md:px-12">
+    <section className="w-full bg-gray-100 py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
         {/* Text Section - updated to match SKF style */}
         <div className="w-full lg:w-1/2">
-          <p className="text-sm text-gray-500 font-semibold mb-4">
+          <p className="text-sm text-green-500 font-semibold mb-4">
             About SRO Bearings
           </p>
-          <h2 className="text-5xl sm:text-6xl font-bold text-gray-200 leading-tight tracking-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold text-green-700 leading-tight tracking-tight">
             Engineered to handle
             <br />
             heavy loads and
@@ -18,7 +18,7 @@ const SROBearingsSection = () => {
             misalignment with ease
           </h2>
           <div className="mt-12">
-            <p className="text-gray-600 text-lg max-w-xl">
+            <p className="text-gray-400 text-lg max-w-xl">
               Spherical Roller Bearings are designed to accommodate heavy radial
               and axial loads, while compensating for shaft misalignment. Ideal
               for demanding applications like mining, power generation, and

@@ -31,9 +31,9 @@ const CoInnovationSection = () => {
       {/* Right Image */}
       <div className="md:w-1/2">
         <img
-          src="https://t4.ftcdn.net/jpg/09/59/42/25/240_F_959422571_1J11pfbb7eBuPgqSg61TOaSgk1ZwmOhb.jpg"
+          src="/image/about/Indian-lady-sro.jpg"
           alt="Bearing Technology"
-          className="rounded-lg object-cover w-full h-auto shadow-md"
+          className="rounded-lg object-cover w-full h-[70%] shadow-md"
         />
       </div>
     </section>

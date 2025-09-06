@@ -46,14 +46,14 @@ const AboutSnapshot = () => {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-4xl font-bold text-gray-800 leading-tight"
+              className="text-4xl font-bold text-green-600 leading-tight"
             >
               Experience. Quality. Trust.
             </motion.h2>
 
             <motion.h3
               variants={itemVariants}
-              className="text-lg font-semibold text-green-600"
+              className="text-lg font-semibold text-gray-600"
             >
               40+ Years of Bearing Excellence at SRO Bharat
             </motion.h3>

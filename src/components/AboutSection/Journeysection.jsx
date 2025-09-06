@@ -3,16 +3,16 @@ import React from "react";
 const FrictionSection = () => {
   // Replace with your actual video source
   const videoSource =
-    "https://videos.pexels.com/video-files/11124043/11124043-hd_1920_1080_50fps.mp4";
+    "https://cdn.pixabay.com/video/2017/01/12/7250-199191059_large.mp4";
 
   return (
-    <section className="py-16 px-4 bg-gray-200">
+    <section className="py-16 px-4 bg-gray-100">
       <div className="max-w-6xl mx-auto">
         {/* Video and Text Row */}
         <div className="flex flex-col lg:flex-row gap-10 items-start mb-12">
           {/* Video on left */}
           <div className="w-full lg:w-1/2">
-            <div className="relative rounded-lg overflow-hidden aspect-video bg-gray-200">
+            <div className="relative rounded-lg overflow-hidden aspect-video bg-gray-100">
               <video
                 className="w-full h-full object-cover"
                 muted
@@ -35,7 +35,7 @@ const FrictionSection = () => {
 
           {/* Text content on right */}
           <div className="w-full lg:w-1/2">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl font-bold text-green-600 mb-6">
               Less friction. More progress.
             </h1>
 
@@ -50,7 +50,7 @@ const FrictionSection = () => {
         </div>
 
         {/* Stats section below both */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t pt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t pt-10  ">
           <StatItem number="38 000" label="Employees" />
           <StatItem number="130" label="Countries" />
           <StatItem number="71" label="Remanufacturing sites" />
@@ -68,7 +68,7 @@ const StatItem = ({ number, label, prefix }) => (
   <div className="flex flex-col">
     <div className="flex items-baseline">
       {prefix && <span className="text-gray-500 mr-1">{prefix}</span>}
-      <span className="text-3xl font-bold text-gray-900">{number}</span>
+      <span className="text-3xl font-bold text-green-600">{number}</span>
     </div>
     <span className="text-gray-500 mt-1">{label}</span>
   </div>

@@ -7,7 +7,7 @@ const PurposeSection = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=1800&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b2ZmaWNlJTIwcGVvcGxlfGVufDB8fDB8fHww"
+          src="https://media.istockphoto.com/id/1283024969/photo/female-civil-engineer.jpg?s=612x612&w=0&k=20&c=HvvX9yxEoXKa93Tp5tAZHa2ec4C_saqNjptDQt6FdVQ="
           alt="Background"
           fill
           className="object-cover"
@@ -20,7 +20,9 @@ const PurposeSection = () => {
       <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 h-full">
         {/* Text Content - Left Side */}
         <div className="md:w-1/2 space-y-6 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold">Our purpose</h2>
+          <h2 className="text-3xl md:text-4xl font-bold  text-green-500">
+            Our purpose
+          </h2>
 
           <div className="space-y-4">
             <p className="text-2xl md:text-3xl font-medium leading-tight">
@@ -34,7 +36,7 @@ const PurposeSection = () => {
             </p>
           </div>
 
-          <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md transition duration-300">
+          <button className="mt-8 bg-green-400 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-md transition duration-300">
             Explore what drives us
           </button>
         </div>
