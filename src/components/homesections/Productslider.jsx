@@ -15,7 +15,7 @@ const bearingProducts = [
     ],
     applications: "Mining equipment, paper mills, gearboxes",
     image:
-      "https://t4.ftcdn.net/jpg/02/45/90/93/240_F_245909308_iHuv1XDuOMwTEilzf4xDN4Pth2mm1TrZ.jpg",
+      "/image/product-slider-img/shperical-bearing-new.png",
     link: "/products/spherical-roller-bearings",
   },
   {

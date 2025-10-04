@@ -46,7 +46,7 @@ const AboutSnapshot = () => {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-4xl font-bold text-green-600 leading-tight"
+              className="text-4xl font-bold text-[#00984C] leading-tight"
             >
               Experience. Quality. Trust.
             </motion.h2>
@@ -82,7 +82,7 @@ const AboutSnapshot = () => {
                 onClick={navigateToProducts}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="bg-[#00984C] hover:bg-green-700 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 aria-label="Navigate to products page"
               >
                 View Product Range

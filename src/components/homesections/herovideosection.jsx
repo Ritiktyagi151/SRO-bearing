@@ -4,7 +4,6 @@ import Link from "next/link";
 const HeroVideoSection = () => {
   const [isClient, setIsClient] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
-  const [fade, setFade] = useState(true);
 
   const videoSources = [
     "https://www.pexels.com/download/video/9136352/",
@@ -20,12 +19,8 @@ const HeroVideoSection = () => {
     if (!isClient) return;
 
     const interval = setInterval(() => {
-      setFade(false); // start fade-out
-      setTimeout(() => {
-        setCurrentVideo((prev) => (prev + 1) % videoSources.length);
-        setFade(true); // fade-in
-      }, 300); // fade duration
-    }, 10000);
+      setCurrentVideo((prev) => (prev + 1) % videoSources.length);
+    }, 10000); // change every 10s
 
     return () => clearInterval(interval);
   }, [isClient, videoSources.length]);
@@ -34,18 +29,16 @@ const HeroVideoSection = () => {
 
   return (
     <section className="relative h-screen overflow-hidden font-futuristic">
-      {/* Background Video with smooth fade */}
+      {/* Background Video (no fade/transition) */}
       <div className="absolute inset-0 z-0">
         <video
-          key={currentVideo} // important for re-render
+          key={currentVideo}
           src={videoSources[currentVideo]}
           autoPlay
           muted
           loop
           playsInline
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            fade ? "opacity-90" : "opacity-0"
-          }`}
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/10"></div>
       </div>
