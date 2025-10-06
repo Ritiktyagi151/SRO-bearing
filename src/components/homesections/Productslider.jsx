@@ -14,8 +14,7 @@ const bearingProducts = [
       "Robust construction",
     ],
     applications: "Mining equipment, paper mills, gearboxes",
-    image:
-      "/image/product-slider-img/shperical-bearing-new.png",
+    image: "/image/product-slider-img/shperical-newone.png",
     link: "/products/spherical-roller-bearings",
   },
   {
@@ -130,8 +129,10 @@ export default function BearingGrid() {
         setVisibleItems(1);
       } else if (window.innerWidth < 1024) {
         setVisibleItems(2);
-      } else {
+      } else if (window.innerWidth < 1280) {
         setVisibleItems(3);
+      } else {
+        setVisibleItems(4); // Show 4 items on large screens
       }
     };
 
@@ -190,7 +191,7 @@ export default function BearingGrid() {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-44 mb-6 object-contain"
+                  className="h-64 w-64 mb-2 object-cover"
                   loading="lazy"
                 />
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -199,7 +200,7 @@ export default function BearingGrid() {
                 <p className="text-sm mb-4 px-2">{product.description}</p>
                 <a
                   href={product.link}
-                  className="flex items-center text-green-600 font-medium hover:underline mt-auto"
+                  className="flex items-center text-[#00974A] font-medium hover:underline mt-auto"
                 >
                   <ArrowRight className="mr-2 h-4 w-4" />
                   Explore products

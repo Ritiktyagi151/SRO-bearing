@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const Videodemo = () => {
-  const slides = [
+  // Define the single background video
+  const backgroundVideoSrc = "/video/combineview.mp4"; // You can choose any of your videos
+  const backgroundVideoDuration = 25000; // 25 seconds for the background video
+
+  // Define the text slides
+  const textSlides = [
     {
-      src: "/video/srovideo1.mp4",
       topText1: "PRECISION IN",
       topText2: "MOTION",
       bottomText1: "EXCELLENCE IN",
@@ -12,10 +16,8 @@ const Videodemo = () => {
       description: "Innovative machinery and clean energy solutions",
       buttonText: "Explore More",
       buttonLink: "/industries",
-      fixedTime: 10000, // play only 10 seconds
     },
     {
-      src: "/video/propeller.mp4",
       topText1: "POWERING",
       topText2: "THE FUTURE",
       bottomText1: "ENGINEERED FOR",
@@ -23,10 +25,8 @@ const Videodemo = () => {
       description: "Advanced propeller systems for next-gen aviation",
       buttonText: "Learn More",
       buttonLink: "/about",
-      fixedTime: null, // play full duration
     },
     {
-      src: "/video/srovideo3.mp4",
       topText1: "INNOVATION IN",
       topText2: "MOTION CONTROL",
       bottomText1: "CRAFTED WITH",
@@ -34,56 +34,72 @@ const Videodemo = () => {
       description: "High-performance designs built to perfection",
       buttonText: "Contact Us",
       buttonLink: "/contact",
-      fixedTime: null, // play full duration
     },
   ];
 
-  const [currentVideo, setCurrentVideo] = useState(0);
+  const [currentTextSlide, setCurrentTextSlide] = useState(0);
   const videoRef = useRef(null);
-  const timerRef = useRef(null);
+  const textSlideTimerRef = useRef(null);
+  const backgroundVideoTimerRef = useRef(null);
 
-  // Handle when video ends
-  const handleVideoEnd = () => {
-    nextVideo();
-  };
-
-  // Go to next video
-  const nextVideo = () => {
-    setCurrentVideo((prev) => (prev + 1) % slides.length);
-  };
+  // Duration for each text slide
+  const textSlideDisplayDuration = 5000; // 5 seconds per text slide
 
   useEffect(() => {
+    // --- Handle background video playback ---
     if (videoRef.current) {
-      const currentSlide = slides[currentVideo];
       videoRef.current.load();
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => {
+        // Handle play promise rejection (e.g., user hasn't interacted yet)
+        console.log("Video autoplay prevented or failed.");
+      });
 
-      // Clear any old timers
-      if (timerRef.current) clearTimeout(timerRef.current);
-
-      // If this slide has a fixed duration (like 10s)
-      if (currentSlide.fixedTime) {
-        timerRef.current = setTimeout(() => {
-          nextVideo();
-        }, currentSlide.fixedTime);
-      }
+      // Set a timer to loop the background video after its fixed duration
+      // This ensures it restarts after 25 seconds regardless of its actual length
+      backgroundVideoTimerRef.current = setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0; // Reset to start
+          videoRef.current.play().catch(() => {});
+        }
+      }, backgroundVideoDuration);
     }
 
+    // --- Handle text slide cycling ---
+    textSlideTimerRef.current = setInterval(() => {
+      setCurrentTextSlide((prev) => (prev + 1) % textSlides.length);
+    }, textSlideDisplayDuration);
+
+    // Cleanup function for both timers
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      if (textSlideTimerRef.current) {
+        clearInterval(textSlideTimerRef.current);
+      }
+      if (backgroundVideoTimerRef.current) {
+        clearTimeout(backgroundVideoTimerRef.current);
+      }
     };
-  }, [currentVideo]);
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  // Ensure the background video actually loops when it ends naturally *before* the 25s timer
+  const handleBackgroundVideoEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0; // Reset to start
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const currentSlideData = textSlides[currentTextSlide];
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black flex justify-center items-center">
       {/* Background Video */}
       <video
         ref={videoRef}
-        src={slides[currentVideo].src}
+        src={backgroundVideoSrc}
         autoPlay
         muted
         playsInline
-        onEnded={handleVideoEnd}
+        onEnded={handleBackgroundVideoEnd} // Use this for natural video end
         className="w-full h-full object-cover transition-all duration-700"
       ></video>
 
@@ -92,43 +108,50 @@ const Videodemo = () => {
         {/* Top Right Text */}
         <div className="absolute top-[100px] right-6 md:right-12 text-right space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            {slides[currentVideo].topText1}
+            {currentSlideData.topText1}
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            {slides[currentVideo].topText2}
+            {currentSlideData.topText2}
           </h1>
         </div>
 
         {/* Bottom Left Text */}
         <div className="absolute bottom-10 left-6 md:left-12 text-left space-y-2">
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            {slides[currentVideo].bottomText1}
+            {currentSlideData.bottomText1}
           </h1>
           <h1 className="text-5xl md:text-7xl font-extrabold uppercase leading-none">
-            {slides[currentVideo].bottomText2}
+            {currentSlideData.bottomText2}
           </h1>
           <div className="mt-4">
             <p className="mb-2 text-sm md:text-base text-white/90">
-              {slides[currentVideo].description}
+              {currentSlideData.description}
             </p>
             <Link
-              href={slides[currentVideo].buttonLink}
+              href={currentSlideData.buttonLink}
               className="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-5 rounded transition"
             >
-              {slides[currentVideo].buttonText}
+              {currentSlideData.buttonText}
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Slide Dots */}
+      {/* Slide Dots for text content */}
       <div className="absolute bottom-5 right-5 flex gap-2 z-20">
-        {slides.map((_, index) => (
+        {textSlides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentVideo(index)}
+            onClick={() => {
+              clearInterval(textSlideTimerRef.current); // Stop auto-advance
+              setCurrentTextSlide(index);
+              // Restart auto-advance after manual selection (optional)
+              textSlideTimerRef.current = setInterval(() => {
+                setCurrentTextSlide((prev) => (prev + 1) % textSlides.length);
+              }, textSlideDisplayDuration);
+            }}
             className={`w-3 h-3 rounded-full ${
-              currentVideo === index ? "bg-white" : "bg-gray-500"
+              currentTextSlide === index ? "bg-white" : "bg-gray-500"
             }`}
           ></button>
         ))}

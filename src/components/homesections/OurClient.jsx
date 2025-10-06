@@ -119,14 +119,14 @@ const ValuedClients = () => {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-4xl font-bold text-green-600 leading-tight">
+              <h1 className="text-4xl lg:text-4xl font-bold text-[#00984C] leading-tight">
                 Our{" "}
                 <span className="bg-gradient-to-r from-gray-500 to-gray-600 bg-clip-text text-transparent">
                   Client
                 </span>
               </h1>
 
-              <p className="text-lg text-green-600 leading-relaxed max-w-lg">
+              <p className="text-lg text-[#00984C] leading-relaxed max-w-lg">
                 We're proud to work with industry-leading companies who trust us
                 to deliver exceptional results and drive their success forward.
               </p>
@@ -138,13 +138,13 @@ const ValuedClients = () => {
                 <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   {clients.length}+
                 </div>
-                <div className="text-green-600 font-medium">Happy Clients</div>
+                <div className="text-[#00984C] font-medium">Happy Clients</div>
               </div>
               <div className="bg-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <div className="text-3xl font-bold text-gray-500 mb-2 group-hover:scale-110 transition-transform duration-300">
                   98%
                 </div>
-                <div className="text-green-600 font-medium">
+                <div className="text-[#00984C] font-medium">
                   Satisfaction Rate
                 </div>
               </div>
@@ -177,14 +177,14 @@ const ValuedClients = () => {
               onClick={prevSlide}
               className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronLeft className="w-5 h-5 text-green-600 group-hover:text-green-500" />
+              <ChevronLeft className="w-5 h-5 text-[#00984C] group-hover:text-green-500" />
             </button>
 
             <button
               onClick={nextSlide}
               className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 group"
             >
-              <ChevronRight className="w-5 h-5 text-green-600 group-hover:text-green-500" />
+              <ChevronRight className="w-5 h-5 text-[#00984C] group-hover:text-green-500" />
             </button>
 
             {/* Client Logo Grid */}
