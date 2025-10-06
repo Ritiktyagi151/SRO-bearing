@@ -25,13 +25,16 @@ export default function WhatWeDoSection() {
   ];
 
   return (
-    <section className="bg-gray-100 py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-100 py-12 md:py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-500 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#00974A] mb-4">
             What we do
           </h2>
+          <p className="text-gray-600">
+            Engineering solutions that move the world
+          </p>
         </div>
 
         {/* Categories */}
@@ -39,9 +42,9 @@ export default function WhatWeDoSection() {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="group bg-gray-100 rounded-xl p-8 hover:bg-gray-300 transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-gray-600"
+              className="group bg-gray-100  rounded-xl p-8 hover:bg-gray-300 transition-all duration-300 hover:-translate-y-1 border border-gray-300 hover:border-gray-600"
             >
-              <h3 className="text-2xl font-bold text-green-500 mb-4">
+              <h3 className="text-2xl font-bold text-[#00974A] mb-4">
                 {category.title}
               </h3>
               <p className="text-gray-600 mb-6">{category.description}</p>

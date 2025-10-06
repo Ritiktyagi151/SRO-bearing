@@ -163,10 +163,14 @@ const NewsSlider = () => {
     <section className="py-12 bg-gray-100">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-500 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#00984C] mb-4">
             Latest News from SRO Bearings
           </h2>
-          <div className="h-1 w-16 bg-gray-600 mx-auto rounded-full"></div>
+          <p className="text-gray-600">
+            Stay updated with engineering breakthroughs, sustainability efforts,
+            and company milestones from the SRO Bearings team
+          </p>
+          {/* <div className="h-1 w-16 bg-gray-600 mx-auto rounded-full"></div> */}
         </div>
 
         <div
@@ -231,7 +235,7 @@ const NewsSlider = () => {
                               {formatDate(news.date)}
                             </span>
                           </div>
-                          <h3 className="text-xl font-bold text-green-500 mb-3 hover:text-gray-600 transition-colors line-clamp-2">
+                          <h3 className="text-xl font-bold text-[#00984C] mb-3 hover:text-gray-600 transition-colors line-clamp-2">
                             {news.title}
                           </h3>
                           <p className="text-sm text-gray-500 mb-2">
@@ -248,7 +252,7 @@ const NewsSlider = () => {
                             >
                               {news.category}
                             </span>
-                            <button className="text-green-600 hover:text-green-800 text-sm font-medium transition-colors">
+                            <button className="text-[#00984C] hover:text-green-800 text-sm font-medium transition-colors">
                               Read more →
                             </button>
                           </div>
@@ -270,7 +274,7 @@ const NewsSlider = () => {
               onClick={() => setCurrentIndex(index + 1)} // adjust for clone
               className={`h-2 rounded-full transition-all duration-300 ${
                 index + 1 === currentIndex
-                  ? "bg-green-600 w-6"
+                  ? "bg-[#00984C] w-6"
                   : "bg-green-300 hover:bg-green-400 w-2"
               }`}
             />

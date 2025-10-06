@@ -9,6 +9,7 @@ import WhoWeAre from "@/components/homesections/WhoWeAre";
 import ThisIsUs from "@/components/homesections/ThisIsUs";
 
 import Head from "next/head";
+import Videodemo from "@/components/homesections/videodemo";
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
       <Head>
         <title>Home | SRO bearing</title>
       </Head>
-      <HeroVideoSection />
+      <Videodemo />
+      {/* <HeroVideoSection /> */}
       <Homeabout />
       <ProductSlider />
       <WhoWeAre />

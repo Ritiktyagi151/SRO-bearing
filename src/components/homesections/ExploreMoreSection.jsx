@@ -32,7 +32,7 @@ const exploreItems = [
 
 const ExploreMoreSection = () => {
   return (
-    <section className="bg-gray-100 py-20 px-6 md:px-16 text-green-600">
+    <section className="bg-gray-100 py-6 px-6 md:px-16 text-[#00984C]">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 className="text-4xl font-bold   mb-4">Explore more</h2>
         <p className="text-gray-600">
@@ -58,7 +58,7 @@ const ExploreMoreSection = () => {
               <p className="text-gray-700 mb-4">{item.description}</p>
               <Link
                 href={item.href}
-                className="text-green-500 font-medium hover:underline flex items-center gap-1"
+                className="text-[#00974A] font-medium hover:underline flex items-center gap-1"
               >
                 <span className="text-lg">→</span>
                 {item.linkText}

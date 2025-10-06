@@ -167,7 +167,7 @@ export default function BearingGrid() {
 
   return (
     <section
-      className="max-w-8xl mx-auto px-4 py-16 relative overflow-hidden bg-gray-100"
+      className="max-w-8xl mx-auto px-4 py-8 relative overflow-hidden bg-gray-100"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       ref={sliderRef}
