@@ -220,8 +220,8 @@ const Navbar = () => {
       <header
         className={`w-full fixed top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-gray-200 backdrop-blur-sm shadow-md border-b border-gray-100"
-            : "bg-transparent"
+            ? "bg-white backdrop-blur-sm shadow-md border-b border-gray-100"
+            : "bg-white"
         }`}
       >
         <div className="mx-auto px-4 sm:px-6 lg:px-8">

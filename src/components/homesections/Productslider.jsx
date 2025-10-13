@@ -77,8 +77,7 @@ const bearingProducts = [
       "Adapter sleeve mounting",
     ],
     applications: "Conveyors, fans, agricultural equipment",
-    image:
-      "https://t4.ftcdn.net/jpg/14/66/64/83/240_F_1466648372_V5UrfA04n979R7fMouYgzbEGPGn4X4yc.jpg",
+    image: "/image/product-slider-img/pillow-block-bearing.png",
     link: "/products/pillow-block-bearing",
   },
   {
@@ -93,8 +92,7 @@ const bearingProducts = [
       "Various sealing options",
     ],
     applications: "Large fans, pumps, marine equipment",
-    image:
-      "https://t3.ftcdn.net/jpg/00/47/22/66/240_F_47226630_KBdThTIFWAM5elV9gqxPx0z2HWfySxKd.jpg",
+    image: "/image/product-slider-img/Plummer-Blocks.png",
     link: "/products/plummer-blocks",
   },
   {
@@ -109,8 +107,7 @@ const bearingProducts = [
       "Multiple pitch sizes",
     ],
     applications: "Conveyors, industrial machinery, motorcycles",
-    image:
-      "https://t3.ftcdn.net/jpg/01/92/10/30/240_F_192103089_xYWwLjM8OK3wgnyBj1whxGx8kPzBfhnT.jpg",
+    image: "/image/product-slider-img/Roller-Chains.png",
     link: "/products/roller-chains",
   },
 ];
