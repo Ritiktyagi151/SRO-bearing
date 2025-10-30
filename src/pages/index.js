@@ -10,6 +10,7 @@ import ThisIsUs from "@/components/homesections/ThisIsUs";
 
 import Head from "next/head";
 import Videodemo from "@/components/homesections/videodemo";
+import Journey from "@/components/homesections/Journey";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       {/* <HeroVideoSection /> */}
       <Homeabout />
       <ProductSlider />
+      <Journey/>
       <WhoWeAre />
       <ThisIsUs />
       <IndustryApplications />
