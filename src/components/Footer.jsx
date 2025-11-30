@@ -142,12 +142,14 @@ export default function Footer() {
                 <div className="mt-1 text-gray-600 group-hover:text-gray-300 transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
+
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  1st Floor, 3856/5, Shradhanand Marg,
+                  <span className="font-semibold">SRO Bearings</span> Marketing
+                  office :
                   <br />
-                  Shah Ganj, Chandni Chowk,
+                  91, Mausam Vihar, Near Preeti Vihar Metro
                   <br />
-                  Delhi, 110006
+                  Station, Delhi-110051, INDIA.
                 </p>
               </div>
 

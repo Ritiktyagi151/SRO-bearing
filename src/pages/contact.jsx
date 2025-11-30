@@ -284,12 +284,13 @@ export default function ContactPage() {
                 <h3 className="text-lg font-semibold mb-3 text-gray-800">
                   Address
                 </h3>
+
                 <p className="text-gray-600">
-                  1st Floor, 3856/5, Shradhanand Marg,
+                  SRO Bearings Marketing office : 91, Mausam Vihar,
                   <br />
-                  Shah Ganj, Chandni Chowk,
+                  Near Preeti Vihar Metro Station,
                   <br />
-                  Delhi, 110006
+                  Delhi-110051, INDIA.
                 </p>
               </motion.div>
             </motion.div>
