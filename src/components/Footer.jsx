@@ -231,7 +231,7 @@ export default function Footer() {
               © {new Date().getFullYear()} SRO Bearing. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
-              Powered by{" "}
+              Design and Developed By{" "}
               <Link
                 href="https://jaikvik.com/"
                 className="text-green-400 hover:text-green-700 transition-colors duration-300 font-medium"
