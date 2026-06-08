@@ -153,7 +153,7 @@ const Navbar = () => {
 
     try {
       const response = await fetch(
-        "https://formsubmit.co/ajax/bhakarsoursbh@gmail.com",
+        "https://formsubmit.co/ajax/info@srobearings.com",
         {
           method: "POST",
           headers: {
