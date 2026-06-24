@@ -5,7 +5,7 @@ import WhatsAppBubble from "@/components/whatsappIcon.jsx";
 import { useEffect, useState } from "react";
 import LoadingSpinner, { AnimatedLoader } from "@/components/LoadingBar";
 
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 function MaintenancePage() {
   return (
@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   if (firstLoad) return <AnimatedLoader />;
-  if (MAINTENANCE_MODE) return <MaintenancePage />;
+  // if (MAINTENANCE_MODE) return <MaintenancePage />;
 
   return (
     <>
