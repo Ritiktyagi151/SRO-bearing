@@ -160,7 +160,7 @@ export default function AdminCategories() {
 
         {showForm ? (
           /* Full Page Editor Form */
-          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn">
+          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn max-w-2xl mx-auto">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-6 right-6 p-2 bg-slate-100 hover:bg-slate-200 text-gray-700 rounded-lg transition-all cursor-pointer"
