@@ -133,13 +133,7 @@ export default function TiptapMiniEditor({ value, onChange, placeholder = "Write
         >
           1. List
         </button>
-        <button
-          type="button"
-          onClick={handleInsertImage}
-          className="px-2 py-0.5 rounded text-gray-650 hover:bg-gray-150 cursor-pointer"
-        >
-          🖼 Image
-        </button>
+
         <button
           type="button"
           onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}
