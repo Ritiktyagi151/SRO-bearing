@@ -169,37 +169,40 @@ export default function AdminIndustries() {
               {isEditing ? "Edit Industry Canvas" : "Add Industry Canvas"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Industry Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. Steel Industry"
-                  />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-5">
+                {/* Row 1: Industry Name + Icon */}
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1 max-w-lg">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Industry Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. Steel Industry"
+                    />
+                  </div>
+                  <div className="w-full max-w-[160px]">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Icon (Emoji)
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.icon}
+                      onChange={(e) => setForm({ ...form, icon: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. 🔥"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Icon (Emoji)
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.icon}
-                    onChange={(e) => setForm({ ...form, icon: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. 🔥"
-                  />
-                </div>
-
-                <div className="md:col-span-2">
+                {/* Row 2: Rich Text Description */}
+                <div className="w-full">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Description (Rich Text Editor)
                   </label>
@@ -210,7 +213,8 @@ export default function AdminIndustries() {
                   />
                 </div>
 
-                <div className="md:col-span-2">
+                {/* Row 3: Features */}
+                <div className="w-full">
                   <label className="block text-sm font-medium text-gray-700">
                     Features / Specifications (One item per line)
                   </label>
@@ -223,7 +227,8 @@ export default function AdminIndustries() {
                   />
                 </div>
 
-                <div className="md:col-span-2 border-t border-gray-150 pt-6">
+                {/* Row 4: Image Upload */}
+                <div className="w-full max-w-md pt-4 border-t border-gray-200">
                   <label className="block text-sm font-medium text-gray-700">
                     Industry Image Banner (JPG, PNG, WEBP, GIF up to 100MB)
                   </label>
