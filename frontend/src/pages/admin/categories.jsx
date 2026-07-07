@@ -173,9 +173,9 @@ export default function AdminCategories() {
               {isEditing ? "Edit Category Canvas" : "Add Category Canvas"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-2">
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Category Name
                   </label>
@@ -189,7 +189,7 @@ export default function AdminCategories() {
                   />
                 </div>
 
-                <div className="md:col-span-1">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Category Slug (URL)
                   </label>
@@ -202,7 +202,18 @@ export default function AdminCategories() {
                   />
                 </div>
 
-                <div className="md:col-span-1">
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Category Description
+                  </label>
+                  <TiptapMiniEditor
+                    value={form.description}
+                    onChange={(val) => setForm({ ...form, description: val })}
+                    placeholder="Provide a detailed overview of the category offerings..."
+                  />
+                </div>
+
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Banner Height
                   </label>
@@ -214,28 +225,17 @@ export default function AdminCategories() {
                     placeholder="e.g. 450px, 60vh"
                   />
                 </div>
+              </div>
 
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Category Banner Image (JPG, PNG, WEBP, GIF up to 100MB)
-                  </label>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="mt-1.5 block w-full text-xs text-gray-655 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                  />
-                </div>
-
-                <div className="md:col-span-3">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Category Description
-                  </label>
-                  <TiptapMiniEditor
-                    value={form.description}
-                    onChange={(val) => setForm({ ...form, description: val })}
-                    placeholder="Provide a detailed overview of the category offerings..."
-                  />
-                </div>
+              <div className="md:col-span-2 border-t border-gray-150 pt-6">
+                <label className="block text-sm font-medium text-gray-700">
+                  Category Banner Image (JPG, PNG, WEBP, GIF up to 100MB)
+                </label>
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
+                />
               </div>
 
               <div className="pt-6 border-t border-gray-200 flex gap-4">

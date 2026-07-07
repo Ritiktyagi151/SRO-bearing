@@ -82,64 +82,64 @@ export default function TiptapMiniEditor({ value, onChange, placeholder = "Write
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleBold().run()}
-          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${
-            editor?.isActive("bold") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${editor?.isActive("bold") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           B
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleItalic().run()}
-          className={`px-2 py-0.5 rounded italic cursor-pointer ${
-            editor?.isActive("italic") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded italic cursor-pointer ${editor?.isActive("italic") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           I
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${
-            editor?.isActive("heading", { level: 2 }) ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${editor?.isActive("heading", { level: 2 }) ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           H2
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${
-            editor?.isActive("heading", { level: 3 }) ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded font-bold cursor-pointer ${editor?.isActive("heading", { level: 3 }) ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           H3
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleBulletList().run()}
-          className={`px-2 py-0.5 rounded cursor-pointer ${
-            editor?.isActive("bulletList") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded cursor-pointer ${editor?.isActive("bulletList") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           • List
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-          className={`px-2 py-0.5 rounded cursor-pointer ${
-            editor?.isActive("orderedList") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
-          }`}
+          className={`px-2 py-0.5 rounded cursor-pointer ${editor?.isActive("orderedList") ? "bg-gray-250 text-gray-900" : "text-gray-600 hover:bg-gray-150"
+            }`}
         >
           1. List
         </button>
-
+        <button
+          type="button"
+          onClick={handleInsertImage}
+          className="px-2 py-0.5 rounded text-gray-650 hover:bg-gray-150 cursor-pointer"
+        >
+          Image
+        </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}
           className="px-2 py-0.5 rounded text-gray-650 hover:bg-gray-150 cursor-pointer"
         >
-          ➕ Table
+          Table
         </button>
         {editor?.isActive("table") && (
           <div className="flex gap-1 items-center border-l border-gray-300 pl-1.5 ml-1 text-[9px]">

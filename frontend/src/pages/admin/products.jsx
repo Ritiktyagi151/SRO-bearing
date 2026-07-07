@@ -177,9 +177,9 @@ export default function AdminProducts() {
               {isEditing ? "Edit Product Details" : "Add Product Details"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-2">
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Product Name
                   </label>
@@ -193,7 +193,7 @@ export default function AdminProducts() {
                   />
                 </div>
 
-                <div className="md:col-span-1">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Product Slug (URL)
                   </label>
@@ -206,7 +206,7 @@ export default function AdminProducts() {
                   />
                 </div>
 
-                <div className="md:col-span-1">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Category
                   </label>
@@ -224,7 +224,7 @@ export default function AdminProducts() {
                   </select>
                 </div>
 
-                <div className="md:col-span-1">
+                <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Order Index (Sorting)
                   </label>
@@ -236,18 +236,7 @@ export default function AdminProducts() {
                   />
                 </div>
 
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
-                  </label>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                  />
-                </div>
-
-                <div className="md:col-span-3">
+                <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Product Description
                   </label>
@@ -255,6 +244,17 @@ export default function AdminProducts() {
                     value={form.description}
                     onChange={(val) => setForm({ ...form, description: val })}
                     placeholder="Product specifications, features, etc..."
+                  />
+                </div>
+
+                <div className="md:col-span-2 border-t border-gray-150 pt-6">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
+                  </label>
+                  <input
+                    type="file"
+                    onChange={handleFileChange}
+                    className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
                   />
                 </div>
               </div>
