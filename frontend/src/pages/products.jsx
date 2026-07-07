@@ -232,7 +232,9 @@ export default function Products({ initialProducts = [] }) {
                     <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600">{product.description}</p>
+                    <p className="text-gray-600 line-clamp-3">
+                      {product.description ? product.description.replace(/<[^>]*>/g, "") : ""}
+                    </p>
                   </div>
 
                   {/* Right Button */}

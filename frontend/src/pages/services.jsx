@@ -284,18 +284,14 @@ export default function ServicesPage({ initialServices = [] }) {
                       <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
                         {selectedService.title}
                       </h3>
-                      <div className="mt-3 sm:mt-4 md:mt-6 space-y-2 sm:space-y-3">
-                        {selectedService.fullDescription.map(
-                          (paragraph, idx) => (
-                            <p
-                              key={idx}
-                              className="text-xs sm:text-sm md:text-base text-gray-600"
-                            >
-                              {paragraph}
-                            </p>
-                          )
-                        )}
-                      </div>
+                      <div
+                        className="mt-3 sm:mt-4 md:mt-6 text-xs sm:text-sm md:text-base text-gray-650 space-y-3 tiptap-editor-content"
+                        dangerouslySetInnerHTML={{
+                          __html: Array.isArray(selectedService.fullDescription)
+                            ? selectedService.fullDescription.map(p => p.startsWith("<") ? p : `<p>${p}</p>`).join("")
+                            : selectedService.fullDescription
+                        }}
+                      />
                       <div className="mt-4 sm:mt-6">
                         <h4 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">
                           Case Study:

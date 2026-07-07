@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import AdminLayout from "@/components/AdminLayout";
-import { FolderPlus, Trash2, Edit2, AlertCircle, Check } from "lucide-react";
+import { FolderPlus, Trash2, Edit2, AlertCircle, Check, X, Plus } from "lucide-react";
 import { apiGet, apiPost, apiPut, apiDelete } from "@/utils/api";
+import TiptapMiniEditor from "@/components/TiptapMiniEditor";
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState({
     id: "",
     name: "",
@@ -18,7 +21,6 @@ export default function AdminProducts() {
   });
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState({ type: "", text: "" });
-  const [isEditing, setIsEditing] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -60,41 +62,8 @@ export default function AdminProducts() {
     setMessage({ type: "", text: "" });
   };
 
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [editForm, setEditForm] = useState({
-    id: "",
-    name: "",
-    slug: "",
-    description: "",
-    category: "",
-    order: 0,
-  });
-  const [editFile, setEditFile] = useState(null);
-  const [editMessage, setEditMessage] = useState({ type: "", text: "" });
-
-  const handleEditFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    if (!selectedFile) return;
-
-    if (selectedFile.size > 100 * 1024 * 1024) {
-      setEditMessage({ type: "error", text: "Product image exceeds 100MB limit!" });
-      e.target.value = null;
-      return;
-    }
-
-    const allowed = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif", "application/pdf"];
-    if (!allowed.includes(selectedFile.type)) {
-      setEditMessage({ type: "error", text: "Only JPG, PNG, WEBP, GIF, and PDF formats are supported!" });
-      e.target.value = null;
-      return;
-    }
-
-    setEditFile(selectedFile);
-    setEditMessage({ type: "", text: "" });
-  };
-
   const handleEdit = (prod) => {
-    setEditForm({
+    setForm({
       id: prod._id,
       name: prod.name,
       slug: prod.slug,
@@ -102,9 +71,10 @@ export default function AdminProducts() {
       category: prod.category?._id || "",
       order: prod.order || 0,
     });
-    setEditFile(null);
-    setEditMessage({ type: "", text: "" });
-    setShowEditModal(true);
+    setFile(null);
+    setIsEditing(true);
+    setShowForm(true);
+    setMessage({ type: "", text: "" });
   };
 
   const handleDelete = async (id) => {
@@ -136,43 +106,21 @@ export default function AdminProducts() {
     }
 
     try {
-      await apiPost("/products", formData, true);
-      setMessage({ type: "success", text: "Product created successfully!" });
+      if (isEditing) {
+        await apiPut(`/products/${form.id}`, formData, true);
+        setMessage({ type: "success", text: "Product updated successfully!" });
+      } else {
+        await apiPost("/products", formData, true);
+        setMessage({ type: "success", text: "Product created successfully!" });
+      }
 
       setForm({ id: "", name: "", slug: "", description: "", category: "", order: 0 });
       setFile(null);
-      const fileInput = document.querySelector('input[type="file"]');
-      if (fileInput) fileInput.value = null;
+      setIsEditing(false);
+      setShowForm(false);
       fetchData();
     } catch (err) {
       setMessage({ type: "error", text: err.message });
-    }
-  };
-
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-    setEditMessage({ type: "", text: "" });
-
-    const formData = new FormData();
-    formData.append("name", editForm.name);
-    formData.append("slug", editForm.slug || editForm.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"));
-    formData.append("description", editForm.description);
-    if (editForm.category) {
-      formData.append("category", editForm.category);
-    }
-    formData.append("order", editForm.order);
-
-    if (editFile) {
-      formData.append("image", editFile);
-    }
-
-    try {
-      await apiPut(`/products/${editForm.id}`, formData, true);
-      setMessage({ type: "success", text: "Product updated successfully!" });
-      setShowEditModal(false);
-      fetchData();
-    } catch (err) {
-      setEditMessage({ type: "error", text: err.message });
     }
   };
 
@@ -183,187 +131,219 @@ export default function AdminProducts() {
       </Head>
 
       <div className="space-y-8 font-sans">
-        <h1 className="text-3xl font-bold text-gray-900">Products Catalog</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-black text-slate-100 tracking-wide">Products Catalog</h1>
+          {!showForm && (
+            <button
+              onClick={() => {
+                setForm({ id: "", name: "", slug: "", description: "", category: "", order: 0 });
+                setFile(null);
+                setIsEditing(false);
+                setShowForm(true);
+                setMessage({ type: "", text: "" });
+              }}
+              className="flex items-center gap-2 py-2.5 px-6 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold rounded-xl text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer animate-pulse"
+            >
+              <Plus className="w-4.5 h-4.5" />
+              Create Product
+            </button>
+          )}
+        </div>
 
         {message.text && (
           <div
-            className={`p-4 rounded-lg flex items-start gap-3 border text-sm ${
+            className={`p-4 rounded-xl flex items-start gap-3 border text-sm ${
               message.type === "success"
-                ? "bg-green-500/15 border-emerald-500/20 text-green-700"
-                : "bg-red-500/15 border-red-500/20 text-red-400"
+                ? "bg-emerald-950/40 border-emerald-500/20 text-emerald-400"
+                : "bg-rose-950/40 border-rose-500/20 text-rose-400"
             }`}
           >
-            {message.type === "success" ? (
-              <Check className="w-5 h-5 flex-shrink-0" />
-            ) : (
-              <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            )}
+            <Check className="w-5 h-5 flex-shrink-0" />
             <span>{message.text}</span>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Form */}
-          <div className="bg-white/40 border border-gray-200 rounded-xl p-6 h-fit shadow-md">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <FolderPlus className="w-5 h-5 text-green-700" />
-              Add Product
+        {showForm ? (
+          /* Full Page Editor Form */
+          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-8 shadow-2xl relative animate-fadeIn">
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-6 right-6 p-2.5 bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-slate-100 rounded-xl border border-slate-800 transition-all cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <h2 className="text-lg font-black text-slate-100 mb-8 uppercase tracking-wider flex items-center gap-2">
+              <FolderPlus className="w-5 h-5 text-emerald-500" />
+              {isEditing ? "Edit Product Details" : "Add Product Details"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Product Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  placeholder="e.g. Cylindrical Roller Bearing"
-                />
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Product Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-semibold transition"
+                    placeholder="e.g. Cylindrical Roller Bearing"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Product Slug (URL)
+                  </label>
+                  <input
+                    type="text"
+                    value={form.slug}
+                    onChange={(e) => setForm({ ...form, slug: e.target.value })}
+                    className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-semibold transition"
+                    placeholder="e.g. cylindrical-roller-bearing"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Category
+                  </label>
+                  <select
+                    value={form.category}
+                    onChange={(e) => setForm({ ...form, category: e.target.value })}
+                    className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 focus:bg-slate-950 text-sm font-semibold transition"
+                  >
+                    <option value="">Select Category (Optional)</option>
+                    {categories.map((cat) => (
+                      <option key={cat._id} value={cat._id}>
+                        {cat.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Order Index (Sorting)
+                  </label>
+                  <input
+                    type="number"
+                    value={form.order}
+                    onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
+                    className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-semibold transition"
+                  />
+                </div>
+
+                <div className="md:col-span-2 flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider mb-1">
+                    Product Description
+                  </label>
+                  <TiptapMiniEditor
+                    value={form.description}
+                    onChange={(val) => setForm({ ...form, description: val })}
+                    placeholder="Product specifications, features, etc..."
+                  />
+                </div>
+
+                <div className="md:col-span-2 border-t border-slate-900 pt-6 flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
+                  </label>
+                  <input
+                    type="file"
+                    onChange={handleFileChange}
+                    className="mt-1.5 block w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border file:border-slate-800 file:text-xs file:font-bold file:bg-slate-900 file:text-slate-300 hover:file:bg-slate-850 cursor-pointer"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Product Slug (URL)
-                </label>
-                <input
-                  type="text"
-                  value={form.slug}
-                  onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  placeholder="e.g. cylindrical-roller-bearing"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Category
-                </label>
-                <select
-                  value={form.category}
-                  onChange={(e) => setForm({ ...form, category: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                >
-                  <option value="">Select Category (Optional)</option>
-                  {categories.map((cat) => (
-                    <option key={cat._id} value={cat._id}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Product Description
-                </label>
-                <textarea
-                  value={form.description}
-                  onChange={(e) => setForm({ ...form, description: e.target.value })}
-                  rows="3"
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  placeholder="Product specifications, features, etc..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Order Index (Sorting)
-                </label>
-                <input
-                  type="number"
-                  value={form.order}
-                  onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
-                </label>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                  className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                />
-              </div>
-
-              <div className="pt-2">
+              <div className="pt-6 border-t border-slate-900 flex gap-4">
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 bg-green-50 hover:bg-green-700 text-gray-900 font-bold rounded-lg text-sm shadow-md transition-all"
+                  className="py-2.5 px-8 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
                 >
-                  Create Product
+                  {isEditing ? "Save Changes" : "Publish Product"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setForm({ id: "", name: "", slug: "", description: "", category: "", order: 0 });
+                    setFile(null);
+                    setIsEditing(false);
+                    setShowForm(false);
+                  }}
+                  className="py-2.5 px-8 bg-slate-900 hover:bg-slate-850 text-slate-300 border border-slate-800 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer"
+                >
+                  Cancel
                 </button>
               </div>
             </form>
           </div>
-
-          {/* List */}
-          <div className="lg:col-span-2 bg-white/40 border border-gray-200 rounded-xl p-6 shadow-md overflow-x-auto">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Existing Products</h2>
+        ) : (
+          /* Full Width List Table */
+          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-6 shadow-2xl overflow-x-auto animate-fadeIn">
+            <h2 className="text-lg font-black text-slate-100 mb-6 uppercase tracking-wider">Existing Products</h2>
 
             {loading ? (
               <div className="space-y-4 animate-pulse">
                 {[1, 2, 3].map((idx) => (
-                  <div key={idx} className="h-16 bg-white rounded-lg"></div>
+                  <div key={idx} className="h-16 bg-slate-900 rounded-xl"></div>
                 ))}
               </div>
             ) : products.length === 0 ? (
-              <p className="text-gray-500 text-sm">No products in catalog yet.</p>
+              <p className="text-slate-400 text-sm italic">No products in catalog yet.</p>
             ) : (
-              <table className="w-full text-left text-sm text-gray-700">
+              <table className="w-full text-left text-sm text-slate-300">
                 <thead>
-                  <tr className="border-b border-gray-200 text-gray-500 uppercase text-xs">
-                    <th className="py-3 px-4">Image</th>
-                    <th className="py-3 px-4">Name</th>
-                    <th className="py-3 px-4">Category</th>
-                    <th className="py-3 px-4">Sorting Order</th>
-                    <th className="py-3 px-4 text-right">Actions</th>
+                  <tr className="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider font-black">
+                    <th className="py-4 px-4">Image</th>
+                    <th className="py-4 px-4">Name</th>
+                    <th className="py-4 px-4">Category</th>
+                    <th className="py-4 px-4">Order</th>
+                    <th className="py-4 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-850">
                   {products.map((prod) => (
-                    <tr key={prod._id} className="hover:bg-white/30 transition-all">
+                    <tr key={prod._id} className="hover:bg-slate-900/30 transition-all">
                       <td className="py-4 px-4">
                         {prod.image ? (
                           <img
                             src={prod.image.startsWith("http") ? prod.image : `http://localhost:5001${prod.image}`}
                             alt={prod.name}
-                            className="w-12 h-12 object-cover rounded-md border border-gray-200"
+                            className="w-16 h-10 object-cover rounded-lg border border-slate-800"
                           />
-                        ) : (
-                          <span className="text-xs text-slate-550 italic">No Image</span>
-                        )}
-                      </td>
-                      <td className="py-4 px-4 font-semibold text-gray-900">
-                        <div>{prod.name}</div>
-                        <div className="text-xs text-gray-500 font-normal mt-0.5">{prod.slug}</div>
-                      </td>
-                      <td className="py-4 px-4 text-gray-650">
-                        {prod.category ? (
-                          <span className="bg-gray-100 text-green-700 text-xs px-2 py-1 rounded border border-gray-300 font-medium">
-                            {prod.category.name}
-                          </span>
                         ) : (
                           <span className="text-xs text-slate-550 italic">None</span>
                         )}
                       </td>
-                      <td className="py-4 px-4 font-mono">{prod.order}</td>
+                      <td className="py-4 px-4 font-bold text-slate-100">
+                        <div>{prod.name}</div>
+                        <div className="text-xs text-slate-450 font-mono mt-0.5">{prod.slug}</div>
+                      </td>
+                      <td className="py-4 px-4 text-slate-300">
+                        {prod.category ? (
+                          <span className="bg-emerald-950/40 text-emerald-450 text-[10px] px-2.5 py-1 rounded-xl border border-emerald-900/60 uppercase font-black tracking-wide">
+                            {prod.category.name}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-slate-500 italic">None</span>
+                        )}
+                      </td>
+                      <td className="py-4 px-4 font-mono text-xs text-slate-450">{prod.order}</td>
                       <td className="py-4 px-4 text-right space-x-2">
                         <button
                           onClick={() => handleEdit(prod)}
-                          className="p-2 bg-white border border-gray-200 text-gray-700 hover:text-green-700 hover:border-emerald-500/20 rounded-md transition-all inline-flex"
+                          className="p-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/20 rounded-xl transition inline-flex cursor-pointer"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(prod._id)}
-                          className="p-2 bg-white border border-gray-200 text-slate-350 hover:text-red-400 hover:border-red-500/20 rounded-md transition-all inline-flex"
+                          className="p-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-rose-400 hover:border-rose-500/20 rounded-xl transition inline-flex cursor-pointer"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -374,124 +354,8 @@ export default function AdminProducts() {
               </table>
             )}
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Edit Product Modal */}
-      {showEditModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="p-6 border-b border-gray-150 flex items-center justify-between bg-slate-50">
-              <h3 className="text-xl font-bold text-gray-900">Edit Product Canvas</h3>
-              <button
-                onClick={() => setShowEditModal(false)}
-                className="text-gray-400 hover:text-gray-700 text-2xl font-bold transition-all"
-              >
-                &times;
-              </button>
-            </div>
-
-            <form onSubmit={handleEditSubmit} className="p-6 overflow-y-auto space-y-4 flex-1">
-              {editMessage.text && (
-                <div
-                  className={`p-3.5 rounded-lg flex items-start gap-2 border text-xs ${
-                    editMessage.type === "success"
-                      ? "bg-green-500/15 border-emerald-500/20 text-green-700"
-                      : "bg-red-500/15 border-red-500/20 text-red-400"
-                  }`}
-                >
-                  <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span>{editMessage.text}</span>
-                </div>
-              )}
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-750">Product Name</label>
-                <input
-                  type="text"
-                  required
-                  value={editForm.name}
-                  onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-755">Product Slug (URL)</label>
-                <input
-                  type="text"
-                  value={editForm.slug}
-                  onChange={(e) => setEditForm({ ...editForm, slug: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-750">Category</label>
-                <select
-                  value={editForm.category}
-                  onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                >
-                  <option value="">Select Category (Optional)</option>
-                  {categories.map((cat) => (
-                    <option key={cat._id} value={cat._id}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-750">Product Description</label>
-                <textarea
-                  value={editForm.description}
-                  onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
-                  rows="3"
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-750">Order Index (Sorting)</label>
-                <input
-                  type="number"
-                  value={editForm.order}
-                  onChange={(e) => setEditForm({ ...editForm, order: parseInt(e.target.value) || 0 })}
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-750">
-                  Update Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
-                </label>
-                <input
-                  type="file"
-                  onChange={handleEditFileChange}
-                  className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                />
-              </div>
-
-              <div className="pt-4 border-t border-gray-150 flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => setShowEditModal(false)}
-                  className="flex-1 py-2.5 px-4 bg-gray-100 hover:bg-gray-250 text-gray-800 font-bold rounded-lg text-sm transition-all"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 py-2.5 px-4 bg-green-50 hover:bg-green-700 text-gray-900 font-bold rounded-lg text-sm shadow-md transition-all"
-                >
-                  Save Changes
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </AdminLayout>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import AdminLayout from "@/components/AdminLayout";
-import { Save, Check, AlertCircle, Plus, Trash2, Edit2, Users } from "lucide-react";
+import { Save, Check, AlertCircle, Plus, Trash2, Edit2, Users, X } from "lucide-react";
 import { apiGet, apiPut } from "@/utils/api";
 
 export default function AdminPartners() {
@@ -9,7 +9,6 @@ export default function AdminPartners() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState({ type: "", text: "" });
 
-  // Modal / Form state for client item
   const [isEditingClient, setIsEditingClient] = useState(false);
   const [clientFormIndex, setClientFormIndex] = useState(-1);
   const [clientForm, setClientForm] = useState({
@@ -108,20 +107,19 @@ export default function AdminPartners() {
 
   const handleRemoveClient = (idx) => {
     if (!partnerData) return;
-    const clientsList = partnerData.clients.filter((_, i) => i !== idx);
+    const clientsList = (partnerData.clients || []).filter((_, i) => i !== idx);
     setPartnerData({
       ...partnerData,
       clients: clientsList,
     });
   };
 
-  const handleSaveAll = async (e) => {
-    e.preventDefault();
+  const handleSaveAll = async () => {
     setMessage({ type: "", text: "" });
     try {
       const data = await apiPut("/cms/partners", partnerData);
       setPartnerData(data.partner);
-      setMessage({ type: "success", text: "Partnership CMS updated successfully!" });
+      setMessage({ type: "success", text: "Partners CMS updated successfully!" });
     } catch (err) {
       setMessage({ type: "error", text: err.message });
     }
@@ -131,9 +129,17 @@ export default function AdminPartners() {
     return (
       <AdminLayout>
         <div className="space-y-4 animate-pulse">
-          <div className="h-40 bg-white rounded-xl"></div>
-          <div className="h-40 bg-white rounded-xl"></div>
+          <div className="h-40 bg-slate-900 rounded-xl"></div>
+          <div className="h-40 bg-slate-900 rounded-xl"></div>
         </div>
+      </AdminLayout>
+    );
+  }
+
+  if (!partnerData) {
+    return (
+      <AdminLayout>
+        <p className="text-slate-400 text-sm italic">Partners schema load failure.</p>
       </AdminLayout>
     );
   }
@@ -144,187 +150,230 @@ export default function AdminPartners() {
         <title>Partners CMS | SRO Admin</title>
       </Head>
 
-      <div className="space-y-8 font-sans text-gray-800">
-        <div className="flex justify-between items-center flex-wrap gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-              <Users className="w-8 h-8 text-green-700" />
-              Partners & Clients CMS
-            </h1>
-            <p className="text-sm text-gray-650 mt-1">
-              Manage client logos, statistics metrics, and introduction paragraphs dynamically.
-            </p>
-          </div>
-          <button
-            onClick={handleSaveAll}
-            className="flex items-center gap-2 py-2.5 px-6 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg text-sm shadow-md transition-all cursor-pointer"
-          >
-            <Save className="w-4 h-4" />
-            Save Changes
-          </button>
+      <div className="space-y-8 font-sans">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-black text-slate-100 tracking-wide">Partners CMS Manager</h1>
+          {!showClientForm && (
+            <button
+              onClick={handleSaveAll}
+              className="flex items-center gap-2 py-2.5 px-6 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold rounded-xl text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
+            >
+              <Save className="w-4.5 h-4.5" />
+              Save All Changes
+            </button>
+          )}
         </div>
 
         {message.text && (
           <div
-            className={`p-4 rounded-lg flex items-start gap-3 border text-sm ${
+            className={`p-4 rounded-xl flex items-start gap-3 border text-sm ${
               message.type === "success"
-                ? "bg-green-50 border-green-200 text-green-800"
-                : "bg-red-50 border-red-200 text-red-700"
+                ? "bg-emerald-950/40 border-emerald-500/20 text-emerald-400"
+                : "bg-rose-950/40 border-rose-500/20 text-rose-400"
             }`}
           >
-            {message.type === "success" ? (
-              <Check className="w-5 h-5 flex-shrink-0" />
-            ) : (
-              <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            )}
+            <Check className="w-5 h-5 flex-shrink-0" />
             <span>{message.text}</span>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Columns - Text Content Settings */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-6">
-              <h2 className="text-xl font-bold text-gray-900 border-b border-gray-150 pb-3">
-                1. Text Headers & Paragraphs
-              </h2>
+        {showClientForm ? (
+          /* Inline Client Edit Form */
+          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-8 shadow-2xl relative animate-fadeIn max-w-3xl">
+            <button
+              onClick={() => setShowClientForm(false)}
+              className="absolute top-6 right-6 p-2.5 bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-slate-100 rounded-xl border border-slate-800 transition-all cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Badge Title
-                  </label>
-                  <input
-                    type="text"
-                    value={partnerData.badge || ""}
-                    onChange={(e) => handleTextChange("badge", e.target.value)}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  />
-                </div>
+            <h3 className="text-lg font-black text-slate-100 mb-6 uppercase tracking-wider flex items-center gap-2">
+              <Users className="w-5 h-5 text-emerald-500" />
+              {isEditingClient ? "Edit Client Item" : "Add Client Partner"}
+            </h3>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Main Title
-                  </label>
-                  <input
-                    type="text"
-                    value={partnerData.title || ""}
-                    onChange={(e) => handleTextChange("title", e.target.value)}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Intro Description
+            <form onSubmit={handleSaveClientItem} className="space-y-6 max-w-xl">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider mb-1">
+                  Company Name
                 </label>
-                <textarea
-                  value={partnerData.description || ""}
-                  onChange={(e) => handleTextChange("description", e.target.value)}
-                  rows="3"
-                  className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                <input
+                  type="text"
+                  required
+                  value={clientForm.name}
+                  onChange={(e) => setClientForm({ ...clientForm, name: e.target.value })}
+                  className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-semibold transition"
+                  placeholder="E.g. TechCorp"
                 />
               </div>
-            </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-6">
-              <h2 className="text-xl font-bold text-gray-900 border-b border-gray-150 pb-3">
-                2. Statistical Metrics
-              </h2>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider mb-1">
+                  Logo Initials (Optional fallback, 2 letters max)
+                </label>
+                <input
+                  type="text"
+                  maxLength={2}
+                  value={clientForm.logo}
+                  onChange={(e) => setClientForm({ ...clientForm, logo: e.target.value.toUpperCase() })}
+                  className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-mono transition"
+                  placeholder="E.g. TC"
+                />
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Happy Clients (E.g. 12+)
-                  </label>
-                  <input
-                    type="text"
-                    value={partnerData.happyClientsCount || ""}
-                    onChange={(e) => handleTextChange("happyClientsCount", e.target.value)}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  />
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider mb-1">
+                  Logo Image (JPEG/PNG/WEBP, under 1MB)
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="mt-1.5 block w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border file:border-slate-800 file:text-xs file:font-bold file:bg-slate-900 file:text-slate-300 hover:file:bg-slate-850 cursor-pointer"
+                />
+                {clientForm.image && (
+                  <div className="mt-4 flex items-center gap-3 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                    <img src={clientForm.image} alt="Preview" className="w-12 h-12 object-contain border border-slate-700 rounded-lg p-1 bg-white" />
+                    <button
+                      type="button"
+                      onClick={() => setClientForm({ ...clientForm, image: "" })}
+                      className="text-xs text-rose-400 hover:underline cursor-pointer"
+                    >
+                      Remove Logo Image
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider mb-1">
+                  Visual Color Class (Tailwind gradient)
+                </label>
+                <input
+                  type="text"
+                  value={clientForm.color}
+                  onChange={(e) => setClientForm({ ...clientForm, color: e.target.value })}
+                  className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 placeholder-slate-500 text-sm font-mono transition"
+                  placeholder="E.g. from-gray-500 to-gray-600"
+                />
+              </div>
+
+              <div className="pt-6 border-t border-slate-900 flex gap-4">
+                <button
+                  type="submit"
+                  className="py-2.5 px-8 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
+                >
+                  Save Item
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowClientForm(false)}
+                  className="py-2.5 px-8 bg-slate-900 hover:bg-slate-850 text-slate-300 border border-slate-800 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          /* Normal grid layout */
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
+            {/* Left Columns - Text Content Settings */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-6 shadow-2xl space-y-6">
+                <h2 className="text-lg font-black text-slate-100 mb-2 border-b border-slate-900 pb-3 uppercase tracking-wider">
+                  1. Text Headers & Paragraphs
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                      Badge Title
+                    </label>
+                    <input
+                      type="text"
+                      value={partnerData.badge || ""}
+                      onChange={(e) => handleTextChange("badge", e.target.value)}
+                      className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 text-sm font-semibold transition"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                      Main Title
+                    </label>
+                    <input
+                      type="text"
+                      value={partnerData.title || ""}
+                      onChange={(e) => handleTextChange("title", e.target.value)}
+                      className="w-full h-11 px-4 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 text-sm font-semibold transition"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Satisfaction Rate (E.g. 98%)
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[10px] font-black uppercase text-slate-450 tracking-wider">
+                    Intro Description
                   </label>
-                  <input
-                    type="text"
-                    value={partnerData.satisfactionRate || ""}
-                    onChange={(e) => handleTextChange("satisfactionRate", e.target.value)}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Average Rating
-                  </label>
-                  <input
-                    type="text"
-                    value={partnerData.averageRating || ""}
-                    onChange={(e) => handleTextChange("averageRating", e.target.value)}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                  <textarea
+                    rows={3}
+                    value={partnerData.description || ""}
+                    onChange={(e) => handleTextChange("description", e.target.value)}
+                    className="w-full p-3 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/10 text-slate-100 text-sm font-semibold transition resize-none"
                   />
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Right Column - Managing Clients List */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-6">
-              <div className="flex justify-between items-center border-b border-gray-150 pb-3">
-                <h2 className="text-xl font-bold text-gray-900">
-                  3. Clients list
+            {/* Right Column - Client Items */}
+            <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-6 shadow-2xl space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-900 pb-3">
+                <h2 className="text-lg font-black text-slate-100 uppercase tracking-wider">
+                  2. Client Brands
                 </h2>
                 <button
                   type="button"
                   onClick={handleOpenAddClient}
-                  className="flex items-center gap-1 py-1 px-3 bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 rounded-lg text-xs font-semibold"
+                  className="p-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-lg transition-all cursor-pointer"
                 >
-                  <Plus className="w-3.5 h-3.5" />
-                  Add Client
+                  <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Client items grid */}
-              {(!partnerData.clients || partnerData.clients.length === 0) ? (
-                <p className="text-gray-500 text-sm italic">No client logos added yet.</p>
+              {(partnerData.clients || []).length === 0 ? (
+                <p className="text-slate-400 text-sm italic">No client brands added yet.</p>
               ) : (
-                <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
-                  {partnerData.clients.map((client, idx) => (
+                <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                  {(partnerData.clients || []).map((client, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100/50 transition"
+                      className="flex items-center justify-between p-3.5 bg-slate-900/60 border border-slate-800/80 rounded-xl hover:bg-slate-900 transition"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gray-200 overflow-hidden flex items-center justify-center font-bold text-sm shadow-sm">
+                        <div className="w-10 h-10 rounded-lg bg-white overflow-hidden flex items-center justify-center font-bold text-sm shadow-sm border border-slate-850">
                           {client.image ? (
                             <img src={client.image} alt={client.name} className="w-full h-full object-contain" />
                           ) : (
-                            <span className="w-full h-full bg-green-700 text-white flex items-center justify-center">{client.logo}</span>
+                            <span className="w-full h-full bg-emerald-800 text-white flex items-center justify-center">{client.logo}</span>
                           )}
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">{client.name}</p>
-                          <p className="text-xs text-gray-500 font-mono">{client.color}</p>
+                          <p className="text-sm font-bold text-slate-100">{client.name}</p>
+                          <p className="text-[10px] text-slate-450 font-mono">{client.color}</p>
                         </div>
                       </div>
                       <div className="flex gap-2">
                         <button
                           type="button"
                           onClick={() => handleOpenEditClient(idx, client)}
-                          className="p-1.5 bg-white border border-gray-200 text-gray-600 hover:text-green-700 rounded-md transition"
+                          className="p-1.5 bg-slate-950 border border-slate-850 text-slate-400 hover:text-emerald-450 hover:border-emerald-500/20 rounded-lg transition cursor-pointer inline-flex"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={() => handleRemoveClient(idx)}
-                          className="p-1.5 bg-white border border-gray-200 text-red-500 hover:text-red-700 rounded-md transition"
+                          className="p-1.5 bg-slate-950 border border-slate-855 text-slate-400 hover:text-rose-400 hover:border-rose-500/20 rounded-lg transition cursor-pointer inline-flex"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -335,102 +384,8 @@ export default function AdminPartners() {
               )}
             </div>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* ADD / EDIT CLIENT MODAL DIALOG */}
-      {showClientForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-          <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-gray-200 text-gray-800">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              {isEditingClient ? "Edit Client Item" : "Add Client Partner"}
-            </h3>
-
-            <form onSubmit={handleSaveClientItem} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={clientForm.name}
-                  onChange={(e) => setClientForm({ ...clientForm, name: e.target.value })}
-                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  placeholder="E.g. TechCorp"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Logo Initials (Optional fallback, 2 letters max)
-                </label>
-                <input
-                  type="text"
-                  maxLength={2}
-                  value={clientForm.logo}
-                  onChange={(e) => setClientForm({ ...clientForm, logo: e.target.value.toUpperCase() })}
-                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm font-mono"
-                  placeholder="E.g. TC"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Logo Image (JPEG/PNG/WEBP, under 1MB)
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-150 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                />
-                {clientForm.image && (
-                  <div className="mt-2 flex items-center gap-3">
-                    <img src={clientForm.image} alt="Preview" className="w-12 h-12 object-contain border border-gray-200 rounded-lg p-1 bg-white" />
-                    <button
-                      type="button"
-                      onClick={() => setClientForm({ ...clientForm, image: "" })}
-                      className="text-xs text-red-650 hover:underline cursor-pointer"
-                    >
-                      Remove Logo Image
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Visual Color Class (Tailwind gradient)
-                </label>
-                <input
-                  type="text"
-                  value={clientForm.color}
-                  onChange={(e) => setClientForm({ ...clientForm, color: e.target.value })}
-                  className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm font-mono"
-                  placeholder="E.g. from-gray-500 to-gray-600"
-                />
-              </div>
-
-              <div className="pt-2 flex gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 py-2.5 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition"
-                >
-                  Save Item
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowClientForm(false)}
-                  className="flex-1 py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-sm transition"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </AdminLayout>
   );
 }

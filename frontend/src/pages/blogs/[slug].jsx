@@ -373,7 +373,7 @@ export default function BlogPost({ post, relatedPosts = [] }) {
           </div>
 
           <div
-            className="prose prose-lg max-w-none"
+            className="prose prose-lg max-w-none tiptap-editor-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

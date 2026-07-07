@@ -15,13 +15,9 @@ const createCategory = async (req, res) => {
   let desktopBanner = "";
   let mobileBanner = "";
 
-  if (req.files) {
-    if (req.files.desktopBanner) {
-      desktopBanner = `/uploads/${req.files.desktopBanner[0].filename}`;
-    }
-    if (req.files.mobileBanner) {
-      mobileBanner = `/uploads/${req.files.mobileBanner[0].filename}`;
-    }
+  if (req.file) {
+    desktopBanner = `/uploads/${req.file.filename}`;
+    mobileBanner = `/uploads/${req.file.filename}`;
   }
 
   try {
@@ -49,13 +45,9 @@ const updateCategory = async (req, res) => {
 
     const updates = { ...req.body };
 
-    if (req.files) {
-      if (req.files.desktopBanner) {
-        updates.desktopBanner = `/uploads/${req.files.desktopBanner[0].filename}`;
-      }
-      if (req.files.mobileBanner) {
-        updates.mobileBanner = `/uploads/${req.files.mobileBanner[0].filename}`;
-      }
+    if (req.file) {
+      updates.desktopBanner = `/uploads/${req.file.filename}`;
+      updates.mobileBanner = `/uploads/${req.file.filename}`;
     }
 
     if (updates.name && !updates.slug) {

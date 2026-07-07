@@ -14,20 +14,14 @@ router.post(
   "/",
   protect,
   authorize("products", "write"),
-  upload.fields([
-    { name: "desktopBanner", maxCount: 1 },
-    { name: "mobileBanner", maxCount: 1 },
-  ]),
+  upload.single("image"),
   createCategory
 );
 router.put(
   "/:id",
   protect,
   authorize("products", "write"),
-  upload.fields([
-    { name: "desktopBanner", maxCount: 1 },
-    { name: "mobileBanner", maxCount: 1 },
-  ]),
+  upload.single("image"),
   updateCategory
 );
 router.delete("/:id", protect, authorize("products", "delete"), deleteCategory);

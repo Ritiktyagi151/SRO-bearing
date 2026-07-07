@@ -583,7 +583,10 @@ export default function ProductDetail({ product, related = [] }) {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <p className="text-lg text-gray-600">{product.description}</p>
+                <div
+                  className="text-lg text-gray-600 tiptap-editor-content"
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
               </motion.div>
 
               {/* Features */}

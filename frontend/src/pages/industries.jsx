@@ -327,9 +327,10 @@ const IndustryPage = ({ initialIndustries = [] }) => {
                 <div className="industry-content absolute inset-0 flex flex-col justify-end p-8 text-white z-10 transition-all duration-500">
                   <h3 className="text-3xl font-bold mb-2">{industry.name}</h3>
 
-                  <p className="industry-description text-gray-200 mb-4">
-                    {industry.description}
-                  </p>
+                  <div
+                    className="industry-description text-gray-200 mb-4 text-sm tiptap-editor-content"
+                    dangerouslySetInnerHTML={{ __html: industry.description }}
+                  />
 
                   <div className="industry-stats">
                     <ul className="space-y-2 mb-6">
