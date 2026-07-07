@@ -160,7 +160,7 @@ export default function AdminCategories() {
 
         {showForm ? (
           /* Full Page Editor Form */
-          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn max-w-2xl mx-auto">
+          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-6 right-6 p-2 bg-slate-100 hover:bg-slate-200 text-gray-700 rounded-lg transition-all cursor-pointer"
@@ -173,36 +173,64 @@ export default function AdminCategories() {
               {isEditing ? "Edit Category Canvas" : "Add Category Canvas"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Category Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. Roller Bearings"
-                  />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-5">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1 max-w-lg">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Category Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. Roller Bearings"
+                    />
+                  </div>
+
+                  <div className="flex-1 max-w-md">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Category Slug (URL)
+                    </label>
+                    <input
+                      type="text"
+                      value={form.slug}
+                      onChange={(e) => setForm({ ...form, slug: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. roller-bearings"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Category Slug (URL)
-                  </label>
-                  <input
-                    type="text"
-                    value={form.slug}
-                    onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. roller-bearings"
-                  />
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="w-full max-w-xs">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Banner Height
+                    </label>
+                    <input
+                      type="text"
+                      value={form.bannerHeight}
+                      onChange={(e) => setForm({ ...form, bannerHeight: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-655 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. 450px, 60vh"
+                    />
+                  </div>
+
+                  <div className="flex-1 max-w-md">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Category Banner Image (JPG, PNG, WEBP, GIF up to 100MB)
+                    </label>
+                    <input
+                      type="file"
+                      onChange={handleFileChange}
+                      className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
+                    />
+                  </div>
                 </div>
 
-                <div className="md:col-span-2">
+                <div className="w-full">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Category Description
                   </label>
@@ -212,30 +240,6 @@ export default function AdminCategories() {
                     placeholder="Provide a detailed overview of the category offerings..."
                   />
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Banner Height
-                  </label>
-                  <input
-                    type="text"
-                    value={form.bannerHeight}
-                    onChange={(e) => setForm({ ...form, bannerHeight: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. 450px, 60vh"
-                  />
-                </div>
-              </div>
-
-              <div className="md:col-span-2 border-t border-gray-150 pt-6">
-                <label className="block text-sm font-medium text-gray-700">
-                  Category Banner Image (JPG, PNG, WEBP, GIF up to 100MB)
-                </label>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                  className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                />
               </div>
 
               <div className="pt-6 border-t border-gray-200 flex gap-4">

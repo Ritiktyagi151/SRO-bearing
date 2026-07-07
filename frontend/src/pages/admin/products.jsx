@@ -164,7 +164,7 @@ export default function AdminProducts() {
 
         {showForm ? (
           /* Full Page Editor Form */
-          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn max-w-3xl mx-auto">
+          <div className="bg-white/40 border border-gray-200 rounded-xl p-8 shadow-md relative animate-fadeIn">
             <button
               onClick={() => setShowForm(false)}
               className="absolute top-6 right-6 p-2 bg-slate-100 hover:bg-slate-200 text-gray-700 rounded-lg transition-all cursor-pointer"
@@ -178,76 +178,80 @@ export default function AdminProducts() {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Product Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. Cylindrical Roller Bearing"
-                  />
+              <div className="space-y-5">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1 max-w-lg">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Product Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-655 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. Cylindrical Roller Bearing"
+                    />
+                  </div>
+
+                  <div className="flex-1 max-w-md">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Product Slug (URL)
+                    </label>
+                    <input
+                      type="text"
+                      value={form.slug}
+                      onChange={(e) => setForm({ ...form, slug: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-655 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="e.g. cylindrical-roller-bearing"
+                    />
+                  </div>
                 </div>
 
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Product Slug (URL)
-                  </label>
-                  <input
-                    type="text"
-                    value={form.slug}
-                    onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                    placeholder="e.g. cylindrical-roller-bearing"
-                  />
+                <div className="flex flex-col md:flex-row gap-6 items-end">
+                  <div className="w-full max-w-xs">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Category
+                    </label>
+                    <select
+                      value={form.category}
+                      onChange={(e) => setForm({ ...form, category: e.target.value })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                    >
+                      <option value="">Select Category (Optional)</option>
+                      {categories.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="w-full max-w-[120px]">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Order Index
+                    </label>
+                    <input
+                      type="number"
+                      value={form.order}
+                      onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
+                      className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
+                    />
+                  </div>
+
+                  <div className="flex-1 max-w-md">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
+                    </label>
+                    <input
+                      type="file"
+                      onChange={handleFileChange}
+                      className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
+                    />
+                  </div>
                 </div>
 
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Category
-                  </label>
-                  <select
-                    value={form.category}
-                    onChange={(e) => setForm({ ...form, category: e.target.value })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  >
-                    <option value="">Select Category (Optional)</option>
-                    {categories.map((cat) => (
-                      <option key={cat._id} value={cat._id}>
-                        {cat.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Order Index (Sorting)
-                  </label>
-                  <input
-                    type="number"
-                    value={form.order}
-                    onChange={(e) => setForm({ ...form, order: parseInt(e.target.value) || 0 })}
-                    className="mt-1 block w-full p-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-slate-650 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-sm"
-                  />
-                </div>
-
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Product Image (JPG, PNG, WEBP, GIF, PDF up to 100MB)
-                  </label>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="mt-1.5 block w-full text-xs text-gray-650 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-slate-700 cursor-pointer"
-                  />
-                </div>
-
-                <div className="md:col-span-3">
+                <div className="w-full">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Product Description
                   </label>
